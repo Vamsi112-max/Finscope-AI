@@ -2,6 +2,8 @@
 
 A high-throughput financial reconciliation and anomaly surveillance service designed for high-volume payment processing rails. FinScope reconciles multi-layer ledger data (gateway transactions, bank clearing records, and internal accounts) in real time to catch discrepancies before settlement finality.
 
+## Live Link -- https://finscope-ai-iota.vercel.app/
+
 ## Architecture
 
 FinScope uses a deterministic-first architecture:
