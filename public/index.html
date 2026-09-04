@@ -1748,7 +1748,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
         </div>
 
         <!-- Pillar 2: Autonomous Recon Engine -->
-        <div class="nav-pillar-group" id="pillar-2">
+        <div class="nav-pillar-group open" id="pillar-2">
           <div class="pillar-header" onclick="togglePillar('pillar-2')">
             <div class="pillar-title-wrap">
               <span class="pillar-ico">⚖️</span>
@@ -1772,7 +1772,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
         </div>
 
         <!-- Pillar 3: Anomaly Watch & Fraud Sentry -->
-        <div class="nav-pillar-group" id="pillar-3">
+        <div class="nav-pillar-group open" id="pillar-3">
           <div class="pillar-header" onclick="togglePillar('pillar-3')">
             <div class="pillar-title-wrap">
               <span class="pillar-ico">🛡️</span>
@@ -1796,7 +1796,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
         </div>
 
         <!-- Pillar 4: Liquidity & Cash Flow Forecast -->
-        <div class="nav-pillar-group" id="pillar-4">
+        <div class="nav-pillar-group open" id="pillar-4">
           <div class="pillar-header" onclick="togglePillar('pillar-4')">
             <div class="pillar-title-wrap">
               <span class="pillar-ico">📈</span>
@@ -1820,7 +1820,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
         </div>
 
         <!-- Pillar 5: Financial Copilot & AI Audit -->
-        <div class="nav-pillar-group" id="pillar-5">
+        <div class="nav-pillar-group open" id="pillar-5">
           <div class="pillar-header" onclick="togglePillar('pillar-5')">
             <div class="pillar-title-wrap">
               <span class="pillar-ico">🤖</span>
@@ -1844,7 +1844,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
         </div>
 
         <!-- Pillar 6: Trust Tier Matrix & Feedback -->
-        <div class="nav-pillar-group" id="pillar-6">
+        <div class="nav-pillar-group open" id="pillar-6">
           <div class="pillar-header" onclick="togglePillar('pillar-6')">
             <div class="pillar-title-wrap">
               <span class="pillar-ico">🏆</span>
@@ -2834,13 +2834,17 @@ function selectSubView(subViewId, pillarName, viewName) {
 
   document.querySelectorAll('.sub-nav-item').forEach(el => el.classList.remove('active'));
   const activeNav = document.getElementById('subnav-' + subViewId);
-  if (activeNav) activeNav.classList.add('active');
+  if (activeNav) {
+    activeNav.classList.add('active');
+    const parentPillar = activeNav.closest('.nav-pillar-group');
+    if (parentPillar) parentPillar.classList.add('open');
+  }
 
   document.querySelectorAll('.subview-panel').forEach(el => el.classList.remove('active-view'));
   const targetView = document.getElementById('view-' + subViewId);
   if (targetView) targetView.classList.add('active-view');
 
-  if (window.innerWidth <= 900) {
+  if (window.innerWidth <= 900 && (!window.aiTour || !window.aiTour.running)) {
     closeMobileSidebar();
   }
 
@@ -3382,9 +3386,7 @@ const aiTour = {
       subview: "1-1",
       speechText: "One click — Run All 4 Agents — and the full nervous system fires in parallel. Look at the telemetry: 160 transactions monitored, 107 resolved instantly by deterministic rules at zero AI cost, 43 genuine edge cases sent to Claude for diagnosis, and 18 flagged for human sign-off. The system is already reporting a Risk Score of 100 — high — because of active duplicate payout exposure.",
       cursorAction: async () => {
-        switchScreen('dashboard');
-        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
-        await aiTour.sleep(400);
+        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 300);
         const runBtn = document.getElementById('btnMasterRun');
         if (runBtn) {
           await aiTour.moveCursorTo(runBtn, 600);
@@ -3392,7 +3394,7 @@ const aiTour = {
           aiTour.triggerCursorClick(runBtn);
           triggerRunAllAgents();
         }
-        await aiTour.sleep(2500);
+        await aiTour.sleep(2200);
         const grid = document.querySelector('.metric-grid');
         if (grid) {
           await aiTour.moveCursorTo(grid, 700);
@@ -3408,14 +3410,7 @@ const aiTour = {
       subview: "2-1",
       speechText: "Agent 1, the Reconciliation Agent, resolves clean records with a cascading rule engine and escalates only the true exceptions to Claude. Here in the Multi-Layer Matcher, every one of the 160 pairs is classified — exact matches, date lags, rounding, duplicates, missing references, FX variance — each with a confidence score and an action.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-2-1');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher', 600);
         const table = document.querySelector('#view-2-1 .fin-table') || document.getElementById('reconTableBody');
         if (table) {
           await aiTour.moveCursorTo(table, 700);
@@ -3431,14 +3426,7 @@ const aiTour = {
       subview: "3-1",
       speechText: "Agent 2, the Anomaly Watch Sentry, is running pre-settlement surveillance. It's caught 18 duplicate payout suspects worth ₹4.98 lakh, auto-throttled 8 retry storms, and triggered a hold on 7 refund spike clusters — all before a single payout clears.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-3-1');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix', 600);
         const matrix = document.querySelector('#view-3-1 .metric-grid') || document.querySelector('#view-3-1 table');
         if (matrix) {
           await aiTour.moveCursorTo(matrix, 700);
@@ -3454,14 +3442,7 @@ const aiTour = {
       subview: "4-1",
       speechText: "Agent 3, the Cash Flow Forecast Agent, projects a 14-day rolling liquidity curve — ₹34.8 lakh in expected net settlement, peaking on Day 4, with no shortfall in sight.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-4-1');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow', 600);
         const forecastArea = document.querySelector('#view-4-1 .metric-grid') || document.querySelector('#view-4-1');
         if (forecastArea) {
           await aiTour.moveCursorTo(forecastArea, 700);
@@ -3477,14 +3458,7 @@ const aiTour = {
       subview: "2-2",
       speechText: "This is what separates FinScope from blind automation: hardcoded guardrails that override the AI itself. Any transaction above ₹50,000 cannot be auto-approved, no matter how confident the model is. Here, Claude scored a ₹84,500 transaction at 94% confidence — and the guardrail forced it to human escalation anyway. The AI never has unchecked authority over funds.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-2-2');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor', 600);
         const row = document.querySelector('#guardrailTableBody tr:first-child');
         if (row) {
           await aiTour.moveCursorTo(row, 700);
@@ -3500,14 +3474,7 @@ const aiTour = {
       subview: "3-2",
       speechText: "And if things escalate further, a single Emergency Kill-Switch can freeze all automated settlement approvals across the Mumbai and Bangalore clusters instantly.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-3-2');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds', 600);
         const killBtn = document.querySelector('#view-3-2 button') || document.querySelector('#view-3-2');
         if (killBtn) {
           await aiTour.moveCursorTo(killBtn, 700);
@@ -3523,14 +3490,7 @@ const aiTour = {
       subview: "5-1",
       speechText: "Now, Agent 4 — the Financial Copilot. I ask: 'What is our biggest risk right now?' It synthesizes across all three other agents and answers in plain language, grounded directly in the ledger — no hallucination, just cited facts pulled from the live audit data.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-5-1');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI', 600);
         const promptBtn = document.querySelector('.chat-quick-prompts button') || document.getElementById('copilotInput');
         if (promptBtn) {
           await aiTour.moveCursorTo(promptBtn, 600);
@@ -3556,14 +3516,7 @@ const aiTour = {
       subview: "6-1",
       speechText: "Trust isn't granted uniformly — it's earned per mismatch category. Exact matches have already proven themselves and sit at Tier 3, fully autonomous. Date lags are Tier 2, supervised, needing just two more validations to graduate. But duplicate entries and FX variance stay at Tier 1 — provisional, human-verification mandatory — until the model proves consistent concordance with reviewers.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-6-1');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix', 600);
         const table = document.getElementById('trustTierBody') || document.querySelector('#view-6-1 table');
         if (table) {
           await aiTour.moveCursorTo(table, 700);
@@ -3579,14 +3532,7 @@ const aiTour = {
       subview: "6-2",
       speechText: "Human reviewers can submit corrections directly here, and that feedback recalibrates the trust tiers over time — the system literally learns which categories it can be trusted with.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-6-2');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop', 600);
         const formBox = document.querySelector('#view-6-2 > div:nth-child(2)') || document.querySelector('#view-6-2');
         if (formBox) {
           await aiTour.moveCursorTo(formBox, 700);
@@ -3602,14 +3548,7 @@ const aiTour = {
       subview: "5-2",
       speechText: "Every decision — rule match, LLM diagnosis, guardrail override, human correction — is written to an immutable JSON audit log, ready for SOX or RBI-grade compliance review.",
       cursorAction: async () => {
-        const subnav = document.getElementById('subnav-5-2');
-        if (subnav) {
-          await aiTour.moveCursorTo(subnav, 600);
-          aiTour.spotlight(subnav);
-          aiTour.triggerCursorClick(subnav);
-        }
-        selectSubView('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer');
-        await aiTour.sleep(600);
+        await aiTour.clickSidebarOption('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer', 600);
         const refreshBtn = document.querySelector('#view-5-2 button');
         if (refreshBtn) {
           await aiTour.moveCursorTo(refreshBtn, 600);
@@ -3626,8 +3565,7 @@ const aiTour = {
       subview: "1-1",
       speechText: "FinScope AI moves reconciliation from a days-long forensic exercise to a sub-second autonomous control loop — 107 of 160 transactions resolved instantly by rules, 43 diagnosed by Claude, and every single dollar-value decision bound by hardcoded guardrails and self-calibrating trust tiers.",
       cursorAction: async () => {
-        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
-        await aiTour.sleep(500);
+        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 500);
         const topKPI = document.querySelector('.metric-grid');
         if (topKPI) {
           await aiTour.moveCursorTo(topKPI, 700);
@@ -3658,13 +3596,55 @@ const aiTour = {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
 
+  async clickSidebarOption(subViewId, pillarName, viewName, delayAfter = 600) {
+    if (appState.currentScreen !== 'dashboard') {
+      switchScreen('dashboard');
+      await this.sleep(300);
+    }
+
+    if (window.innerWidth <= 900) {
+      const sidebar = document.getElementById('appSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar) sidebar.classList.add('mobile-open');
+      if (backdrop) backdrop.classList.add('open');
+      await this.sleep(250);
+    }
+
+    const subnav = document.getElementById('subnav-' + subViewId);
+    if (!subnav) {
+      selectSubView(subViewId, pillarName, viewName);
+      return;
+    }
+
+    const parentPillar = subnav.closest('.nav-pillar-group');
+    if (parentPillar && !parentPillar.classList.contains('open')) {
+      parentPillar.classList.add('open');
+      await this.sleep(120);
+    }
+
+    try {
+      subnav.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    } catch (e) {}
+    await this.sleep(200);
+
+    await this.moveCursorTo(subnav, 700);
+    this.spotlight(subnav);
+    this.triggerCursorClick(subnav);
+    await this.sleep(220);
+
+    selectSubView(subViewId, pillarName, viewName);
+    await this.sleep(delayAfter);
+  },
+
   spotlight(elementOrSelector) {
     this.clearSpotlight();
     const el = typeof elementOrSelector === 'string' ? document.querySelector(elementOrSelector) : elementOrSelector;
     if (el) {
       el.classList.add('ai-tour-spotlight');
       this.activeSpotlightEl = el;
-      el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      try {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      } catch (e) {}
     }
   },
 
@@ -3686,9 +3666,28 @@ const aiTour = {
 
     const el = typeof elementOrSelector === 'string' ? document.querySelector(elementOrSelector) : elementOrSelector;
     if (el) {
+      try {
+        const pillar = el.closest ? el.closest('.nav-pillar-group') : null;
+        if (pillar && !pillar.classList.contains('open')) pillar.classList.add('open');
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      } catch (e) {}
+
+      await this.sleep(140);
+
       const rect = el.getBoundingClientRect();
-      x = Math.max(10, Math.min(window.innerWidth - 30, rect.left + rect.width / 2));
-      y = Math.max(10, Math.min(window.innerHeight - 30, rect.top + rect.height / 2));
+      if (rect.width > 0 && rect.height > 0) {
+        x = Math.max(10, Math.min(window.innerWidth - 30, rect.left + rect.width / 2));
+        y = Math.max(10, Math.min(window.innerHeight - 30, rect.top + rect.height / 2));
+      } else {
+        const parent = el.offsetParent || el.parentElement;
+        if (parent) {
+          const prect = parent.getBoundingClientRect();
+          if (prect.width > 0 && prect.height > 0) {
+            x = Math.max(10, Math.min(window.innerWidth - 30, prect.left + prect.width / 2));
+            y = Math.max(10, Math.min(window.innerHeight - 30, prect.top + prect.height / 2));
+          }
+        }
+      }
     }
 
     cursor.style.transform = `translate(${x}px, ${y}px)`;
@@ -3701,8 +3700,8 @@ const aiTour = {
     const rect = cursor.getBoundingClientRect();
     const ripple = document.createElement('div');
     ripple.className = 'cursor-click-ripple';
-    ripple.style.left = `${rect.left + 14}px`;
-    ripple.style.top = `${rect.top + 14}px`;
+    ripple.style.left = `${rect.left + 4}px`;
+    ripple.style.top = `${rect.top + 4}px`;
     document.body.appendChild(ripple);
     setTimeout(() => ripple.remove(), 650);
   },
