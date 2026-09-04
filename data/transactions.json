@@ -1,0 +1,6960 @@
+[
+  {
+    "pairId": "PAIR-027",
+    "gateway": {
+      "id": "GW-BQ5K7",
+      "timestamp": "2024-06-16T16:03:00+05:30",
+      "amount": 62946.24,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "HDFC",
+      "authCode": "AUTH-5B7GI",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-V75XQ",
+      "utr": "UTR-BU5F9",
+      "batchId": "BATCH-20240617",
+      "settlementDate": "2024-06-17",
+      "amount": 62946.24,
+      "currency": "INR",
+      "originalAmount": 62946.24,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-OX4PL",
+      "bookingDate": "2024-06-17",
+      "amount": 62946.24,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-ZQ159",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-ZQ159",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-056",
+    "gateway": {
+      "id": "GW-F2WV0",
+      "timestamp": "2024-06-01T11:30:00+05:30",
+      "amount": 79100.29,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-TMYZK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-N48UF",
+      "utr": "UTR-L9Z6F",
+      "batchId": "BATCH-20240608",
+      "settlementDate": "2024-06-08",
+      "amount": 79100.29,
+      "currency": "INR",
+      "originalAmount": 79100.29,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-3O3GI",
+      "bookingDate": "2024-06-02",
+      "amount": 79100.29,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-DON82",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-DON82",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-072",
+    "gateway": {
+      "id": "GW-M0ILT",
+      "timestamp": "2024-08-28T10:18:00+05:30",
+      "amount": 80473.33,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "KOTAK",
+      "authCode": "AUTH-TA1GL",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-S4Q5X",
+      "utr": "UTR-983AH",
+      "batchId": "BATCH-20240901",
+      "settlementDate": "2024-09-01",
+      "amount": 80473.33,
+      "currency": "INR",
+      "originalAmount": 80473.33,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-FEMEV",
+      "bookingDate": "2024-08-29",
+      "amount": 80473.33,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-P0UGK",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-P0UGK",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-043",
+    "gateway": {
+      "id": "GW-R3T9Z",
+      "timestamp": "2024-07-05T12:58:00+05:30",
+      "amount": 5447.92,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "SBI",
+      "authCode": "AUTH-NBE1J",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-E57R6",
+      "utr": "UTR-KTIGG",
+      "batchId": "BATCH-20240706",
+      "settlementDate": "2024-07-06",
+      "amount": 5447.92,
+      "currency": "INR",
+      "originalAmount": 5447.92,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-1CYXZ",
+      "bookingDate": "2024-07-06",
+      "amount": 5447.92,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-Z9WGS",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-Z9WGS",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-075",
+    "gateway": {
+      "id": "GW-7UAPW",
+      "timestamp": "2024-08-25T14:25:00+05:30",
+      "amount": 17427.58,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-TQTR0",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-EB2WA",
+      "utr": "UTR-P6L86",
+      "batchId": "BATCH-20240830",
+      "settlementDate": "2024-08-30",
+      "amount": 17427.58,
+      "currency": "INR",
+      "originalAmount": 17427.58,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-RGFON",
+      "bookingDate": "2024-08-26",
+      "amount": 17427.58,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-TCVXK",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-TCVXK",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-008",
+    "gateway": {
+      "id": "GW-6Z590",
+      "timestamp": "2024-07-03T12:53:00+05:30",
+      "amount": 39403.17,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-3DY4S",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-VYJYP",
+      "utr": "UTR-YAFX0",
+      "batchId": "BATCH-20240704",
+      "settlementDate": "2024-07-04",
+      "amount": 39403.17,
+      "currency": "INR",
+      "originalAmount": 39403.17,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PF6SV",
+      "bookingDate": "2024-07-04",
+      "amount": 39403.17,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-3DBY4",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-3DBY4",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-004",
+    "gateway": {
+      "id": "GW-YK46J",
+      "timestamp": "2024-07-16T13:07:00+05:30",
+      "amount": 65367.9,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "SBI",
+      "authCode": "AUTH-J3DBB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-ZFU6Q",
+      "utr": "UTR-L0CPK",
+      "batchId": "BATCH-20240717",
+      "settlementDate": "2024-07-17",
+      "amount": 65367.9,
+      "currency": "INR",
+      "originalAmount": 65367.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SU1D9",
+      "bookingDate": "2024-07-17",
+      "amount": 65367.9,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-11HUS",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-11HUS",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-028",
+    "gateway": {
+      "id": "GW-DTDGR",
+      "timestamp": "2024-06-19T15:05:00+05:30",
+      "amount": 47146.21,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "ICICI",
+      "authCode": "AUTH-FW8RW",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-U1GCD",
+      "utr": "UTR-8S3Q6",
+      "batchId": "BATCH-20240620",
+      "settlementDate": "2024-06-20",
+      "amount": 47146.21,
+      "currency": "INR",
+      "originalAmount": 47146.21,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ZJ0HZ",
+      "bookingDate": "2024-06-20",
+      "amount": 47146.21,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-0GLY5",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-0GLY5",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-016",
+    "gateway": {
+      "id": "GW-IECZX",
+      "timestamp": "2024-07-03T18:41:00+05:30",
+      "amount": 32414.18,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "SBI",
+      "authCode": "AUTH-BSAXX",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BWM9T",
+      "utr": "UTR-RVV1B",
+      "batchId": "BATCH-20240704",
+      "settlementDate": "2024-07-04",
+      "amount": 32414.18,
+      "currency": "INR",
+      "originalAmount": 32414.18,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-V93EF",
+      "bookingDate": "2024-07-04",
+      "amount": 32414.18,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-VUA40",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-VUA40",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-044",
+    "gateway": {
+      "id": "GW-GZOU7",
+      "timestamp": "2024-08-10T12:05:00+05:30",
+      "amount": 17621.07,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-MKBKV",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6Z45C",
+      "utr": "UTR-E2U8U",
+      "batchId": "BATCH-20240811",
+      "settlementDate": "2024-08-11",
+      "amount": 17621.07,
+      "currency": "INR",
+      "originalAmount": 17621.07,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PJUZD",
+      "bookingDate": "2024-08-11",
+      "amount": 17621.07,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-GFSBU",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-GFSBU",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-052",
+    "gateway": {
+      "id": "GW-U84D8",
+      "timestamp": "2024-06-30T16:21:00+05:30",
+      "amount": 29922.78,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-9H9VY",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-N80FP",
+      "utr": "UTR-N1ECL",
+      "batchId": "BATCH-20240701",
+      "settlementDate": "2024-07-01",
+      "amount": 29922.78,
+      "currency": "INR",
+      "originalAmount": 29922.78,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-7B817",
+      "bookingDate": "2024-07-01",
+      "amount": 29922.78,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-0KMNY",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-0KMNY",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-071",
+    "gateway": {
+      "id": "GW-IUHUG",
+      "timestamp": "2024-07-15T12:50:00+05:30",
+      "amount": 63538.01,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "ICICI",
+      "authCode": "AUTH-S3K9Q",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-NS1T4",
+      "utr": "UTR-A41H5",
+      "batchId": "BATCH-20240721",
+      "settlementDate": "2024-07-21",
+      "amount": 63538.01,
+      "currency": "INR",
+      "originalAmount": 63538.01,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-N2NPN",
+      "bookingDate": "2024-07-16",
+      "amount": 63538.01,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-X6DD4",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-X6DD4",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-010",
+    "gateway": {
+      "id": "GW-E5RJ9",
+      "timestamp": "2024-07-22T13:31:00+05:30",
+      "amount": 55089.39,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "AXIS",
+      "authCode": "AUTH-01Z2B",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-HBD9J",
+      "utr": "UTR-Y1DWO",
+      "batchId": "BATCH-20240723",
+      "settlementDate": "2024-07-23",
+      "amount": 55089.39,
+      "currency": "INR",
+      "originalAmount": 55089.39,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PLI5T",
+      "bookingDate": "2024-07-23",
+      "amount": 55089.39,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-GIZA6",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-GIZA6",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-069",
+    "gateway": {
+      "id": "GW-WCYPX",
+      "timestamp": "2024-08-29T16:38:00+05:30",
+      "amount": 76597.36,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "ICICI",
+      "authCode": "AUTH-TMW8K",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4GX2E",
+      "utr": "UTR-G03BM",
+      "batchId": "BATCH-20240904",
+      "settlementDate": "2024-09-04",
+      "amount": 76597.36,
+      "currency": "INR",
+      "originalAmount": 76597.36,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-2RAZ9",
+      "bookingDate": "2024-08-30",
+      "amount": 76597.36,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-VS8EZ",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-VS8EZ",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-064",
+    "gateway": {
+      "id": "GW-YG4EN",
+      "timestamp": "2024-06-14T13:37:00+05:30",
+      "amount": 110579.79,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "HDFC",
+      "authCode": "AUTH-0N9FJ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6XT9Z",
+      "utr": "UTR-OBTHQ",
+      "batchId": "BATCH-20240618",
+      "settlementDate": "2024-06-18",
+      "amount": 110579.79,
+      "currency": "INR",
+      "originalAmount": 110579.79,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-YOKSY",
+      "bookingDate": "2024-06-15",
+      "amount": 110579.79,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-YRP6W",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-YRP6W",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-066",
+    "gateway": {
+      "id": "GW-QPHAK",
+      "timestamp": "2024-08-14T18:17:00+05:30",
+      "amount": 26352.2,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "AXIS",
+      "authCode": "AUTH-PUFCO",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-NZ4UE",
+      "utr": "UTR-01A13",
+      "batchId": "BATCH-20240819",
+      "settlementDate": "2024-08-19",
+      "amount": 26352.2,
+      "currency": "INR",
+      "originalAmount": 26352.2,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-DWQ6H",
+      "bookingDate": "2024-08-15",
+      "amount": 26352.2,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-V3P2R",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-V3P2R",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-018",
+    "gateway": {
+      "id": "GW-4731D",
+      "timestamp": "2024-06-25T18:05:00+05:30",
+      "amount": 30853.21,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "KOTAK",
+      "authCode": "AUTH-8R1UI",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-2JKS2",
+      "utr": "UTR-QTMV0",
+      "batchId": "BATCH-20240626",
+      "settlementDate": "2024-06-26",
+      "amount": 30853.21,
+      "currency": "INR",
+      "originalAmount": 30853.21,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-4WXNX",
+      "bookingDate": "2024-06-26",
+      "amount": 30853.21,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-DNGTK",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-DNGTK",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-073",
+    "gateway": {
+      "id": "GW-IY5QM",
+      "timestamp": "2024-07-14T17:48:00+05:30",
+      "amount": 85992.52,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "KOTAK",
+      "authCode": "AUTH-PXKAR",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-Y0URP",
+      "utr": "UTR-EY1WW",
+      "batchId": "BATCH-20240719",
+      "settlementDate": "2024-07-19",
+      "amount": 85992.52,
+      "currency": "INR",
+      "originalAmount": 85992.52,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-78TJD",
+      "bookingDate": "2024-07-15",
+      "amount": 85992.52,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-480OV",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-480OV",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-025",
+    "gateway": {
+      "id": "GW-C2WZ5",
+      "timestamp": "2024-06-15T13:49:00+05:30",
+      "amount": 77483.54,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "ICICI",
+      "authCode": "AUTH-3GPUK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-LS8KB",
+      "utr": "UTR-NT1FS",
+      "batchId": "BATCH-20240616",
+      "settlementDate": "2024-06-16",
+      "amount": 77483.54,
+      "currency": "INR",
+      "originalAmount": 77483.54,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-0I64E",
+      "bookingDate": "2024-06-16",
+      "amount": 77483.54,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-WPSHC",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-WPSHC",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-084",
+    "gateway": {
+      "id": "GW-L0ITJ",
+      "timestamp": "2024-06-28T18:51:00+05:30",
+      "amount": 47526.33,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "ICICI",
+      "authCode": "AUTH-UEEXZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-YE325",
+      "utr": "UTR-VH0PY",
+      "batchId": "BATCH-20240629",
+      "settlementDate": "2024-06-29",
+      "amount": 47526.71,
+      "currency": "INR",
+      "originalAmount": 47526.71,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-R90ZZ",
+      "bookingDate": "2024-06-29",
+      "amount": 47526.33,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-U64NR",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-U64NR",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.38,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-149",
+    "gateway": {
+      "id": "GW-VAFOZ",
+      "timestamp": "2024-08-29T14:04:00+05:30",
+      "amount": 11384.41,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "HDFC",
+      "authCode": "AUTH-TMV8U",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-KP47U",
+      "utr": "UTR-GND6C",
+      "batchId": "BATCH-20240830",
+      "settlementDate": "2024-08-30",
+      "amount": -11384.41,
+      "currency": "INR",
+      "originalAmount": -11384.41,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SW6ZP",
+      "bookingDate": "2024-08-30",
+      "amount": -11384.41,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-5OLFU",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-5OLFU",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 0,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-090",
+    "gateway": {
+      "id": "GW-SCFTO",
+      "timestamp": "2024-07-28T13:25:00+05:30",
+      "amount": 47652.95,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-X4T5Y",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6XNLV",
+      "utr": "UTR-P6PPG",
+      "batchId": "BATCH-20240729",
+      "settlementDate": "2024-07-29",
+      "amount": 47652.88,
+      "currency": "INR",
+      "originalAmount": 47652.88,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-GR3SK",
+      "bookingDate": "2024-07-29",
+      "amount": 47652.95,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-HUZBR",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-HUZBR",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.07,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-083",
+    "gateway": {
+      "id": "GW-7HF4W",
+      "timestamp": "2024-07-12T14:11:00+05:30",
+      "amount": 31469.31,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "AXIS",
+      "authCode": "AUTH-P7QAA",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-A7TFI",
+      "utr": "UTR-NBZ8P",
+      "batchId": "BATCH-20240713",
+      "settlementDate": "2024-07-13",
+      "amount": 31469.4,
+      "currency": "INR",
+      "originalAmount": 31469.4,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SF57Z",
+      "bookingDate": "2024-07-13",
+      "amount": 31469.31,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-UR1KR",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-UR1KR",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.09,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-006",
+    "gateway": {
+      "id": "GW-MINN5",
+      "timestamp": "2024-08-26T16:05:00+05:30",
+      "amount": 60574.04,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "ICICI",
+      "authCode": "AUTH-38RVJ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-NWQL5",
+      "utr": "UTR-9QUX9",
+      "batchId": "BATCH-20240827",
+      "settlementDate": "2024-08-27",
+      "amount": 60574.04,
+      "currency": "INR",
+      "originalAmount": 60574.04,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-6XRR9",
+      "bookingDate": "2024-08-27",
+      "amount": 60574.04,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-6TPZ2",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-6TPZ2",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-145",
+    "gateway": {
+      "id": "GW-SG5BY",
+      "timestamp": "2024-08-14T12:29:00+05:30",
+      "amount": 157277.73,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-9Z2AZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3DFGV",
+      "utr": "UTR-JFXOA",
+      "batchId": "BATCH-20240815",
+      "settlementDate": "2024-08-15",
+      "amount": 1883.34,
+      "currency": "USD",
+      "originalAmount": 1883.34,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-BYXO2",
+      "bookingDate": "2024-08-15",
+      "amount": 157277.73,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-PIYQT",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-PIYQT",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "USD",
+    "fxRate": 83.5101,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-135",
+    "gateway": {
+      "id": "GW-NI97J",
+      "timestamp": "2024-08-04T11:08:00+05:30",
+      "amount": 52946.15,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-L3RW3",
+      "retryCount": 7,
+      "declineCode": "DO_NOT_HONOR",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-LINFL",
+      "utr": "UTR-FK2NI",
+      "batchId": "BATCH-20240806",
+      "settlementDate": "2024-08-06",
+      "amount": 52946.15,
+      "currency": "INR",
+      "originalAmount": 52946.15,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-S5161",
+      "bookingDate": "2024-08-06",
+      "amount": 52946.15,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-YOMB9",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-YOMB9",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 7,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-130",
+    "gateway": {
+      "id": "GW-6R98W",
+      "timestamp": "2024-08-28T12:13:00+05:30",
+      "amount": 11653.14,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-GE7GG",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-0CPIP",
+      "utr": "UTR-DGR7M",
+      "batchId": "BATCH-20240829",
+      "settlementDate": "2024-08-29",
+      "amount": 11653.14,
+      "currency": "INR",
+      "originalAmount": 11653.14,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-DBZO6",
+      "bookingDate": "2024-08-29",
+      "amount": 11653.14,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-VD04S",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "MISSING",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-001",
+    "gateway": {
+      "id": "GW-LLAVS",
+      "timestamp": "2024-06-02T09:52:00+05:30",
+      "amount": 24805.46,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-CAI1C",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3AU6R",
+      "utr": "UTR-POLIP",
+      "batchId": "BATCH-20240603",
+      "settlementDate": "2024-06-03",
+      "amount": 24805.46,
+      "currency": "INR",
+      "originalAmount": 24805.46,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-GFPDO",
+      "bookingDate": "2024-06-03",
+      "amount": 24805.46,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-L4RCV",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-L4RCV",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-038",
+    "gateway": {
+      "id": "GW-IXU9H",
+      "timestamp": "2024-06-13T10:01:00+05:30",
+      "amount": 31182.32,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "SBI",
+      "authCode": "AUTH-G6HE1",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-GHP1Q",
+      "utr": "UTR-H4HON",
+      "batchId": "BATCH-20240614",
+      "settlementDate": "2024-06-14",
+      "amount": 31182.32,
+      "currency": "INR",
+      "originalAmount": 31182.32,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-F7IHL",
+      "bookingDate": "2024-06-14",
+      "amount": 31182.32,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-AX560",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-AX560",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-085",
+    "gateway": {
+      "id": "GW-R5S9G",
+      "timestamp": "2024-08-05T18:00:00+05:30",
+      "amount": 44183.51,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "ICICI",
+      "authCode": "AUTH-JN3OD",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-EADL0",
+      "utr": "UTR-WNEBI",
+      "batchId": "BATCH-20240806",
+      "settlementDate": "2024-08-06",
+      "amount": 44183.59,
+      "currency": "INR",
+      "originalAmount": 44183.59,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-S9JD7",
+      "bookingDate": "2024-08-06",
+      "amount": 44183.51,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-4CI0G",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-4CI0G",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.08,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-099",
+    "gateway": {
+      "id": "GW-LNR4E",
+      "timestamp": "2024-08-21T13:25:00+05:30",
+      "amount": 12444.12,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "HDFC",
+      "authCode": "AUTH-96WI5",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-7853X",
+      "utr": "UTR-LLNMW",
+      "batchId": "BATCH-20240822",
+      "settlementDate": "2024-08-22",
+      "amount": 12443.8,
+      "currency": "INR",
+      "originalAmount": 12443.8,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-C51SG",
+      "bookingDate": "2024-08-22",
+      "amount": 12444.12,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-JJQ7U",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-JJQ7U",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.32,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-139",
+    "gateway": {
+      "id": "GW-WSYND",
+      "timestamp": "2024-06-27T18:32:00+05:30",
+      "amount": 74554.48,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "AXIS",
+      "authCode": "AUTH-ZZ9CO",
+      "retryCount": 6,
+      "declineCode": "DO_NOT_HONOR",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-TU6XA",
+      "utr": "UTR-YUNK4",
+      "batchId": "BATCH-20240629",
+      "settlementDate": "2024-06-29",
+      "amount": 74554.48,
+      "currency": "INR",
+      "originalAmount": 74554.48,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-MZI0V",
+      "bookingDate": "2024-06-29",
+      "amount": 74554.48,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-KZPTA",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-KZPTA",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 6,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-021",
+    "gateway": {
+      "id": "GW-A74FU",
+      "timestamp": "2024-08-24T10:25:00+05:30",
+      "amount": 7443.65,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "AXIS",
+      "authCode": "AUTH-RG6KH",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-52Y3B",
+      "utr": "UTR-32TDR",
+      "batchId": "BATCH-20240825",
+      "settlementDate": "2024-08-25",
+      "amount": 7443.65,
+      "currency": "INR",
+      "originalAmount": 7443.65,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-XOB6F",
+      "bookingDate": "2024-08-25",
+      "amount": 7443.65,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-8TWSK",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-8TWSK",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-106",
+    "gateway": {
+      "id": "GW-1RP2M",
+      "timestamp": "2024-08-03T10:02:00+05:30",
+      "amount": 42109.03,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "AXIS",
+      "authCode": "AUTH-WX3ZD",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-KHD0Z",
+      "utr": "UTR-0UX2A",
+      "batchId": "BATCH-20240805",
+      "settlementDate": "2024-08-05",
+      "amount": 42109.03,
+      "currency": "INR",
+      "originalAmount": 42109.03,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-KUC8L",
+      "bookingDate": "2024-08-04",
+      "amount": 42109.03,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-DN4R6",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-DN4R6",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-067",
+    "gateway": {
+      "id": "GW-7KGB7",
+      "timestamp": "2024-08-07T15:45:00+05:30",
+      "amount": 91533.44,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "AXIS",
+      "authCode": "AUTH-2JZFI",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-PN0L8",
+      "utr": "UTR-JAY8N",
+      "batchId": "BATCH-20240812",
+      "settlementDate": "2024-08-12",
+      "amount": 91533.44,
+      "currency": "INR",
+      "originalAmount": 91533.44,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-E2QEK",
+      "bookingDate": "2024-08-08",
+      "amount": 91533.44,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-45UJA",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-45UJA",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-097",
+    "gateway": {
+      "id": "GW-AACEI",
+      "timestamp": "2024-07-01T12:51:00+05:30",
+      "amount": 55289.52,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "KOTAK",
+      "authCode": "AUTH-ZHJ1D",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-G0FJH",
+      "utr": "UTR-GMMGF",
+      "batchId": "BATCH-20240702",
+      "settlementDate": "2024-07-02",
+      "amount": 55289.36,
+      "currency": "INR",
+      "originalAmount": 55289.36,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Z28IG",
+      "bookingDate": "2024-07-02",
+      "amount": 55289.52,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-QOZW8",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-QOZW8",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.16,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-060",
+    "gateway": {
+      "id": "GW-7P8LY",
+      "timestamp": "2024-07-17T17:58:00+05:30",
+      "amount": 41463.12,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "AXIS",
+      "authCode": "AUTH-1M6SB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-5N4RF",
+      "utr": "UTR-J3QVF",
+      "batchId": "BATCH-20240723",
+      "settlementDate": "2024-07-23",
+      "amount": 41463.12,
+      "currency": "INR",
+      "originalAmount": 41463.12,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-JLHYH",
+      "bookingDate": "2024-07-18",
+      "amount": 41463.12,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-FDXQ3",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-FDXQ3",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-047",
+    "gateway": {
+      "id": "GW-A01JD",
+      "timestamp": "2024-07-25T13:52:00+05:30",
+      "amount": 72371.72,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "KOTAK",
+      "authCode": "AUTH-RVX1T",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-THVG6",
+      "utr": "UTR-01DJ1",
+      "batchId": "BATCH-20240726",
+      "settlementDate": "2024-07-26",
+      "amount": 72371.72,
+      "currency": "INR",
+      "originalAmount": 72371.72,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5XP25",
+      "bookingDate": "2024-07-26",
+      "amount": 72371.72,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-SJ8V3",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-SJ8V3",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-120",
+    "gateway": {
+      "id": "GW-VFFUV",
+      "timestamp": "2024-06-14T13:50:00+05:30",
+      "amount": 42049.21,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "AXIS",
+      "authCode": "AUTH-XJQW4",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BKBVK",
+      "utr": "UTR-ZUN1M",
+      "batchId": "BATCH-20240615",
+      "settlementDate": "2024-06-15",
+      "amount": 42049.21,
+      "currency": "INR",
+      "originalAmount": 42049.21,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-VTLSM",
+      "bookingDate": "2024-06-15",
+      "amount": 42049.21,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-J1P4M",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-J1P4M",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-098",
+    "gateway": {
+      "id": "GW-U1VSF",
+      "timestamp": "2024-08-03T15:27:00+05:30",
+      "amount": 46097.71,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "AXIS",
+      "authCode": "AUTH-5RR9H",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-A26LR",
+      "utr": "UTR-7AWMD",
+      "batchId": "BATCH-20240804",
+      "settlementDate": "2024-08-04",
+      "amount": 46097.67,
+      "currency": "INR",
+      "originalAmount": 46097.67,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-TJEE4",
+      "bookingDate": "2024-08-04",
+      "amount": 46097.71,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-MBNI8",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-MBNI8",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.04,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-036",
+    "gateway": {
+      "id": "GW-C2OEJ",
+      "timestamp": "2024-08-18T11:16:00+05:30",
+      "amount": 31855.85,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-1MQ4B",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-UMZHN",
+      "utr": "UTR-K0L9D",
+      "batchId": "BATCH-20240819",
+      "settlementDate": "2024-08-19",
+      "amount": 31855.85,
+      "currency": "INR",
+      "originalAmount": 31855.85,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-FPQN7",
+      "bookingDate": "2024-08-19",
+      "amount": 31855.85,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-DY7HH",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-DY7HH",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-103",
+    "gateway": {
+      "id": "GW-JYOHF",
+      "timestamp": "2024-07-20T08:41:00+05:30",
+      "amount": 45399.45,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "ICICI",
+      "authCode": "AUTH-LVWML",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-85DG0",
+      "utr": "UTR-C9KCN",
+      "batchId": "BATCH-20240721",
+      "settlementDate": "2024-07-21",
+      "amount": 45399.45,
+      "currency": "INR",
+      "originalAmount": 45399.45,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-0EXV4",
+      "bookingDate": "2024-07-21",
+      "amount": 45399.45,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-4J6SF",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-4J6SF",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-104",
+    "gateway": {
+      "id": "GW-I5LK2",
+      "timestamp": "2024-06-10T08:10:00+05:30",
+      "amount": 13382.34,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "HDFC",
+      "authCode": "AUTH-PX6PR",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-F3QSK",
+      "utr": "UTR-G48OV",
+      "batchId": "BATCH-20240612",
+      "settlementDate": "2024-06-12",
+      "amount": 13382.34,
+      "currency": "INR",
+      "originalAmount": 13382.34,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-APFXH",
+      "bookingDate": "2024-06-11",
+      "amount": 13382.34,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-3BB32",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-3BB32",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-039",
+    "gateway": {
+      "id": "GW-NW3UU",
+      "timestamp": "2024-06-23T08:21:00+05:30",
+      "amount": 35743.86,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-JLZ7K",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-IPIRH",
+      "utr": "UTR-O9YVF",
+      "batchId": "BATCH-20240624",
+      "settlementDate": "2024-06-24",
+      "amount": 35743.86,
+      "currency": "INR",
+      "originalAmount": 35743.86,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PTJ4U",
+      "bookingDate": "2024-06-24",
+      "amount": 35743.86,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-O8KB0",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-O8KB0",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-007",
+    "gateway": {
+      "id": "GW-2RGNH",
+      "timestamp": "2024-07-31T13:04:00+05:30",
+      "amount": 16312.76,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "SBI",
+      "authCode": "AUTH-YQBTK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-241Z2",
+      "utr": "UTR-HMB0A",
+      "batchId": "BATCH-20240801",
+      "settlementDate": "2024-08-01",
+      "amount": 16312.76,
+      "currency": "INR",
+      "originalAmount": 16312.76,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SJPJZ",
+      "bookingDate": "2024-08-01",
+      "amount": 16312.76,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-5NGHV",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-5NGHV",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-023",
+    "gateway": {
+      "id": "GW-C96LH",
+      "timestamp": "2024-06-13T14:36:00+05:30",
+      "amount": 38997.71,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "SBI",
+      "authCode": "AUTH-09FC6",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-7G75I",
+      "utr": "UTR-OWNED",
+      "batchId": "BATCH-20240614",
+      "settlementDate": "2024-06-14",
+      "amount": 38997.71,
+      "currency": "INR",
+      "originalAmount": 38997.71,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-25G7X",
+      "bookingDate": "2024-06-14",
+      "amount": 38997.71,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-VO9XJ",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-VO9XJ",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-020",
+    "gateway": {
+      "id": "GW-TIOEN",
+      "timestamp": "2024-07-14T14:08:00+05:30",
+      "amount": 44478.6,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "SBI",
+      "authCode": "AUTH-4FAIZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-YEDGF",
+      "utr": "UTR-7P1XN",
+      "batchId": "BATCH-20240715",
+      "settlementDate": "2024-07-15",
+      "amount": 44478.6,
+      "currency": "INR",
+      "originalAmount": 44478.6,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-EPMX4",
+      "bookingDate": "2024-07-15",
+      "amount": 44478.6,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-89SCN",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-89SCN",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-147",
+    "gateway": {
+      "id": "GW-XSSPK",
+      "timestamp": "2024-07-25T15:24:00+05:30",
+      "amount": 90983.89,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "HDFC",
+      "authCode": "AUTH-HUADH",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-9VROU",
+      "utr": "UTR-MG7UI",
+      "batchId": "BATCH-20240726",
+      "settlementDate": "2024-07-26",
+      "amount": 1089.51,
+      "currency": "USD",
+      "originalAmount": 1089.51,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SAPI3",
+      "bookingDate": "2024-07-26",
+      "amount": 90983.89,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-7ANIP",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-7ANIP",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "USD",
+    "fxRate": 83.5091,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-108",
+    "gateway": {
+      "id": "GW-P8RWR",
+      "timestamp": "2024-07-25T12:39:00+05:30",
+      "amount": 7189.19,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "AXIS",
+      "authCode": "AUTH-REOF0",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-MJX7R",
+      "utr": "UTR-ILUNB",
+      "batchId": "BATCH-20240726",
+      "settlementDate": "2024-07-26",
+      "amount": 7189.19,
+      "currency": "INR",
+      "originalAmount": 7189.19,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-0821E",
+      "bookingDate": "2024-07-26",
+      "amount": 7189.19,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-9F0O8",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-9F0O8",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-141",
+    "gateway": {
+      "id": "GW-32CR2",
+      "timestamp": "2024-08-03T11:19:00+05:30",
+      "amount": 60955.09,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-YNOJA",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-I7FJJ",
+      "utr": "UTR-7BNEF",
+      "batchId": "BATCH-20240804",
+      "settlementDate": "2024-08-04",
+      "amount": 1122.21,
+      "currency": "AUD",
+      "originalAmount": 1122.21,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ZITVK",
+      "bookingDate": "2024-08-04",
+      "amount": 60955.09,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-4KJTC",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-4KJTC",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "AUD",
+    "fxRate": 54.3168,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-102",
+    "gateway": {
+      "id": "GW-MJIYJ",
+      "timestamp": "2024-08-10T14:38:00+05:30",
+      "amount": 22438.18,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "AXIS",
+      "authCode": "AUTH-E2GX0",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-B8VZJ",
+      "utr": "UTR-GI4T4",
+      "batchId": "BATCH-20240811",
+      "settlementDate": "2024-08-11",
+      "amount": 22438.33,
+      "currency": "INR",
+      "originalAmount": 22438.33,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-IVWHK",
+      "bookingDate": "2024-08-11",
+      "amount": 22438.18,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-HJP48",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-HJP48",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.15,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-042",
+    "gateway": {
+      "id": "GW-KQ5JQ",
+      "timestamp": "2024-07-04T09:57:00+05:30",
+      "amount": 13919.26,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-N40LA",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-IEXDM",
+      "utr": "UTR-79WTN",
+      "batchId": "BATCH-20240705",
+      "settlementDate": "2024-07-05",
+      "amount": 13919.26,
+      "currency": "INR",
+      "originalAmount": 13919.26,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ATWYC",
+      "bookingDate": "2024-07-05",
+      "amount": 13919.26,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-RNVEW",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-RNVEW",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-094",
+    "gateway": {
+      "id": "GW-R5UMK",
+      "timestamp": "2024-06-29T10:56:00+05:30",
+      "amount": 35367.44,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "HDFC",
+      "authCode": "AUTH-OO1OK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-SN93N",
+      "utr": "UTR-1RT1C",
+      "batchId": "BATCH-20240630",
+      "settlementDate": "2024-06-30",
+      "amount": 35367.5,
+      "currency": "INR",
+      "originalAmount": 35367.5,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-X4KT9",
+      "bookingDate": "2024-06-30",
+      "amount": 35367.44,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-TD2B5",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-TD2B5",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.06,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-150",
+    "gateway": {
+      "id": "GW-FXP8L",
+      "timestamp": "2024-08-17T10:53:00+05:30",
+      "amount": 17298.32,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "AXIS",
+      "authCode": "AUTH-2FOM7",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-MOJYG",
+      "utr": "UTR-ITJX1",
+      "batchId": "BATCH-20240818",
+      "settlementDate": "2024-08-18",
+      "amount": -17298.32,
+      "currency": "INR",
+      "originalAmount": -17298.32,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-MBCOF",
+      "bookingDate": "2024-08-18",
+      "amount": -17298.32,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-N1LSI",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-N1LSI",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-132",
+    "gateway": {
+      "id": "GW-UBXHF",
+      "timestamp": "2024-08-07T16:10:00+05:30",
+      "amount": 4729.7,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "AXIS",
+      "authCode": "AUTH-6N0CX",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-L0HQ2",
+      "utr": "UTR-QOV34",
+      "batchId": "BATCH-20240808",
+      "settlementDate": "2024-08-08",
+      "amount": 4729.7,
+      "currency": "INR",
+      "originalAmount": 4729.7,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-B7UDT",
+      "bookingDate": "2024-08-08",
+      "amount": 4729.7,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-EGT6C",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "N/A",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-032",
+    "gateway": {
+      "id": "GW-W585Y",
+      "timestamp": "2024-07-17T15:40:00+05:30",
+      "amount": 56052.4,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "HDFC",
+      "authCode": "AUTH-0AMUV",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-DCCW7",
+      "utr": "UTR-05W4V",
+      "batchId": "BATCH-20240718",
+      "settlementDate": "2024-07-18",
+      "amount": 56052.4,
+      "currency": "INR",
+      "originalAmount": 56052.4,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-2L7QP",
+      "bookingDate": "2024-07-18",
+      "amount": 56052.4,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-KF38Y",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-KF38Y",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-133",
+    "gateway": {
+      "id": "GW-B72NT",
+      "timestamp": "2024-07-09T08:01:00+05:30",
+      "amount": 68639.73,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "ICICI",
+      "authCode": "AUTH-FSCPT",
+      "retryCount": 6,
+      "declineCode": "DO_NOT_HONOR",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-IJVDE",
+      "utr": "UTR-N5Y7V",
+      "batchId": "BATCH-20240711",
+      "settlementDate": "2024-07-11",
+      "amount": 68639.73,
+      "currency": "INR",
+      "originalAmount": 68639.73,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-LWIIQ",
+      "bookingDate": "2024-07-11",
+      "amount": 68639.73,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-FSARN",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-FSARN",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 6,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-089",
+    "gateway": {
+      "id": "GW-GZ214",
+      "timestamp": "2024-08-21T17:23:00+05:30",
+      "amount": 46551.42,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "KOTAK",
+      "authCode": "AUTH-OBHVZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4AR22",
+      "utr": "UTR-V9LS0",
+      "batchId": "BATCH-20240822",
+      "settlementDate": "2024-08-22",
+      "amount": 46551.26,
+      "currency": "INR",
+      "originalAmount": 46551.26,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Z910F",
+      "bookingDate": "2024-08-22",
+      "amount": 46551.42,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-MNXNF",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-MNXNF",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.16,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-030",
+    "gateway": {
+      "id": "GW-URNTL",
+      "timestamp": "2024-07-13T10:38:00+05:30",
+      "amount": 76639.85,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "SBI",
+      "authCode": "AUTH-ETCPK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-KYFZA",
+      "utr": "UTR-9KEQZ",
+      "batchId": "BATCH-20240714",
+      "settlementDate": "2024-07-14",
+      "amount": 76639.85,
+      "currency": "INR",
+      "originalAmount": 76639.85,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-61TYE",
+      "bookingDate": "2024-07-14",
+      "amount": 76639.85,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-JEQR1",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-JEQR1",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-077",
+    "gateway": {
+      "id": "GW-0K0AH",
+      "timestamp": "2024-06-19T13:51:00+05:30",
+      "amount": 67543.96,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "AXIS",
+      "authCode": "AUTH-5TIWB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-KODG2",
+      "utr": "UTR-46WAI",
+      "batchId": "BATCH-20240626",
+      "settlementDate": "2024-06-26",
+      "amount": 67543.96,
+      "currency": "INR",
+      "originalAmount": 67543.96,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-BRF7I",
+      "bookingDate": "2024-06-20",
+      "amount": 67543.96,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-E7EKV",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-E7EKV",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-136",
+    "gateway": {
+      "id": "GW-E4Y7C",
+      "timestamp": "2024-06-20T08:07:00+05:30",
+      "amount": 87683.19,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "HDFC",
+      "authCode": "AUTH-JIOD8",
+      "retryCount": 7,
+      "declineCode": "TIMEOUT",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BW3GB",
+      "utr": "UTR-6VL1O",
+      "batchId": "BATCH-20240622",
+      "settlementDate": "2024-06-22",
+      "amount": 87683.19,
+      "currency": "INR",
+      "originalAmount": 87683.19,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-YGBYC",
+      "bookingDate": "2024-06-22",
+      "amount": 87683.19,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-LQ08D",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-LQ08D",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 7,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-144",
+    "gateway": {
+      "id": "GW-W67S0",
+      "timestamp": "2024-08-21T10:37:00+05:30",
+      "amount": 31393.84,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "SBI",
+      "authCode": "AUTH-YL4NO",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-RBB7S",
+      "utr": "UTR-ZLVKB",
+      "batchId": "BATCH-20240822",
+      "settlementDate": "2024-08-22",
+      "amount": 296.7,
+      "currency": "GBP",
+      "originalAmount": 296.7,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-MDAQN",
+      "bookingDate": "2024-08-22",
+      "amount": 31393.84,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-KPSFI",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-KPSFI",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "GBP",
+    "fxRate": 105.8111,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-118",
+    "gateway": {
+      "id": "GW-BOVX4",
+      "timestamp": "2024-06-23T08:12:00+05:30",
+      "amount": 33028.81,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "KOTAK",
+      "authCode": "AUTH-LBCKP",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-9EDCN",
+      "utr": "UTR-ZGA2T",
+      "batchId": "BATCH-20240625",
+      "settlementDate": "2024-06-25",
+      "amount": 33028.81,
+      "currency": "INR",
+      "originalAmount": 33028.81,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-QLH96",
+      "bookingDate": "2024-06-24",
+      "amount": 33028.81,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-6GH4R",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-6GH4R",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-112",
+    "gateway": {
+      "id": "GW-RP0TF",
+      "timestamp": "2024-06-17T18:11:00+05:30",
+      "amount": 9296.65,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "KOTAK",
+      "authCode": "AUTH-GPQRP",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-8AFNR",
+      "utr": "UTR-EF82L",
+      "batchId": "BATCH-20240619",
+      "settlementDate": "2024-06-19",
+      "amount": 9296.65,
+      "currency": "INR",
+      "originalAmount": 9296.65,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-LCIKI",
+      "bookingDate": "2024-06-18",
+      "amount": 9296.65,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-EOU59",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-EOU59",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-015",
+    "gateway": {
+      "id": "GW-DCGOE",
+      "timestamp": "2024-06-22T18:23:00+05:30",
+      "amount": 32830.9,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "HDFC",
+      "authCode": "AUTH-SH9O7",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-VCB9W",
+      "utr": "UTR-7XQM0",
+      "batchId": "BATCH-20240623",
+      "settlementDate": "2024-06-23",
+      "amount": 32830.9,
+      "currency": "INR",
+      "originalAmount": 32830.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-M96EA",
+      "bookingDate": "2024-06-23",
+      "amount": 32830.9,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-HB6V2",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-HB6V2",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-045",
+    "gateway": {
+      "id": "GW-UKXG6",
+      "timestamp": "2024-08-29T18:37:00+05:30",
+      "amount": 34648.22,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-ZCWAF",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-V1RU5",
+      "utr": "UTR-347MG",
+      "batchId": "BATCH-20240830",
+      "settlementDate": "2024-08-30",
+      "amount": 34648.22,
+      "currency": "INR",
+      "originalAmount": 34648.22,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5AB0D",
+      "bookingDate": "2024-08-30",
+      "amount": 34648.22,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-TCWW4",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-TCWW4",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-048",
+    "gateway": {
+      "id": "GW-QAQT9",
+      "timestamp": "2024-07-05T12:17:00+05:30",
+      "amount": 7458.08,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "KOTAK",
+      "authCode": "AUTH-MB19U",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WDWAX",
+      "utr": "UTR-E0O5W",
+      "batchId": "BATCH-20240706",
+      "settlementDate": "2024-07-06",
+      "amount": 7458.08,
+      "currency": "INR",
+      "originalAmount": 7458.08,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-MNDM3",
+      "bookingDate": "2024-07-06",
+      "amount": 7458.08,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-TCZPA",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-TCZPA",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-151",
+    "gateway": {
+      "id": "GW-YR4VH",
+      "timestamp": "2024-07-20T09:37:00+05:30",
+      "amount": 3666.15,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "AXIS",
+      "authCode": "AUTH-6A6W9",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-VYVHQ",
+      "utr": "UTR-434F7",
+      "batchId": "BATCH-20240721",
+      "settlementDate": "2024-07-21",
+      "amount": -3666.15,
+      "currency": "INR",
+      "originalAmount": -3666.15,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-RE30F",
+      "bookingDate": "2024-07-21",
+      "amount": -3666.15,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-M80KA",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-M80KA",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-087",
+    "gateway": {
+      "id": "GW-USUNB",
+      "timestamp": "2024-07-19T09:56:00+05:30",
+      "amount": 34436.76,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "SBI",
+      "authCode": "AUTH-L7Q1Q",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BRKRM",
+      "utr": "UTR-Z3FMG",
+      "batchId": "BATCH-20240720",
+      "settlementDate": "2024-07-20",
+      "amount": 34437.19,
+      "currency": "INR",
+      "originalAmount": 34437.19,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-LEOAK",
+      "bookingDate": "2024-07-20",
+      "amount": 34436.76,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-4J8CO",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-4J8CO",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.43,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-041",
+    "gateway": {
+      "id": "GW-PZ3B9",
+      "timestamp": "2024-07-28T09:59:00+05:30",
+      "amount": 9748.29,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "HDFC",
+      "authCode": "AUTH-Y5IDM",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WF5MV",
+      "utr": "UTR-SGTID",
+      "batchId": "BATCH-20240729",
+      "settlementDate": "2024-07-29",
+      "amount": 9748.29,
+      "currency": "INR",
+      "originalAmount": 9748.29,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-806PV",
+      "bookingDate": "2024-07-29",
+      "amount": 9748.29,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-SGSVB",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-SGSVB",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-119",
+    "gateway": {
+      "id": "GW-0VWJT",
+      "timestamp": "2024-06-08T11:47:00+05:30",
+      "amount": 8613.98,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "SBI",
+      "authCode": "AUTH-TP1RC",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-39QZL",
+      "utr": "UTR-BJJJX",
+      "batchId": "BATCH-20240610",
+      "settlementDate": "2024-06-10",
+      "amount": 8613.98,
+      "currency": "INR",
+      "originalAmount": 8613.98,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PRG2N",
+      "bookingDate": "2024-06-09",
+      "amount": 8613.98,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-78YP3",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-78YP3",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-100",
+    "gateway": {
+      "id": "GW-LEI6P",
+      "timestamp": "2024-06-24T16:33:00+05:30",
+      "amount": 33911.3,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "AXIS",
+      "authCode": "AUTH-XW2MY",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-5YDIZ",
+      "utr": "UTR-VZJRP",
+      "batchId": "BATCH-20240625",
+      "settlementDate": "2024-06-25",
+      "amount": 33911.37,
+      "currency": "INR",
+      "originalAmount": 33911.37,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-HEXUK",
+      "bookingDate": "2024-06-25",
+      "amount": 33911.3,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-Q1L3J",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-Q1L3J",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.07,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-054",
+    "gateway": {
+      "id": "GW-Y7J2O",
+      "timestamp": "2024-07-31T08:24:00+05:30",
+      "amount": 78830.89,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "SBI",
+      "authCode": "AUTH-5EY6X",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-RXC3M",
+      "utr": "UTR-4TIDR",
+      "batchId": "BATCH-20240801",
+      "settlementDate": "2024-08-01",
+      "amount": 78830.89,
+      "currency": "INR",
+      "originalAmount": 78830.89,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-DCVVG",
+      "bookingDate": "2024-08-01",
+      "amount": 78830.89,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-GDG9Q",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-GDG9Q",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-093",
+    "gateway": {
+      "id": "GW-ZCW7B",
+      "timestamp": "2024-08-07T13:06:00+05:30",
+      "amount": 17332.3,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "AXIS",
+      "authCode": "AUTH-PGVMP",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WENJU",
+      "utr": "UTR-LA8Q6",
+      "batchId": "BATCH-20240808",
+      "settlementDate": "2024-08-08",
+      "amount": 17331.89,
+      "currency": "INR",
+      "originalAmount": 17331.89,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-RE4VE",
+      "bookingDate": "2024-08-08",
+      "amount": 17332.3,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-7FM3P",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-7FM3P",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.41,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-033",
+    "gateway": {
+      "id": "GW-9YV26",
+      "timestamp": "2024-06-21T09:34:00+05:30",
+      "amount": 72331.68,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "AXIS",
+      "authCode": "AUTH-GGB5N",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-UA5C4",
+      "utr": "UTR-14WC4",
+      "batchId": "BATCH-20240622",
+      "settlementDate": "2024-06-22",
+      "amount": 72331.68,
+      "currency": "INR",
+      "originalAmount": 72331.68,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-JWLB4",
+      "bookingDate": "2024-06-22",
+      "amount": 72331.68,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-3OOPN",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-3OOPN",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-117",
+    "gateway": {
+      "id": "GW-793SO",
+      "timestamp": "2024-06-16T16:08:00+05:30",
+      "amount": 46091.47,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "ICICI",
+      "authCode": "AUTH-0UVH7",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-MR1T0",
+      "utr": "UTR-YQC8B",
+      "batchId": "BATCH-20240618",
+      "settlementDate": "2024-06-18",
+      "amount": 46091.47,
+      "currency": "INR",
+      "originalAmount": 46091.47,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-3MRQT",
+      "bookingDate": "2024-06-17",
+      "amount": 46091.47,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-LWN9J",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-LWN9J",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-019",
+    "gateway": {
+      "id": "GW-LRH9C",
+      "timestamp": "2024-06-23T08:14:00+05:30",
+      "amount": 69312.7,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "SBI",
+      "authCode": "AUTH-K7TI1",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-13HY4",
+      "utr": "UTR-ZAZ5B",
+      "batchId": "BATCH-20240624",
+      "settlementDate": "2024-06-24",
+      "amount": 69312.7,
+      "currency": "INR",
+      "originalAmount": 69312.7,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-27OCU",
+      "bookingDate": "2024-06-24",
+      "amount": 69312.7,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-IMDDN",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-IMDDN",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-121",
+    "gateway": {
+      "id": "GW-E291J",
+      "timestamp": "2024-08-17T12:23:00+05:30",
+      "amount": 26157.89,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "HDFC",
+      "authCode": "AUTH-WKJGU",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-0QWFP",
+      "utr": "UTR-YW5BY",
+      "batchId": "BATCH-20240818",
+      "settlementDate": "2024-08-18",
+      "amount": 26157.89,
+      "currency": "INR",
+      "originalAmount": 26157.89,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-3Q59R",
+      "bookingDate": "2024-08-18",
+      "amount": 26157.89,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-JM3S8",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": null,
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-128",
+    "gateway": {
+      "id": "GW-ZV8VX",
+      "timestamp": "2024-08-14T12:15:00+05:30",
+      "amount": 32650.99,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "KOTAK",
+      "authCode": "AUTH-2SHJD",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-DHBKX",
+      "utr": "UTR-IUVFV",
+      "batchId": "BATCH-20240815",
+      "settlementDate": "2024-08-15",
+      "amount": 32650.99,
+      "currency": "INR",
+      "originalAmount": 32650.99,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-IH8BR",
+      "bookingDate": "2024-08-15",
+      "amount": 32650.99,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-XIZ4W",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-050",
+    "gateway": {
+      "id": "GW-BS0KU",
+      "timestamp": "2024-08-14T17:33:00+05:30",
+      "amount": 6272.02,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-NCID9",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-H0JBW",
+      "utr": "UTR-JUE0P",
+      "batchId": "BATCH-20240815",
+      "settlementDate": "2024-08-15",
+      "amount": 6272.02,
+      "currency": "INR",
+      "originalAmount": 6272.02,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-WSFV3",
+      "bookingDate": "2024-08-15",
+      "amount": 6272.02,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-UFZZJ",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-UFZZJ",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-148",
+    "gateway": {
+      "id": "GW-ZVTD5",
+      "timestamp": "2024-07-09T10:03:00+05:30",
+      "amount": 38292.53,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "SBI",
+      "authCode": "AUTH-M2B08",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-9FFQ3",
+      "utr": "UTR-MJ8QI",
+      "batchId": "BATCH-20240710",
+      "settlementDate": "2024-07-10",
+      "amount": 361.87,
+      "currency": "GBP",
+      "originalAmount": 361.87,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-01N0Z",
+      "bookingDate": "2024-07-10",
+      "amount": 38292.53,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-18YR7",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-18YR7",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "GBP",
+    "fxRate": 105.8181,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-101",
+    "gateway": {
+      "id": "GW-QYBHO",
+      "timestamp": "2024-08-23T15:22:00+05:30",
+      "amount": 34446.08,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "ICICI",
+      "authCode": "AUTH-3OQSU",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-HWRRH",
+      "utr": "UTR-18916",
+      "batchId": "BATCH-20240824",
+      "settlementDate": "2024-08-24",
+      "amount": 34445.59,
+      "currency": "INR",
+      "originalAmount": 34445.59,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-CCM5B",
+      "bookingDate": "2024-08-24",
+      "amount": 34446.08,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-71SJT",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-71SJT",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.49,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-113",
+    "gateway": {
+      "id": "GW-JET5F",
+      "timestamp": "2024-08-13T10:57:00+05:30",
+      "amount": 10313.17,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "SBI",
+      "authCode": "AUTH-Z5Y77",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-56ZGS",
+      "utr": "UTR-ZIO0H",
+      "batchId": "BATCH-20240815",
+      "settlementDate": "2024-08-15",
+      "amount": 10313.17,
+      "currency": "INR",
+      "originalAmount": 10313.17,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-SHY1V",
+      "bookingDate": "2024-08-14",
+      "amount": 10313.17,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-T9SPU",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-T9SPU",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-070",
+    "gateway": {
+      "id": "GW-D1CV5",
+      "timestamp": "2024-08-28T09:57:00+05:30",
+      "amount": 102144.83,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "SBI",
+      "authCode": "AUTH-5ECOT",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-D69PV",
+      "utr": "UTR-77GVB",
+      "batchId": "BATCH-20240902",
+      "settlementDate": "2024-09-02",
+      "amount": 102144.83,
+      "currency": "INR",
+      "originalAmount": 102144.83,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-01HGN",
+      "bookingDate": "2024-08-29",
+      "amount": 102144.83,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-DUJR4",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-DUJR4",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-081",
+    "gateway": {
+      "id": "GW-08GHO",
+      "timestamp": "2024-07-08T13:42:00+05:30",
+      "amount": 16385.15,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "SBI",
+      "authCode": "AUTH-UGB6I",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-ZC4IZ",
+      "utr": "UTR-2ZVK4",
+      "batchId": "BATCH-20240709",
+      "settlementDate": "2024-07-09",
+      "amount": 16385.13,
+      "currency": "INR",
+      "originalAmount": 16385.13,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-OIOFO",
+      "bookingDate": "2024-07-09",
+      "amount": 16385.15,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-1V07B",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-1V07B",
+    "expectedMismatch": "amount_rounding",
+    "delta": -0.02,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-153",
+    "gateway": {
+      "id": "GW-65XHC",
+      "timestamp": "2024-07-25T13:36:00+05:30",
+      "amount": 641.89,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "HDFC",
+      "authCode": "AUTH-JHRR0",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-9PVSE",
+      "utr": "UTR-W0Q9E",
+      "batchId": "BATCH-20240726",
+      "settlementDate": "2024-07-26",
+      "amount": -641.89,
+      "currency": "INR",
+      "originalAmount": -641.89,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-BU2E6",
+      "bookingDate": "2024-07-26",
+      "amount": -641.89,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-LL33Z",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-LL33Z",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 4,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-068",
+    "gateway": {
+      "id": "GW-RB7L5",
+      "timestamp": "2024-08-09T17:18:00+05:30",
+      "amount": 77464.71,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "SBI",
+      "authCode": "AUTH-D42BI",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-GYP0I",
+      "utr": "UTR-XW42F",
+      "batchId": "BATCH-20240812",
+      "settlementDate": "2024-08-12",
+      "amount": 77464.71,
+      "currency": "INR",
+      "originalAmount": 77464.71,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-E33R1",
+      "bookingDate": "2024-08-10",
+      "amount": 77464.71,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-9EF3T",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-9EF3T",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-096",
+    "gateway": {
+      "id": "GW-NZS0A",
+      "timestamp": "2024-06-13T17:28:00+05:30",
+      "amount": 17822.62,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "SBI",
+      "authCode": "AUTH-XHHIH",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-1NKGR",
+      "utr": "UTR-TTYXW",
+      "batchId": "BATCH-20240614",
+      "settlementDate": "2024-06-14",
+      "amount": 17823.01,
+      "currency": "INR",
+      "originalAmount": 17823.01,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-193L3",
+      "bookingDate": "2024-06-14",
+      "amount": 17822.62,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-YCLZ2",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-YCLZ2",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.39,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-080",
+    "gateway": {
+      "id": "GW-PQ05N",
+      "timestamp": "2024-08-10T10:58:00+05:30",
+      "amount": 84588.1,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "SBI",
+      "authCode": "AUTH-MIAGS",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-MHGM5",
+      "utr": "UTR-J69VC",
+      "batchId": "BATCH-20240814",
+      "settlementDate": "2024-08-14",
+      "amount": 84588.1,
+      "currency": "INR",
+      "originalAmount": 84588.1,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-3IRPI",
+      "bookingDate": "2024-08-11",
+      "amount": 84588.1,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-2DRU8",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-2DRU8",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-062",
+    "gateway": {
+      "id": "GW-U8YL4",
+      "timestamp": "2024-07-06T10:21:00+05:30",
+      "amount": 98411.58,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "ICICI",
+      "authCode": "AUTH-8C6V7",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-XDO1U",
+      "utr": "UTR-C71AU",
+      "batchId": "BATCH-20240712",
+      "settlementDate": "2024-07-12",
+      "amount": 98411.58,
+      "currency": "INR",
+      "originalAmount": 98411.58,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-TWE3H",
+      "bookingDate": "2024-07-07",
+      "amount": 98411.58,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-5ZAB1",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-5ZAB1",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-105",
+    "gateway": {
+      "id": "GW-B5V9P",
+      "timestamp": "2024-07-25T18:25:00+05:30",
+      "amount": 44877.49,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "AXIS",
+      "authCode": "AUTH-XZADK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-FAY7L",
+      "utr": "UTR-EL138",
+      "batchId": "BATCH-20240727",
+      "settlementDate": "2024-07-27",
+      "amount": 44877.49,
+      "currency": "INR",
+      "originalAmount": 44877.49,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-W4E94",
+      "bookingDate": "2024-07-26",
+      "amount": 44877.49,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-WTV32",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-WTV32",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-115",
+    "gateway": {
+      "id": "GW-89HHX",
+      "timestamp": "2024-08-25T11:53:00+05:30",
+      "amount": 47549.49,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-RAF9A",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-FYBTV",
+      "utr": "UTR-AAS1Z",
+      "batchId": "BATCH-20240827",
+      "settlementDate": "2024-08-27",
+      "amount": 47549.49,
+      "currency": "INR",
+      "originalAmount": 47549.49,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-WBVLU",
+      "bookingDate": "2024-08-26",
+      "amount": 47549.49,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-WGDXG",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-WGDXG",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-122",
+    "gateway": {
+      "id": "GW-4TQH0",
+      "timestamp": "2024-07-30T08:50:00+05:30",
+      "amount": 14014.22,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "HDFC",
+      "authCode": "AUTH-CMD83",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-8IR6U",
+      "utr": "UTR-7GZZ2",
+      "batchId": "BATCH-20240731",
+      "settlementDate": "2024-07-31",
+      "amount": 14014.22,
+      "currency": "INR",
+      "originalAmount": 14014.22,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-TIZUF",
+      "bookingDate": "2024-07-31",
+      "amount": 14014.22,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-XT9HP",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-002",
+    "gateway": {
+      "id": "GW-4M6LZ",
+      "timestamp": "2024-08-18T18:31:00+05:30",
+      "amount": 16098.23,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "KOTAK",
+      "authCode": "AUTH-0TQ8J",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-W48JJ",
+      "utr": "UTR-MRIYR",
+      "batchId": "BATCH-20240819",
+      "settlementDate": "2024-08-19",
+      "amount": 16098.23,
+      "currency": "INR",
+      "originalAmount": 16098.23,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-LKHSZ",
+      "bookingDate": "2024-08-19",
+      "amount": 16098.23,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-MTJQC",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-MTJQC",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-024",
+    "gateway": {
+      "id": "GW-T1JQN",
+      "timestamp": "2024-07-16T13:00:00+05:30",
+      "amount": 53919.94,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "AXIS",
+      "authCode": "AUTH-MLGGB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-1D58P",
+      "utr": "UTR-J297C",
+      "batchId": "BATCH-20240717",
+      "settlementDate": "2024-07-17",
+      "amount": 53919.94,
+      "currency": "INR",
+      "originalAmount": 53919.94,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Y9WC4",
+      "bookingDate": "2024-07-17",
+      "amount": 53919.94,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-VI985",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-VI985",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-029",
+    "gateway": {
+      "id": "GW-GV01C",
+      "timestamp": "2024-07-27T16:45:00+05:30",
+      "amount": 31368.1,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "ICICI",
+      "authCode": "AUTH-S2Q6V",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-S0XUN",
+      "utr": "UTR-8FEUC",
+      "batchId": "BATCH-20240728",
+      "settlementDate": "2024-07-28",
+      "amount": 31368.1,
+      "currency": "INR",
+      "originalAmount": 31368.1,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-OVY3O",
+      "bookingDate": "2024-07-28",
+      "amount": 31368.1,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-F00YM",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-F00YM",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-126",
+    "gateway": {
+      "id": "GW-W8T9D",
+      "timestamp": "2024-08-11T17:43:00+05:30",
+      "amount": 9414.44,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "KOTAK",
+      "authCode": "AUTH-I9V1L",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-38Z01",
+      "utr": "UTR-AIKFX",
+      "batchId": "BATCH-20240812",
+      "settlementDate": "2024-08-12",
+      "amount": 9414.44,
+      "currency": "INR",
+      "originalAmount": 9414.44,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-CWJDA",
+      "bookingDate": "2024-08-12",
+      "amount": 9414.44,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-IRPDX",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "???",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-051",
+    "gateway": {
+      "id": "GW-PNFOH",
+      "timestamp": "2024-06-02T15:24:00+05:30",
+      "amount": 10193.88,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "SBI",
+      "authCode": "AUTH-XRARF",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-MWMOM",
+      "utr": "UTR-2PDES",
+      "batchId": "BATCH-20240603",
+      "settlementDate": "2024-06-03",
+      "amount": 10193.88,
+      "currency": "INR",
+      "originalAmount": 10193.88,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-WBAFO",
+      "bookingDate": "2024-06-03",
+      "amount": 10193.88,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-LHV1Y",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-LHV1Y",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-124",
+    "gateway": {
+      "id": "GW-53O3D",
+      "timestamp": "2024-06-24T12:32:00+05:30",
+      "amount": 19968.64,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "KOTAK",
+      "authCode": "AUTH-FFASW",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-HWHFN",
+      "utr": "UTR-KPKK4",
+      "batchId": "BATCH-20240625",
+      "settlementDate": "2024-06-25",
+      "amount": 19968.64,
+      "currency": "INR",
+      "originalAmount": 19968.64,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Q4R76",
+      "bookingDate": "2024-06-25",
+      "amount": 19968.64,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-FG48S",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "N/A",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-014",
+    "gateway": {
+      "id": "GW-36167",
+      "timestamp": "2024-07-05T12:46:00+05:30",
+      "amount": 49474.65,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "KOTAK",
+      "authCode": "AUTH-ASIXK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-C16FJ",
+      "utr": "UTR-EXKL2",
+      "batchId": "BATCH-20240706",
+      "settlementDate": "2024-07-06",
+      "amount": 49474.65,
+      "currency": "INR",
+      "originalAmount": 49474.65,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-4GCV8",
+      "bookingDate": "2024-07-06",
+      "amount": 49474.65,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-51ZMN",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-51ZMN",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-005",
+    "gateway": {
+      "id": "GW-0PTTQ",
+      "timestamp": "2024-08-18T08:13:00+05:30",
+      "amount": 72535.69,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "SBI",
+      "authCode": "AUTH-R7MYV",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-DFLYA",
+      "utr": "UTR-JUMDE",
+      "batchId": "BATCH-20240819",
+      "settlementDate": "2024-08-19",
+      "amount": 72535.69,
+      "currency": "INR",
+      "originalAmount": 72535.69,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-F7DQ9",
+      "bookingDate": "2024-08-19",
+      "amount": 72535.69,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-TOEKJ",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-TOEKJ",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-137",
+    "gateway": {
+      "id": "GW-VRJVN",
+      "timestamp": "2024-08-27T18:42:00+05:30",
+      "amount": 38387.83,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "KOTAK",
+      "authCode": "AUTH-C5CCW",
+      "retryCount": 7,
+      "declineCode": "TIMEOUT",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-32XM9",
+      "utr": "UTR-RXE6X",
+      "batchId": "BATCH-20240829",
+      "settlementDate": "2024-08-29",
+      "amount": 38387.83,
+      "currency": "INR",
+      "originalAmount": 38387.83,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-7KTDY",
+      "bookingDate": "2024-08-29",
+      "amount": 38387.83,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-83PPO",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-83PPO",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 7,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-114",
+    "gateway": {
+      "id": "GW-92MSQ",
+      "timestamp": "2024-08-29T13:31:00+05:30",
+      "amount": 48886.05,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "AXIS",
+      "authCode": "AUTH-KKWGX",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WCQWH",
+      "utr": "UTR-S6A3C",
+      "batchId": "BATCH-20240830",
+      "settlementDate": "2024-08-30",
+      "amount": 48886.05,
+      "currency": "INR",
+      "originalAmount": 48886.05,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-184MJ",
+      "bookingDate": "2024-08-30",
+      "amount": 48886.05,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-58RED",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-58RED",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-110",
+    "gateway": {
+      "id": "GW-WB5LE",
+      "timestamp": "2024-07-13T12:18:00+05:30",
+      "amount": 36416.74,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-JIQRT",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-PD8H4",
+      "utr": "UTR-I7259",
+      "batchId": "BATCH-20240714",
+      "settlementDate": "2024-07-14",
+      "amount": 36416.74,
+      "currency": "INR",
+      "originalAmount": 36416.74,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-WJDAZ",
+      "bookingDate": "2024-07-14",
+      "amount": 36416.74,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-4DBAM",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-4DBAM",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-158",
+    "gateway": {
+      "id": "GW-ZIMJ7",
+      "timestamp": "2024-08-27T14:12:00+05:30",
+      "amount": 25038.59,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "ICICI",
+      "authCode": null,
+      "retryCount": 3,
+      "declineCode": "DO_NOT_HONOR",
+      "status": "declined"
+    },
+    "settlement": {
+      "id": "SET-YQH75",
+      "utr": "UTR-OE8UD",
+      "batchId": "BATCH-20240828",
+      "settlementDate": "2024-08-28",
+      "amount": 25038.59,
+      "currency": "INR",
+      "originalAmount": 25038.59,
+      "originalCurrency": "INR",
+      "status": "pending"
+    },
+    "ledger": {
+      "id": "LED-V5R6L",
+      "bookingDate": "2024-08-28",
+      "amount": 25038.59,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-1HFJB",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-1HFJB",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": true
+    }
+  },
+  {
+    "pairId": "PAIR-074",
+    "gateway": {
+      "id": "GW-ATWC6",
+      "timestamp": "2024-07-30T10:44:00+05:30",
+      "amount": 93716.33,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-6ZDOU",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-SQVCL",
+      "utr": "UTR-IANGV",
+      "batchId": "BATCH-20240805",
+      "settlementDate": "2024-08-05",
+      "amount": 93716.33,
+      "currency": "INR",
+      "originalAmount": 93716.33,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-G3W6P",
+      "bookingDate": "2024-07-31",
+      "amount": 93716.33,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-NXF0W",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-NXF0W",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-082",
+    "gateway": {
+      "id": "GW-E9X38",
+      "timestamp": "2024-08-09T12:07:00+05:30",
+      "amount": 40008.6,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "AXIS",
+      "authCode": "AUTH-CDYRU",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-XK5M0",
+      "utr": "UTR-GXSCI",
+      "batchId": "BATCH-20240810",
+      "settlementDate": "2024-08-10",
+      "amount": 40008.86,
+      "currency": "INR",
+      "originalAmount": 40008.86,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-U3ADX",
+      "bookingDate": "2024-08-10",
+      "amount": 40008.6,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-9W0PB",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-9W0PB",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.26,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-009",
+    "gateway": {
+      "id": "GW-MY9UX",
+      "timestamp": "2024-08-14T17:11:00+05:30",
+      "amount": 54369.77,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "ICICI",
+      "authCode": "AUTH-JTCN3",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BKPPM",
+      "utr": "UTR-NIAIQ",
+      "batchId": "BATCH-20240815",
+      "settlementDate": "2024-08-15",
+      "amount": 54369.77,
+      "currency": "INR",
+      "originalAmount": 54369.77,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-RT8JR",
+      "bookingDate": "2024-08-15",
+      "amount": 54369.77,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-42P6K",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-42P6K",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-109",
+    "gateway": {
+      "id": "GW-0456M",
+      "timestamp": "2024-06-29T17:06:00+05:30",
+      "amount": 8081.64,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "AXIS",
+      "authCode": "AUTH-CUYD3",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-T0QWD",
+      "utr": "UTR-TQXRV",
+      "batchId": "BATCH-20240701",
+      "settlementDate": "2024-07-01",
+      "amount": 8081.64,
+      "currency": "INR",
+      "originalAmount": 8081.64,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-13ZUA",
+      "bookingDate": "2024-06-30",
+      "amount": 8081.64,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-6NT18",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-6NT18",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-092",
+    "gateway": {
+      "id": "GW-GR39M",
+      "timestamp": "2024-08-24T15:16:00+05:30",
+      "amount": 49591.84,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "HDFC",
+      "authCode": "AUTH-DCET9",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-SVH9D",
+      "utr": "UTR-WE8RF",
+      "batchId": "BATCH-20240825",
+      "settlementDate": "2024-08-25",
+      "amount": 49591.87,
+      "currency": "INR",
+      "originalAmount": 49591.87,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-HRFOJ",
+      "bookingDate": "2024-08-25",
+      "amount": 49591.84,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-5U50B",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-5U50B",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.03,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-022",
+    "gateway": {
+      "id": "GW-08XHV",
+      "timestamp": "2024-06-29T09:26:00+05:30",
+      "amount": 7169.63,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "KOTAK",
+      "authCode": "AUTH-0A5EC",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-56T7F",
+      "utr": "UTR-ZFVAQ",
+      "batchId": "BATCH-20240630",
+      "settlementDate": "2024-06-30",
+      "amount": 7169.63,
+      "currency": "INR",
+      "originalAmount": 7169.63,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ZOZ0W",
+      "bookingDate": "2024-06-30",
+      "amount": 7169.63,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-L03WV",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-L03WV",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-003",
+    "gateway": {
+      "id": "GW-NNJYD",
+      "timestamp": "2024-08-26T10:06:00+05:30",
+      "amount": 1494.69,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "AXIS",
+      "authCode": "AUTH-HI1EV",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WH2OC",
+      "utr": "UTR-71NII",
+      "batchId": "BATCH-20240827",
+      "settlementDate": "2024-08-27",
+      "amount": 1494.69,
+      "currency": "INR",
+      "originalAmount": 1494.69,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-PIBCE",
+      "bookingDate": "2024-08-27",
+      "amount": 1494.69,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-9GHT7",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-9GHT7",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-086",
+    "gateway": {
+      "id": "GW-XJ8YE",
+      "timestamp": "2024-07-03T13:22:00+05:30",
+      "amount": 54523.48,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "SBI",
+      "authCode": "AUTH-I9ZEB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WSTE1",
+      "utr": "UTR-C226Y",
+      "batchId": "BATCH-20240704",
+      "settlementDate": "2024-07-04",
+      "amount": 54523.72,
+      "currency": "INR",
+      "originalAmount": 54523.72,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5K2MR",
+      "bookingDate": "2024-07-04",
+      "amount": 54523.48,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-7GC00",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-7GC00",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.24,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-095",
+    "gateway": {
+      "id": "GW-41X14",
+      "timestamp": "2024-07-27T14:41:00+05:30",
+      "amount": 53092.68,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-RX9JO",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6OOQ6",
+      "utr": "UTR-1CHFG",
+      "batchId": "BATCH-20240728",
+      "settlementDate": "2024-07-28",
+      "amount": 53092.82,
+      "currency": "INR",
+      "originalAmount": 53092.82,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Y1OR6",
+      "bookingDate": "2024-07-28",
+      "amount": 53092.68,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-5IPIQ",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-5IPIQ",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.14,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-116",
+    "gateway": {
+      "id": "GW-49S9C",
+      "timestamp": "2024-07-03T18:45:00+05:30",
+      "amount": 40464.13,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "KOTAK",
+      "authCode": "AUTH-9VLAF",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WXKF2",
+      "utr": "UTR-YY2G7",
+      "batchId": "BATCH-20240704",
+      "settlementDate": "2024-07-04",
+      "amount": 40464.13,
+      "currency": "INR",
+      "originalAmount": 40464.13,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-FWTNS",
+      "bookingDate": "2024-07-04",
+      "amount": 40464.13,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-JWBPG",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-JWBPG",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-059",
+    "gateway": {
+      "id": "GW-GXUOW",
+      "timestamp": "2024-07-15T12:09:00+05:30",
+      "amount": 106865.36,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "KOTAK",
+      "authCode": "AUTH-47WJF",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-OZQK9",
+      "utr": "UTR-L0M7D",
+      "batchId": "BATCH-20240718",
+      "settlementDate": "2024-07-18",
+      "amount": 106865.36,
+      "currency": "INR",
+      "originalAmount": 106865.36,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ESN9I",
+      "bookingDate": "2024-07-16",
+      "amount": 106865.36,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-I4FI8",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-I4FI8",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-143",
+    "gateway": {
+      "id": "GW-KL03S",
+      "timestamp": "2024-06-30T11:47:00+05:30",
+      "amount": 38326.33,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "ICICI",
+      "authCode": "AUTH-28HID",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-OJNNG",
+      "utr": "UTR-6GVBA",
+      "batchId": "BATCH-20240701",
+      "settlementDate": "2024-07-01",
+      "amount": 362.27,
+      "currency": "GBP",
+      "originalAmount": 362.27,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5I1C7",
+      "bookingDate": "2024-07-01",
+      "amount": 38326.33,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-NXWU6",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-NXWU6",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "GBP",
+    "fxRate": 105.7942,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-152",
+    "gateway": {
+      "id": "GW-CWVPH",
+      "timestamp": "2024-08-09T12:22:00+05:30",
+      "amount": 6134.86,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "KOTAK",
+      "authCode": "AUTH-Y82D1",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-I674K",
+      "utr": "UTR-J1SV1",
+      "batchId": "BATCH-20240810",
+      "settlementDate": "2024-08-10",
+      "amount": -6134.86,
+      "currency": "INR",
+      "originalAmount": -6134.86,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ESZLY",
+      "bookingDate": "2024-08-10",
+      "amount": -6134.86,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-61CEX",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-61CEX",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 3,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-053",
+    "gateway": {
+      "id": "GW-S1X3S",
+      "timestamp": "2024-08-06T08:34:00+05:30",
+      "amount": 53478.48,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "SBI",
+      "authCode": "AUTH-37155",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-PZ4EQ",
+      "utr": "UTR-4QQLA",
+      "batchId": "BATCH-20240807",
+      "settlementDate": "2024-08-07",
+      "amount": 53478.48,
+      "currency": "INR",
+      "originalAmount": 53478.48,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-2FLR5",
+      "bookingDate": "2024-08-07",
+      "amount": 53478.48,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-2UPDU",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-2UPDU",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-088",
+    "gateway": {
+      "id": "GW-YUKDG",
+      "timestamp": "2024-08-13T13:07:00+05:30",
+      "amount": 45545.74,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-TURYK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4EZDC",
+      "utr": "UTR-81RVK",
+      "batchId": "BATCH-20240814",
+      "settlementDate": "2024-08-14",
+      "amount": 45545.9,
+      "currency": "INR",
+      "originalAmount": 45545.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-IPB3P",
+      "bookingDate": "2024-08-14",
+      "amount": 45545.74,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-8XJCU",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-8XJCU",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.16,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-046",
+    "gateway": {
+      "id": "GW-STXZH",
+      "timestamp": "2024-07-21T12:06:00+05:30",
+      "amount": 8097.93,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "KOTAK",
+      "authCode": "AUTH-B0ZEL",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-WR0PO",
+      "utr": "UTR-RBTZD",
+      "batchId": "BATCH-20240722",
+      "settlementDate": "2024-07-22",
+      "amount": 8097.93,
+      "currency": "INR",
+      "originalAmount": 8097.93,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-0PDLQ",
+      "bookingDate": "2024-07-22",
+      "amount": 8097.93,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-DPHKV",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-DPHKV",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-057",
+    "gateway": {
+      "id": "GW-WDW13",
+      "timestamp": "2024-08-18T15:34:00+05:30",
+      "amount": 9231.68,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "AXIS",
+      "authCode": "AUTH-JV73L",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-FS1BY",
+      "utr": "UTR-D7D5S",
+      "batchId": "BATCH-20240825",
+      "settlementDate": "2024-08-25",
+      "amount": 9231.68,
+      "currency": "INR",
+      "originalAmount": 9231.68,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-XJ3X7",
+      "bookingDate": "2024-08-19",
+      "amount": 9231.68,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-WY0BR",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-WY0BR",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-011",
+    "gateway": {
+      "id": "GW-ZM7FZ",
+      "timestamp": "2024-06-07T10:42:00+05:30",
+      "amount": 59119.9,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "AXIS",
+      "authCode": "AUTH-POSFQ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-UGZZ8",
+      "utr": "UTR-L8VPF",
+      "batchId": "BATCH-20240608",
+      "settlementDate": "2024-06-08",
+      "amount": 59119.9,
+      "currency": "INR",
+      "originalAmount": 59119.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ZOASF",
+      "bookingDate": "2024-06-08",
+      "amount": 59119.9,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-JOF40",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-JOF40",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-035",
+    "gateway": {
+      "id": "GW-6JLB7",
+      "timestamp": "2024-07-29T12:48:00+05:30",
+      "amount": 32986.04,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "ICICI",
+      "authCode": "AUTH-3HRRZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-JFJ1W",
+      "utr": "UTR-3MTH4",
+      "batchId": "BATCH-20240730",
+      "settlementDate": "2024-07-30",
+      "amount": 32986.04,
+      "currency": "INR",
+      "originalAmount": 32986.04,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-UZ0H3",
+      "bookingDate": "2024-07-30",
+      "amount": 32986.04,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-J6G2J",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-J6G2J",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-037",
+    "gateway": {
+      "id": "GW-YGLKR",
+      "timestamp": "2024-07-18T08:03:00+05:30",
+      "amount": 59929.04,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "HDFC",
+      "authCode": "AUTH-SATFE",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-L5051",
+      "utr": "UTR-WEGSL",
+      "batchId": "BATCH-20240719",
+      "settlementDate": "2024-07-19",
+      "amount": 59929.04,
+      "currency": "INR",
+      "originalAmount": 59929.04,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-LEOFW",
+      "bookingDate": "2024-07-19",
+      "amount": 59929.04,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-KBHUY",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-KBHUY",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-091",
+    "gateway": {
+      "id": "GW-CJ09P",
+      "timestamp": "2024-08-21T14:13:00+05:30",
+      "amount": 55003.75,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "ICICI",
+      "authCode": "AUTH-7I6TD",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3M6FP",
+      "utr": "UTR-CEVHP",
+      "batchId": "BATCH-20240822",
+      "settlementDate": "2024-08-22",
+      "amount": 55003.82,
+      "currency": "INR",
+      "originalAmount": 55003.82,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-FK0CT",
+      "bookingDate": "2024-08-22",
+      "amount": 55003.75,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-V5H8O",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-V5H8O",
+    "expectedMismatch": "amount_rounding",
+    "delta": 0.07,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-154",
+    "gateway": {
+      "id": "GW-160VW",
+      "timestamp": "2024-08-15T12:40:00+05:30",
+      "amount": 17596.73,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "HDFC",
+      "authCode": "AUTH-BR982",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-TZ5OR",
+      "utr": "UTR-2TEEX",
+      "batchId": "BATCH-20240816",
+      "settlementDate": "2024-08-16",
+      "amount": -17596.73,
+      "currency": "INR",
+      "originalAmount": -17596.73,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-DNSPZ",
+      "bookingDate": "2024-08-16",
+      "amount": -17596.73,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-YNNLD",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-YNNLD",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 5,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-157",
+    "gateway": {
+      "id": "GW-K93O9",
+      "timestamp": "2024-06-01T15:03:00+05:30",
+      "amount": 29087.48,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "KOTAK",
+      "authCode": null,
+      "retryCount": 2,
+      "declineCode": "FRAUD_SUSPECTED",
+      "status": "declined"
+    },
+    "settlement": {
+      "id": "SET-FD2WK",
+      "utr": "UTR-HJYZC",
+      "batchId": "BATCH-20240602",
+      "settlementDate": "2024-06-02",
+      "amount": 29087.48,
+      "currency": "INR",
+      "originalAmount": 29087.48,
+      "originalCurrency": "INR",
+      "status": "pending"
+    },
+    "ledger": {
+      "id": "LED-MQR44",
+      "bookingDate": "2024-06-02",
+      "amount": 29087.48,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-CEL3X",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-CEL3X",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": true
+    }
+  },
+  {
+    "pairId": "PAIR-055",
+    "gateway": {
+      "id": "GW-CK8IW",
+      "timestamp": "2024-08-24T18:28:00+05:30",
+      "amount": 53148.13,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-DSCTA",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4FOSK",
+      "utr": "UTR-GKZ5T",
+      "batchId": "BATCH-20240825",
+      "settlementDate": "2024-08-25",
+      "amount": 53148.13,
+      "currency": "INR",
+      "originalAmount": 53148.13,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ZANMG",
+      "bookingDate": "2024-08-25",
+      "amount": 53148.13,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-B78E6",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-B78E6",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-107",
+    "gateway": {
+      "id": "GW-AIREU",
+      "timestamp": "2024-07-04T17:54:00+05:30",
+      "amount": 10898.9,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "HDFC",
+      "authCode": "AUTH-P4S6S",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-UV06A",
+      "utr": "UTR-Q5YIG",
+      "batchId": "BATCH-20240705",
+      "settlementDate": "2024-07-05",
+      "amount": 10898.9,
+      "currency": "INR",
+      "originalAmount": 10898.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-BN05B",
+      "bookingDate": "2024-07-05",
+      "amount": 10898.9,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-6CD11",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-6CD11",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 1,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-123",
+    "gateway": {
+      "id": "GW-OHJRO",
+      "timestamp": "2024-07-04T11:11:00+05:30",
+      "amount": 22633.93,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "AXIS",
+      "authCode": "AUTH-6LLP8",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-ZZHVR",
+      "utr": "UTR-1O5JP",
+      "batchId": "BATCH-20240705",
+      "settlementDate": "2024-07-05",
+      "amount": 22633.93,
+      "currency": "INR",
+      "originalAmount": 22633.93,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-JN3JF",
+      "bookingDate": "2024-07-05",
+      "amount": 22633.93,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-ODKTG",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "MISSING",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-146",
+    "gateway": {
+      "id": "GW-XUYA3",
+      "timestamp": "2024-07-24T10:53:00+05:30",
+      "amount": 65867.65,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "AXIS",
+      "authCode": "AUTH-0TVGX",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-2ZVZ1",
+      "utr": "UTR-JA1KM",
+      "batchId": "BATCH-20240725",
+      "settlementDate": "2024-07-25",
+      "amount": 622.61,
+      "currency": "GBP",
+      "originalAmount": 622.61,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-6ILPG",
+      "bookingDate": "2024-07-25",
+      "amount": 65867.65,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-S19OI",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-S19OI",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "GBP",
+    "fxRate": 105.7927,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-159",
+    "gateway": {
+      "id": "GW-YREAL",
+      "timestamp": "2024-07-22T15:53:00+05:30",
+      "amount": 12685.82,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": null,
+      "retryCount": 2,
+      "declineCode": "DO_NOT_HONOR",
+      "status": "declined"
+    },
+    "settlement": {
+      "id": "SET-RBPQ4",
+      "utr": "UTR-ZM7LM",
+      "batchId": "BATCH-20240723",
+      "settlementDate": "2024-07-23",
+      "amount": 12685.82,
+      "currency": "INR",
+      "originalAmount": 12685.82,
+      "originalCurrency": "INR",
+      "status": "pending"
+    },
+    "ledger": {
+      "id": "LED-DQWZP",
+      "bookingDate": "2024-07-23",
+      "amount": 12685.82,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-8W6FM",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-8W6FM",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": true
+    }
+  },
+  {
+    "pairId": "PAIR-076",
+    "gateway": {
+      "id": "GW-YD1W6",
+      "timestamp": "2024-08-17T16:43:00+05:30",
+      "amount": 107360.59,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "AXIS",
+      "authCode": "AUTH-MR089",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6AY65",
+      "utr": "UTR-C1URC",
+      "batchId": "BATCH-20240822",
+      "settlementDate": "2024-08-22",
+      "amount": 107360.59,
+      "currency": "INR",
+      "originalAmount": 107360.59,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-YHJZX",
+      "bookingDate": "2024-08-18",
+      "amount": 107360.59,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-SRA0G",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-SRA0G",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-034",
+    "gateway": {
+      "id": "GW-WHA32",
+      "timestamp": "2024-06-01T10:45:00+05:30",
+      "amount": 45438.9,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "KOTAK",
+      "authCode": "AUTH-33BT6",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-EI6N7",
+      "utr": "UTR-WBP0B",
+      "batchId": "BATCH-20240602",
+      "settlementDate": "2024-06-02",
+      "amount": 45438.9,
+      "currency": "INR",
+      "originalAmount": 45438.9,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-CZJ4Z",
+      "bookingDate": "2024-06-02",
+      "amount": 45438.9,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-W062Y",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-W062Y",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-012",
+    "gateway": {
+      "id": "GW-J7S1N",
+      "timestamp": "2024-07-19T08:45:00+05:30",
+      "amount": 21055.55,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "SBI",
+      "authCode": "AUTH-PI7CR",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-1VNV9",
+      "utr": "UTR-K9RVK",
+      "batchId": "BATCH-20240720",
+      "settlementDate": "2024-07-20",
+      "amount": 21055.55,
+      "currency": "INR",
+      "originalAmount": 21055.55,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-AUC0B",
+      "bookingDate": "2024-07-20",
+      "amount": 21055.55,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-2Y0K5",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-2Y0K5",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-079",
+    "gateway": {
+      "id": "GW-Q01QQ",
+      "timestamp": "2024-07-01T11:33:00+05:30",
+      "amount": 103062.11,
+      "currency": "INR",
+      "vendor": "Gamma Consulting",
+      "bank": "KOTAK",
+      "authCode": "AUTH-XVOKK",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3LXO5",
+      "utr": "UTR-9ZIN9",
+      "batchId": "BATCH-20240707",
+      "settlementDate": "2024-07-07",
+      "amount": 103062.11,
+      "currency": "INR",
+      "originalAmount": 103062.11,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-P5JAF",
+      "bookingDate": "2024-07-02",
+      "amount": 103062.11,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-9T649",
+      "vendor": "Gamma Consulting"
+    },
+    "externalRef": "REF-9T649",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-013",
+    "gateway": {
+      "id": "GW-7PHC6",
+      "timestamp": "2024-06-16T10:09:00+05:30",
+      "amount": 14625.86,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "ICICI",
+      "authCode": "AUTH-NI4QZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-ZB4RG",
+      "utr": "UTR-RLRSQ",
+      "batchId": "BATCH-20240617",
+      "settlementDate": "2024-06-17",
+      "amount": 14625.86,
+      "currency": "INR",
+      "originalAmount": 14625.86,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-HXYGG",
+      "bookingDate": "2024-06-17",
+      "amount": 14625.86,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-1KY4M",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-1KY4M",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-049",
+    "gateway": {
+      "id": "GW-HQ9O5",
+      "timestamp": "2024-08-25T11:36:00+05:30",
+      "amount": 63660.63,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "KOTAK",
+      "authCode": "AUTH-99Q9F",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-H4OFS",
+      "utr": "UTR-WSPD1",
+      "batchId": "BATCH-20240826",
+      "settlementDate": "2024-08-26",
+      "amount": 63660.63,
+      "currency": "INR",
+      "originalAmount": 63660.63,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-DE3K9",
+      "bookingDate": "2024-08-26",
+      "amount": 63660.63,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-2SI0K",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-2SI0K",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-138",
+    "gateway": {
+      "id": "GW-GZY9S",
+      "timestamp": "2024-08-12T16:02:00+05:30",
+      "amount": 29187.31,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "KOTAK",
+      "authCode": "AUTH-VKSV3",
+      "retryCount": 5,
+      "declineCode": "TIMEOUT",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3303G",
+      "utr": "UTR-5W856",
+      "batchId": "BATCH-20240814",
+      "settlementDate": "2024-08-14",
+      "amount": 29187.31,
+      "currency": "INR",
+      "originalAmount": 29187.31,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-E8R4D",
+      "bookingDate": "2024-08-14",
+      "amount": 29187.31,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-E2AXH",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-E2AXH",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 5,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-142",
+    "gateway": {
+      "id": "GW-24UFG",
+      "timestamp": "2024-06-07T12:24:00+05:30",
+      "amount": 92048.51,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "KOTAK",
+      "authCode": "AUTH-VK016",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-EXYYF",
+      "utr": "UTR-MAUVD",
+      "batchId": "BATCH-20240608",
+      "settlementDate": "2024-06-08",
+      "amount": 1694.66,
+      "currency": "AUD",
+      "originalAmount": 1694.66,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-JTMBT",
+      "bookingDate": "2024-06-08",
+      "amount": 92048.51,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-C1EZU",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-C1EZU",
+    "expectedMismatch": "fx_variance",
+    "fxCurrency": "AUD",
+    "fxRate": 54.3168,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-078",
+    "gateway": {
+      "id": "GW-SX25E",
+      "timestamp": "2024-06-16T16:39:00+05:30",
+      "amount": 100189.09,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "SBI",
+      "authCode": "AUTH-DPJHR",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4V9XN",
+      "utr": "UTR-3C54V",
+      "batchId": "BATCH-20240622",
+      "settlementDate": "2024-06-22",
+      "amount": 100189.09,
+      "currency": "INR",
+      "originalAmount": 100189.09,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5FSHT",
+      "bookingDate": "2024-06-17",
+      "amount": 100189.09,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-5KSDY",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-5KSDY",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-160",
+    "gateway": {
+      "id": "GW-VXCLI",
+      "timestamp": "2024-07-15T16:51:00+05:30",
+      "amount": 42799.72,
+      "currency": "INR",
+      "vendor": "Jasper Holdings",
+      "bank": "KOTAK",
+      "authCode": null,
+      "retryCount": 1,
+      "declineCode": "FRAUD_SUSPECTED",
+      "status": "declined"
+    },
+    "settlement": {
+      "id": "SET-JBP6V",
+      "utr": "UTR-UYOY4",
+      "batchId": "BATCH-20240716",
+      "settlementDate": "2024-07-16",
+      "amount": 42799.72,
+      "currency": "INR",
+      "originalAmount": 42799.72,
+      "originalCurrency": "INR",
+      "status": "pending"
+    },
+    "ledger": {
+      "id": "LED-69H4O",
+      "bookingDate": "2024-07-16",
+      "amount": 42799.72,
+      "currency": "INR",
+      "accountCode": "6002",
+      "reference": "REF-GDOEN",
+      "vendor": "Jasper Holdings"
+    },
+    "externalRef": "REF-GDOEN",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": true
+    }
+  },
+  {
+    "pairId": "PAIR-155",
+    "gateway": {
+      "id": "GW-9GL15",
+      "timestamp": "2024-07-31T10:01:00+05:30",
+      "amount": 1654.06,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "AXIS",
+      "authCode": "AUTH-OLQ8D",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-R38BG",
+      "utr": "UTR-A7V2Q",
+      "batchId": "BATCH-20240801",
+      "settlementDate": "2024-08-01",
+      "amount": -1654.06,
+      "currency": "INR",
+      "originalAmount": -1654.06,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-CYF0X",
+      "bookingDate": "2024-08-01",
+      "amount": -1654.06,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-F41T7",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-F41T7",
+    "expectedMismatch": "missing_reference",
+    "isRefund": true,
+    "refundGroup": 6,
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": true,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-140",
+    "gateway": {
+      "id": "GW-IPVT8",
+      "timestamp": "2024-06-26T12:58:00+05:30",
+      "amount": 49191.2,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "HDFC",
+      "authCode": "AUTH-KY0NM",
+      "retryCount": 4,
+      "declineCode": "TIMEOUT",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-S2TY1",
+      "utr": "UTR-V6XKX",
+      "batchId": "BATCH-20240628",
+      "settlementDate": "2024-06-28",
+      "amount": 49191.2,
+      "currency": "INR",
+      "originalAmount": 49191.2,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5MTHW",
+      "bookingDate": "2024-06-28",
+      "amount": 49191.2,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-64F6U",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-64F6U",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 4,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-061",
+    "gateway": {
+      "id": "GW-28760",
+      "timestamp": "2024-06-02T15:24:00+05:30",
+      "amount": 16447.1,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "AXIS",
+      "authCode": "AUTH-SVPBR",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-O7GW0",
+      "utr": "UTR-QRNZL",
+      "batchId": "BATCH-20240605",
+      "settlementDate": "2024-06-05",
+      "amount": 16447.1,
+      "currency": "INR",
+      "originalAmount": 16447.1,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-VMSCS",
+      "bookingDate": "2024-06-03",
+      "amount": 16447.1,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-JIHE8",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "REF-JIHE8",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-134",
+    "gateway": {
+      "id": "GW-E0IPV",
+      "timestamp": "2024-08-16T12:49:00+05:30",
+      "amount": 50096.97,
+      "currency": "INR",
+      "vendor": "Luminary Solutions",
+      "bank": "HDFC",
+      "authCode": "AUTH-VGN4M",
+      "retryCount": 5,
+      "declineCode": "TIMEOUT",
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-OSDOA",
+      "utr": "UTR-P1CYX",
+      "batchId": "BATCH-20240818",
+      "settlementDate": "2024-08-18",
+      "amount": 50096.97,
+      "currency": "INR",
+      "originalAmount": 50096.97,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-X9V9J",
+      "bookingDate": "2024-08-18",
+      "amount": 50096.97,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-8G7SX",
+      "vendor": "Luminary Solutions"
+    },
+    "externalRef": "REF-8G7SX",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": true,
+      "retryCount": 5,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-131",
+    "gateway": {
+      "id": "GW-0D44L",
+      "timestamp": "2024-07-08T16:01:00+05:30",
+      "amount": 4447.93,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "HDFC",
+      "authCode": "AUTH-PSFCU",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-BR3YG",
+      "utr": "UTR-S8SBP",
+      "batchId": "BATCH-20240709",
+      "settlementDate": "2024-07-09",
+      "amount": 4447.93,
+      "currency": "INR",
+      "originalAmount": 4447.93,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-ED60U",
+      "bookingDate": "2024-07-09",
+      "amount": 4447.93,
+      "currency": "INR",
+      "accountCode": "7001",
+      "reference": "REF-6JT2M",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": null,
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-017",
+    "gateway": {
+      "id": "GW-GC6EK",
+      "timestamp": "2024-07-27T15:48:00+05:30",
+      "amount": 68388.5,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "HDFC",
+      "authCode": "AUTH-SZUQN",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-YG2BV",
+      "utr": "UTR-8LHYE",
+      "batchId": "BATCH-20240728",
+      "settlementDate": "2024-07-28",
+      "amount": 68388.5,
+      "currency": "INR",
+      "originalAmount": 68388.5,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-5Q4GV",
+      "bookingDate": "2024-07-28",
+      "amount": 68388.5,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-94Z17",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "REF-94Z17",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-156",
+    "gateway": {
+      "id": "GW-B4SQ7",
+      "timestamp": "2024-07-14T12:38:00+05:30",
+      "amount": 15772.39,
+      "currency": "INR",
+      "vendor": "Horizon Capital",
+      "bank": "KOTAK",
+      "authCode": null,
+      "retryCount": 2,
+      "declineCode": "FRAUD_SUSPECTED",
+      "status": "declined"
+    },
+    "settlement": {
+      "id": "SET-SZVIT",
+      "utr": "UTR-1321P",
+      "batchId": "BATCH-20240715",
+      "settlementDate": "2024-07-15",
+      "amount": 15772.39,
+      "currency": "INR",
+      "originalAmount": 15772.39,
+      "originalCurrency": "INR",
+      "status": "pending"
+    },
+    "ledger": {
+      "id": "LED-Z7I1S",
+      "bookingDate": "2024-07-15",
+      "amount": 15772.39,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-8V7AP",
+      "vendor": "Horizon Capital"
+    },
+    "externalRef": "REF-8V7AP",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": true
+    }
+  },
+  {
+    "pairId": "PAIR-040",
+    "gateway": {
+      "id": "GW-UI06G",
+      "timestamp": "2024-08-05T12:11:00+05:30",
+      "amount": 41680.21,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "KOTAK",
+      "authCode": "AUTH-QDZSP",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-N53FW",
+      "utr": "UTR-0ZHD3",
+      "batchId": "BATCH-20240806",
+      "settlementDate": "2024-08-06",
+      "amount": 41680.21,
+      "currency": "INR",
+      "originalAmount": 41680.21,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-CERD1",
+      "bookingDate": "2024-08-06",
+      "amount": 41680.21,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-769AP",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-769AP",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-129",
+    "gateway": {
+      "id": "GW-7EDVN",
+      "timestamp": "2024-08-24T16:14:00+05:30",
+      "amount": 26870.19,
+      "currency": "INR",
+      "vendor": "Echo Analytics",
+      "bank": "ICICI",
+      "authCode": "AUTH-JJQOG",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-38B6E",
+      "utr": "UTR-V553G",
+      "batchId": "BATCH-20240825",
+      "settlementDate": "2024-08-25",
+      "amount": 26870.19,
+      "currency": "INR",
+      "originalAmount": 26870.19,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-Z157Z",
+      "bookingDate": "2024-08-25",
+      "amount": 26870.19,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-LY365",
+      "vendor": "Echo Analytics"
+    },
+    "externalRef": "",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-026",
+    "gateway": {
+      "id": "GW-79UGN",
+      "timestamp": "2024-06-22T17:48:00+05:30",
+      "amount": 79386.71,
+      "currency": "INR",
+      "vendor": "Frontier Services",
+      "bank": "AXIS",
+      "authCode": "AUTH-RW1EY",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-6V4LO",
+      "utr": "UTR-D5UP6",
+      "batchId": "BATCH-20240623",
+      "settlementDate": "2024-06-23",
+      "amount": 79386.71,
+      "currency": "INR",
+      "originalAmount": 79386.71,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-3D6L8",
+      "bookingDate": "2024-06-23",
+      "amount": 79386.71,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-T4Q88",
+      "vendor": "Frontier Services"
+    },
+    "externalRef": "REF-T4Q88",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-125",
+    "gateway": {
+      "id": "GW-42XAH",
+      "timestamp": "2024-08-15T16:18:00+05:30",
+      "amount": 27958.19,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "HDFC",
+      "authCode": "AUTH-U0GP1",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-3SFOS",
+      "utr": "UTR-V6GBX",
+      "batchId": "BATCH-20240816",
+      "settlementDate": "2024-08-16",
+      "amount": 27958.19,
+      "currency": "INR",
+      "originalAmount": 27958.19,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-0QHNZ",
+      "bookingDate": "2024-08-16",
+      "amount": 27958.19,
+      "currency": "INR",
+      "accountCode": "6001",
+      "reference": "REF-Q0P9P",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": null,
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-031",
+    "gateway": {
+      "id": "GW-CP4B4",
+      "timestamp": "2024-07-31T11:29:00+05:30",
+      "amount": 30087.17,
+      "currency": "INR",
+      "vendor": "Indigo Tech",
+      "bank": "HDFC",
+      "authCode": "AUTH-GHTHF",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-P0UQZ",
+      "utr": "UTR-6DQPE",
+      "batchId": "BATCH-20240801",
+      "settlementDate": "2024-08-01",
+      "amount": 30087.17,
+      "currency": "INR",
+      "originalAmount": 30087.17,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-V9TP3",
+      "bookingDate": "2024-08-01",
+      "amount": 30087.17,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-93MVG",
+      "vendor": "Indigo Tech"
+    },
+    "externalRef": "REF-93MVG",
+    "expectedMismatch": "exact_match",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-111",
+    "gateway": {
+      "id": "GW-OQML7",
+      "timestamp": "2024-07-18T13:20:00+05:30",
+      "amount": 49527.58,
+      "currency": "INR",
+      "vendor": "Blue River Corp",
+      "bank": "ICICI",
+      "authCode": "AUTH-53Z4S",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-10NHS",
+      "utr": "UTR-C4121",
+      "batchId": "BATCH-20240720",
+      "settlementDate": "2024-07-20",
+      "amount": 49527.58,
+      "currency": "INR",
+      "originalAmount": 49527.58,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-A788L",
+      "bookingDate": "2024-07-19",
+      "amount": 49527.58,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-TJE21",
+      "vendor": "Blue River Corp"
+    },
+    "externalRef": "REF-TJE21",
+    "expectedMismatch": "duplicate_entry",
+    "duplicateLagDays": 2,
+    "anomalySignals": {
+      "isDuplicateSuspect": true,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-065",
+    "gateway": {
+      "id": "GW-FHJGL",
+      "timestamp": "2024-06-17T16:25:00+05:30",
+      "amount": 54250.06,
+      "currency": "INR",
+      "vendor": "Apex Logistics",
+      "bank": "KOTAK",
+      "authCode": "AUTH-VYHXZ",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-8PU5Z",
+      "utr": "UTR-5X6BE",
+      "batchId": "BATCH-20240621",
+      "settlementDate": "2024-06-21",
+      "amount": 54250.06,
+      "currency": "INR",
+      "originalAmount": 54250.06,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-BEFLE",
+      "bookingDate": "2024-06-18",
+      "amount": 54250.06,
+      "currency": "INR",
+      "accountCode": "4001",
+      "reference": "REF-E22QR",
+      "vendor": "Apex Logistics"
+    },
+    "externalRef": "REF-E22QR",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-058",
+    "gateway": {
+      "id": "GW-XY6GT",
+      "timestamp": "2024-07-07T13:53:00+05:30",
+      "amount": 113056.97,
+      "currency": "INR",
+      "vendor": "Delta Freight",
+      "bank": "SBI",
+      "authCode": "AUTH-HSFKB",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-JEPY1",
+      "utr": "UTR-4HXTW",
+      "batchId": "BATCH-20240712",
+      "settlementDate": "2024-07-12",
+      "amount": 113056.97,
+      "currency": "INR",
+      "originalAmount": 113056.97,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-N8OIF",
+      "bookingDate": "2024-07-08",
+      "amount": 113056.97,
+      "currency": "INR",
+      "accountCode": "4002",
+      "reference": "REF-3JTXS",
+      "vendor": "Delta Freight"
+    },
+    "externalRef": "REF-3JTXS",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-063",
+    "gateway": {
+      "id": "GW-T6UVM",
+      "timestamp": "2024-08-15T12:24:00+05:30",
+      "amount": 20520.97,
+      "currency": "INR",
+      "vendor": "Kinetic Media",
+      "bank": "SBI",
+      "authCode": "AUTH-BHET8",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-4OUDL",
+      "utr": "UTR-0WKWP",
+      "batchId": "BATCH-20240818",
+      "settlementDate": "2024-08-18",
+      "amount": 20520.97,
+      "currency": "INR",
+      "originalAmount": 20520.97,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-L5BBR",
+      "bookingDate": "2024-08-16",
+      "amount": 20520.97,
+      "currency": "INR",
+      "accountCode": "5001",
+      "reference": "REF-VP29J",
+      "vendor": "Kinetic Media"
+    },
+    "externalRef": "REF-VP29J",
+    "expectedMismatch": "date_lag",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  },
+  {
+    "pairId": "PAIR-127",
+    "gateway": {
+      "id": "GW-46N49",
+      "timestamp": "2024-08-05T16:22:00+05:30",
+      "amount": 8222.56,
+      "currency": "INR",
+      "vendor": "Crestwood Supplies",
+      "bank": "HDFC",
+      "authCode": "AUTH-3Z1AC",
+      "retryCount": 0,
+      "declineCode": null,
+      "status": "authorized"
+    },
+    "settlement": {
+      "id": "SET-UJO0R",
+      "utr": "UTR-FEVGE",
+      "batchId": "BATCH-20240806",
+      "settlementDate": "2024-08-06",
+      "amount": 8222.56,
+      "currency": "INR",
+      "originalAmount": 8222.56,
+      "originalCurrency": "INR",
+      "status": "settled"
+    },
+    "ledger": {
+      "id": "LED-N2GNZ",
+      "bookingDate": "2024-08-06",
+      "amount": 8222.56,
+      "currency": "INR",
+      "accountCode": "5002",
+      "reference": "REF-LUG17",
+      "vendor": "Crestwood Supplies"
+    },
+    "externalRef": "N/A",
+    "expectedMismatch": "missing_reference",
+    "anomalySignals": {
+      "isDuplicateSuspect": false,
+      "retryStorm": false,
+      "refundSpike": false,
+      "declineRateDrift": false
+    }
+  }
+]

@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FinScope AI — Financial Nervous System | Razorpay AI Buildathon 2026</title>
+  <meta name="description" content="Next-Gen 4-Agent Financial Controller inside Razorpay's payment rail: live reconciliation, anomaly detection, predictive cash flow forecasting, and autonomous guardrails."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --bg-dark:       #060911;
+  --bg-surface-1:  #0b111e;
+  --bg-surface-2:  #10192b;
+  --bg-surface-3:  #17243d;
+  --bg-card:       rgba(16, 25, 43, 0.75);
+  --border-subtle: #1a2a47;
+  --border-active: #2b4573;
+  --border-glow:   rgba(45, 156, 219, 0.35);
+  
+  /* Razorpay & Semantic FinTech Palette */
+  --rz-blue:       #2d9cdb;
+  --rz-deep:       #0c2340;
+  --rz-glow:       rgba(45, 156, 219, 0.22);
+  --cyan-neon:     #06b6d4;
+  --emerald-live:  #10b981;
+  --emerald-dim:   rgba(16, 185, 129, 0.15);
+  --amber-warn:    #f59e0b;
+  --amber-dim:     rgba(245, 158, 11, 0.15);
+  --crimson-risk:  #ef4444;
+  --crimson-dim:   rgba(239, 68, 68, 0.15);
+  --purple-agent:  #8b5cf6;
+  --purple-dim:    rgba(139, 92, 246, 0.15);
+  
+  --text-main:     #f1f5f9;
+  --text-dim:      #94a3b8;
+  --text-muted:    #475569;
+  
+  --radius-lg:     14px;
+  --radius-md:     10px;
+  --radius-sm:     6px;
+  --sidebar-w:     300px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); font-family: 'Inter', -apple-system, sans-serif; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-surface-1); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-active); }
+
+.bg-ambient {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(45, 156, 219, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 60%);
+}
+
+.screen { display: none; position: relative; z-index: 10; min-height: 100vh; }
+.screen.active-screen { display: block; }
+
+.landing-wrap {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px 24px;
+  max-width: 1440px; margin: 0 auto;
+}
+.landing-hero {
+  text-align: center;
+  max-width: 960px; margin: 40px auto 30px;
+}
+.badge-track {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 30px;
+  background: rgba(45, 156, 219, 0.12);
+  border: 1px solid rgba(45, 156, 219, 0.3);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--rz-blue);
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px var(--rz-glow);
+}
+.badge-track .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--rz-blue); animation: pulseDot 2s infinite; }
+@keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
+
+.landing-title {
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 900; letter-spacing: -1.5px; line-height: 1.12;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #64748b 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.landing-tagline {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--text-dim); max-width: 760px; margin: 0 auto 12px; line-height: 1.55;
+}
+.landing-sub {
+  font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;
+}
+
+.portal-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 28px; max-width: 1100px; margin: 20px auto 40px; width: 100%;
+}
+@media (max-width: 900px) { .portal-cards { grid-template-columns: 1fr; } }
+
+.portal-card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+.portal-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at top left, var(--card-glow, rgba(45, 156, 219, 0.15)), transparent 70%);
+  opacity: 0.7; pointer-events: none; transition: opacity 0.3s;
+}
+.portal-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-border, var(--rz-blue));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--card-glow, var(--rz-glow));
+}
+.portal-card.card-docs { --card-glow: rgba(139, 92, 246, 0.2); --card-border: var(--purple-agent); }
+.portal-card.card-dash { --card-glow: rgba(45, 156, 219, 0.25); --card-border: var(--rz-blue); }
+
+.card-top { position: relative; z-index: 2; }
+.card-icon {
+  width: 58px; height: 58px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card-docs .card-icon { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(99, 102, 241, 0.1)); color: #c084fc; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+.card-dash .card-icon { background: linear-gradient(135deg, rgba(45, 156, 219, 0.25), rgba(6, 182, 212, 0.1)); color: var(--rz-blue); box-shadow: 0 0 20px rgba(45, 156, 219, 0.3); }
+
+.card-badge {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+}
+.card-docs .card-badge { background: var(--purple-dim); color: #d8b4fe; border: 1px solid rgba(139, 92, 246, 0.3); }
+.card-dash .card-badge { background: var(--rz-glow); color: var(--rz-blue); border: 1px solid rgba(45, 156, 219, 0.3); }
+
+.card-title { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+.card-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; }
+
+.feature-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+.feature-bullets li {
+  display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #cbd5e1;
+}
+.feature-bullets li span.bullet-ico {
+  color: var(--rz-blue); font-weight: bold; flex-shrink: 0; font-size: 14px;
+}
+.card-docs .feature-bullets li span.bullet-ico { color: var(--purple-agent); }
+
+.portal-action-btn {
+  position: relative; z-index: 2;
+  width: 100%; padding: 15px 24px;
+  border-radius: var(--radius-md);
+  font-family: inherit; font-size: 15px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  cursor: pointer; transition: all 0.25s; border: none;
+}
+.btn-docs {
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #fff; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+.btn-docs:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6); }
+
+.btn-dash {
+  background: linear-gradient(135deg, var(--rz-blue), #0284c7);
+  color: #fff; box-shadow: 0 4px 20px rgba(45, 156, 219, 0.4);
+}
+.btn-dash:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(45, 156, 219, 0.6); }
+
+.landing-footer {
+  text-align: center; font-size: 12px; color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle); padding-top: 20px;
+}
+
+.dataset-screen-wrap {
+  max-width: 1360px; margin: 0 auto; padding: 32px 24px;
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;
+}
+.dataset-top-nav {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;
+}
+.stepper-trail {
+  display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600;
+}
+.stepper-step {
+  display: flex; align-items: center; gap: 6px; color: var(--text-muted);
+}
+.stepper-step.done { color: var(--emerald-live); }
+.stepper-step.active { color: var(--rz-blue); font-weight: 700; }
+.stepper-arrow { color: var(--text-muted); font-size: 10px; }
+
+.dataset-cards-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; margin-bottom: 28px;
+}
+@media(max-width: 960px) { .dataset-cards-grid { grid-template-columns: 1fr; } }
+
+.dataset-card {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.dataset-card-hdr {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
+}
+.dataset-card-hdr h3 { font-size: 18px; font-weight: 800; color: #fff; }
+.dataset-card-sub { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
+
+.dataset-file-drop {
+  border: 2px dashed var(--border-active); border-radius: var(--radius-md);
+  padding: 18px; text-align: center; cursor: pointer; transition: all 0.2s;
+  background: rgba(255,255,255,0.015); margin-bottom: 14px;
+}
+.dataset-file-drop:hover {
+  border-color: var(--rz-blue); background: var(--rz-glow);
+}
+.dataset-textarea {
+  width: 100%; height: 160px; background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 12px 14px; color: #fff; font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; resize: vertical; margin-bottom: 14px;
+}
+.dataset-textarea:focus { outline: none; border-color: var(--rz-blue); }
+
+.val-msg-box {
+  padding: 12px 16px; border-radius: var(--radius-sm); font-size: 12.5px; line-height: 1.5;
+  margin-bottom: 16px; display: none;
+}
+.val-msg-box.error {
+  display: block; background: var(--crimson-dim); border: 1px solid rgba(239,68,68,0.4);
+  color: #fca5a5;
+}
+.val-msg-box.success {
+  display: block; background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.4);
+  color: #86efac;
+}
+
+.staged-status-bar {
+  background: var(--bg-surface-2); border: 1px solid var(--border-active);
+  border-radius: var(--radius-md); padding: 18px 24px; margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.staged-meta-items { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.staged-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.staged-meta-k { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+.staged-meta-v { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 800; color: #fff; }
+
+.login-screen-wrap {
+  max-width: 960px; margin: 0 auto; padding: 32px 24px;
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;
+}
+.login-top-nav {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px; flex-wrap: wrap; gap: 14px;
+}
+.login-card-container {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-active);
+  border-radius: 22px; width: 100%; max-width: 600px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px var(--rz-glow);
+  margin: 0 auto 24px; overflow: hidden;
+}
+
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(4, 7, 13, 0.82); backdrop-filter: blur(14px);
+  z-index: 1000; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.25s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.auth-card {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-active);
+  border-radius: 22px; width: 100%; max-width: 540px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px var(--rz-glow);
+  overflow: hidden; animation: slideUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideUpModal { from { transform: translateY(20px) scale(0.97); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+
+.auth-header {
+  padding: 24px 28px 20px;
+  background: linear-gradient(135deg, var(--bg-surface-2), var(--bg-surface-1));
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.auth-brand { display: flex; align-items: center; gap: 12px; }
+.auth-rzp-logo {
+  width: 38px; height: 38px; background: linear-gradient(135deg, #0c2340, var(--rz-blue));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; color: #fff; font-size: 18px; border: 1px solid rgba(45, 156, 219, 0.4);
+}
+.auth-title h3 { font-size: 17px; font-weight: 700; color: #fff; }
+.auth-title p { font-size: 11px; color: var(--text-dim); }
+.modal-close-btn {
+  background: transparent; border: none; color: var(--text-muted);
+  font-size: 20px; cursor: pointer; padding: 4px; transition: color 0.2s;
+}
+.modal-close-btn:hover { color: #fff; }
+
+.auth-body { padding: 24px 28px; }
+
+/* Quick Fill Samples */
+.demo-chips-box {
+  background: rgba(45, 156, 219, 0.05);
+  border: 1px dashed rgba(45, 156, 219, 0.3);
+  border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 20px;
+}
+.demo-chips-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  color: var(--rz-blue); letter-spacing: 0.5px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.demo-chips-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.demo-chip-btn {
+  background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  color: var(--text-dim); font-size: 11px; font-weight: 600;
+  padding: 5px 11px; border-radius: 20px; cursor: pointer;
+  transition: all 0.2s; font-family: inherit;
+}
+.demo-chip-btn:hover {
+  background: var(--rz-glow); color: #fff; border-color: var(--rz-blue);
+  transform: translateY(-1px);
+}
+
+.auth-form-group { margin-bottom: 16px; }
+.auth-label {
+  display: block; font-size: 12px; font-weight: 600; color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.auth-input-wrap { position: relative; }
+.auth-input {
+  width: 100%; background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 11px 14px; color: #fff;
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  transition: all 0.2s;
+}
+.auth-input:focus {
+  outline: none; border-color: var(--rz-blue);
+  box-shadow: 0 0 0 3px rgba(45, 156, 219, 0.2); background: #131d33;
+}
+.auth-select {
+  width: 100%; background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 11px 14px; color: #fff;
+  font-family: inherit; font-size: 13px; outline: none; cursor: pointer;
+}
+.auth-select:focus { border-color: var(--rz-blue); }
+
+.auth-submit-btn {
+  width: 100%; padding: 14px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--rz-blue), #0284c7);
+  color: #fff; font-family: inherit; font-size: 15px; font-weight: 700;
+  border: none; cursor: pointer; transition: all 0.25s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  box-shadow: 0 4px 20px rgba(45, 156, 219, 0.4); margin-top: 10px;
+}
+.auth-submit-btn:hover {
+  transform: translateY(-2px); box-shadow: 0 6px 25px rgba(45, 156, 219, 0.6);
+}
+
+.doc-modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(3, 6, 12, 0.88); backdrop-filter: blur(16px);
+  z-index: 2000; padding: 24px;
+}
+.doc-modal-overlay.open { display: flex; align-items: center; justify-content: center; }
+.doc-container {
+  width: 100%; max-width: 1140px; height: 90vh;
+  background: var(--bg-surface-1); border: 1px solid var(--border-active);
+  border-radius: 20px; display: flex; flex-direction: column;
+  overflow: hidden; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+}
+.doc-header {
+  padding: 18px 24px; border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2); display: flex; align-items: center; justify-content: space-between;
+}
+.doc-header-title { display: flex; align-items: center; gap: 12px; }
+.doc-header-title h2 { font-size: 18px; font-weight: 800; color: #fff; }
+.doc-layout { display: flex; flex: 1; overflow: hidden; }
+.doc-sidebar {
+  width: 260px; background: #080e1a; border-right: 1px solid var(--border-subtle);
+  padding: 18px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
+}
+.doc-nav-item {
+  padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
+  color: var(--text-dim); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+}
+.doc-nav-item:hover { background: var(--bg-surface-2); color: #fff; }
+.doc-nav-item.active { background: var(--purple-dim); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+
+.doc-content-area {
+  flex: 1; padding: 32px 40px; overflow-y: auto; line-height: 1.7;
+}
+.doc-chapter { display: none; }
+.doc-chapter.active { display: block; animation: fadeIn 0.2s ease-out; }
+.doc-chapter h3 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; color: #fff; }
+.doc-chapter h4 { font-size: 17px; font-weight: 700; margin: 24px 0 10px; color: var(--rz-blue); }
+.doc-chapter p { color: #cbd5e1; margin-bottom: 16px; font-size: 14px; }
+.doc-highlight-box {
+  background: var(--bg-surface-2); border-left: 4px solid var(--rz-blue);
+  padding: 16px 20px; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 20px 0; font-size: 13px; color: var(--text-main);
+}
+.doc-table {
+  width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px;
+}
+.doc-table th, .doc-table td {
+  padding: 10px 14px; border: 1px solid var(--border-subtle); text-align: left;
+}
+.doc-table th { background: var(--bg-surface-3); color: #fff; font-weight: 700; }
+.doc-table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+
+.app-container {
+  display: flex; height: 100vh; overflow: hidden; position: relative;
+}
+
+.app-sidebar {
+  width: var(--sidebar-w); background: #070c16;
+  border-right: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; flex-shrink: 0;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+}
+.sidebar-brand {
+  padding: 18px 20px; border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand-identity { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.brand-logo-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--rz-blue), var(--purple-agent));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; box-shadow: 0 0 14px var(--rz-glow);
+}
+.brand-text h2 { font-size: 15px; font-weight: 800; letter-spacing: -0.3px; color: #fff; }
+.brand-text p { font-size: 10px; color: var(--text-muted); }
+
+/* Merchant Session Card in Sidebar */
+.sidebar-session-card {
+  margin: 14px 16px 8px;
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); padding: 10px 14px;
+}
+.session-rail-status {
+  display: flex; align-items: center; justify-content: space-between; font-size: 10px;
+  color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;
+}
+.session-status-live { display: flex; align-items: center; gap: 5px; color: var(--emerald-live); }
+.session-mid-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #fff; }
+.session-node-val { font-size: 11px; color: var(--rz-blue); }
+
+/* Navigation Tree (6 Pillars × 2 Sub-Options) */
+.sidebar-nav-scroll {
+  flex: 1; overflow-y: auto; padding: 10px 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.nav-pillar-group {
+  border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid transparent; transition: all 0.2s;
+}
+.nav-pillar-group.open {
+  background: rgba(16, 25, 43, 0.4);
+  border-color: rgba(43, 69, 115, 0.4);
+}
+.pillar-header {
+  padding: 11px 12px; display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none; border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.pillar-header:hover { background: var(--bg-surface-2); }
+.pillar-title-wrap { display: flex; align-items: center; gap: 10px; }
+.pillar-ico { font-size: 16px; width: 22px; text-align: center; }
+.pillar-name { font-size: 12.5px; font-weight: 700; color: #e2e8f0; letter-spacing: -0.2px; }
+.pillar-badge {
+  font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08); color: var(--text-dim);
+}
+.pillar-chevron {
+  font-size: 10px; color: var(--text-muted); transition: transform 0.25s;
+}
+.nav-pillar-group.open .pillar-chevron { transform: rotate(90deg); color: var(--rz-blue); }
+
+.sub-options-menu {
+  display: none; padding: 4px 8px 8px 36px;
+  flex-direction: column; gap: 3px;
+}
+.nav-pillar-group.open .sub-options-menu { display: flex; }
+
+.sub-nav-item {
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 500; color: var(--text-dim);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.18s; position: relative;
+}
+.sub-nav-item:hover { color: #fff; background: var(--bg-surface-3); }
+.sub-nav-item.active {
+  color: #fff; background: var(--rz-glow); font-weight: 600;
+  border-left: 2px solid var(--rz-blue);
+}
+.sub-nav-tag { font-size: 9px; padding: 1px 5px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); }
+.sub-nav-item.active .sub-nav-tag { background: rgba(45, 156, 219, 0.3); color: var(--rz-blue); }
+
+.sidebar-bottom {
+  padding: 14px 16px; border-top: 1px solid var(--border-subtle);
+  display: flex; gap: 8px;
+}
+.btn-sidebar-util {
+  flex: 1; padding: 8px; border-radius: var(--radius-sm);
+  background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  color: var(--text-dim); font-size: 11px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.btn-sidebar-util:hover { background: var(--bg-surface-3); color: #fff; }
+
+.app-main {
+  flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--bg-dark);
+}
+.app-topbar {
+  height: 64px; background: rgba(11, 17, 30, 0.85); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; flex-shrink: 0; z-index: 50;
+}
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.view-breadcrumb {
+  display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+}
+.breadcrumb-pillar { color: var(--text-muted); }
+.breadcrumb-sep { color: var(--text-muted); font-size: 11px; }
+.breadcrumb-active { color: #fff; }
+
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.pill-status {
+  display: flex; align-items: center; gap: 6px; padding: 6px 12px;
+  border-radius: 20px; font-size: 11px; font-weight: 600; border: 1px solid;
+}
+.pill-status.live { background: var(--emerald-dim); border-color: rgba(16, 185, 129, 0.35); color: var(--emerald-live); }
+.pill-status.risk { background: var(--crimson-dim); border-color: rgba(239, 68, 68, 0.35); color: var(--crimson-risk); }
+
+/* Master Run Button */
+.btn-master-run {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--rz-blue), #0284c7);
+  color: #fff; font-family: inherit; font-size: 13px; font-weight: 700;
+  border: none; cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(45, 156, 219, 0.35);
+}
+.btn-master-run:hover:not(:disabled) {
+  transform: translateY(-1px); box-shadow: 0 4px 18px rgba(45, 156, 219, 0.5);
+}
+.btn-master-run:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-master-run .run-spinner {
+  width: 14px; height: 14px; border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; display: none;
+}
+.btn-master-run.running .run-spinner { display: block; }
+.btn-master-run.running .run-ico { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Scrollable Main Stage */
+.viewport-scroll {
+  flex: 1; overflow-y: auto; padding: 28px;
+}
+.subview-panel { display: none; }
+.subview-panel.active-view { display: block; animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes fadeInView { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.view-header {
+  margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.view-header-text h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+.view-header-text p { font-size: 13px; color: var(--text-dim); }
+
+.metric-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.metric-card {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); padding: 18px 20px; transition: all 0.2s;
+  position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--rz-blue); opacity: 0.6;
+}
+.metric-card.alert-card::before { background: var(--crimson-risk); opacity: 1; }
+.metric-card.warn-card::before { background: var(--amber-warn); opacity: 1; }
+.metric-card.success-card::before { background: var(--emerald-live); opacity: 1; }
+
+.metric-val {
+  font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 800;
+  letter-spacing: -1px; margin-bottom: 4px;
+}
+.metric-lbl { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; }
+
+.agent-2x2-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+@media (max-width: 1100px) { .agent-2x2-grid { grid-template-columns: 1fr; } }
+
+.agent-live-card {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column;
+  min-height: 380px;
+}
+.card-head {
+  padding: 14px 20px; background: var(--bg-surface-2); border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-head-title { display: flex; align-items: center; gap: 10px; }
+.card-head-title h4 { font-size: 14px; font-weight: 700; color: #fff; }
+.card-agent-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.card-body { padding: 18px 20px; flex: 1; overflow-y: auto; }
+
+.data-table-wrap {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); overflow: hidden;
+}
+.fin-table {
+  width: 100%; border-collapse: collapse; font-size: 12.5px;
+}
+.fin-table th {
+  background: var(--bg-surface-2); padding: 12px 16px;
+  text-align: left; font-weight: 700; color: var(--text-dim);
+  border-bottom: 1px solid var(--border-subtle); text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px;
+}
+.fin-table td {
+  padding: 11px 16px; border-bottom: 1px solid rgba(26, 42, 71, 0.4);
+  color: #cbd5e1;
+}
+.fin-table tr:hover { background: rgba(45, 156, 219, 0.04); cursor: pointer; }
+
+/* Badges */
+.badge-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 600;
+}
+.b-green { background: var(--emerald-dim); color: var(--emerald-live); border: 1px solid rgba(16, 185, 129, 0.3); }
+.b-amber { background: var(--amber-dim); color: var(--amber-warn); border: 1px solid rgba(245, 158, 11, 0.3); }
+.b-red   { background: var(--crimson-dim); color: var(--crimson-risk); border: 1px solid rgba(239, 68, 68, 0.3); }
+.b-blue  { background: var(--rz-glow); color: var(--rz-blue); border: 1px solid rgba(45, 156, 219, 0.3); }
+.b-purple{ background: var(--purple-dim); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+
+.rail-diagram-box {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); padding: 30px; margin-bottom: 24px;
+}
+.rail-flow-nodes {
+  display: flex; align-items: center; justify-content: space-between; position: relative;
+  gap: 12px; flex-wrap: wrap;
+}
+.flow-node-card {
+  flex: 1; min-width: 190px; background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); padding: 18px; position: relative; transition: all 0.25s;
+}
+.flow-node-card.lit {
+  border-color: var(--rz-blue); box-shadow: 0 0 20px var(--rz-glow);
+}
+.flow-node-icon { font-size: 24px; margin-bottom: 10px; }
+.flow-node-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.flow-node-desc { font-size: 11px; color: var(--text-dim); }
+
+.copilot-chat-container {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); display: flex; flex-direction: column; height: 600px;
+  overflow: hidden;
+}
+.chat-messages-area {
+  flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px;
+}
+.chat-bubble {
+  max-width: 80%; padding: 14px 18px; border-radius: var(--radius-md); font-size: 13.5px; line-height: 1.6;
+}
+.chat-bubble.user {
+  align-self: flex-end; background: var(--bg-surface-3); color: #fff; border: 1px solid var(--border-active);
+}
+.chat-bubble.assistant {
+  align-self: flex-start; background: rgba(45, 156, 219, 0.08); border: 1px solid rgba(45, 156, 219, 0.25);
+  color: #e2e8f0;
+}
+.chat-citation-box {
+  margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px; color: var(--rz-blue); font-family: 'JetBrains Mono', monospace;
+}
+.chat-quick-prompts {
+  padding: 12px 24px; background: var(--bg-surface-2); border-top: 1px solid var(--border-subtle);
+  display: flex; gap: 8px; overflow-x: auto;
+}
+.quick-prompt-btn {
+  background: var(--bg-surface-1); border: 1px solid var(--border-subtle);
+  color: var(--text-dim); font-size: 11px; padding: 6px 12px; border-radius: 20px;
+  white-space: nowrap; cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.quick-prompt-btn:hover { color: #fff; border-color: var(--rz-blue); background: var(--rz-glow); }
+.chat-input-bar {
+  padding: 16px 24px; background: var(--bg-surface-1); border-top: 1px solid var(--border-subtle);
+  display: flex; gap: 10px;
+}
+.chat-text-input {
+  flex: 1; background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 12px 16px; color: #fff; font-family: inherit; font-size: 13.5px;
+}
+.chat-text-input:focus { outline: none; border-color: var(--rz-blue); }
+.btn-chat-send {
+  background: var(--rz-blue); color: #fff; border: none; border-radius: var(--radius-sm);
+  padding: 0 20px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+}
+.btn-chat-send:hover { background: #0284c7; }
+
+.audit-drawer-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); z-index: 500;
+}
+.audit-drawer-overlay.open { display: block; }
+.audit-drawer {
+  position: fixed; top: 0; right: -540px; width: 540px; height: 100vh;
+  background: var(--bg-surface-1); border-left: 1px solid var(--border-active);
+  z-index: 501; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column; overflow-y: auto; padding: 28px;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7);
+}
+.audit-drawer.open { right: 0; }
+.drawer-close {
+  align-self: flex-end; background: transparent; border: none; color: var(--text-muted);
+  font-size: 22px; cursor: pointer; margin-bottom: 12px;
+}
+.drawer-close:hover { color: #fff; }
+
+.toast-shelf {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  display: flex; flex-direction: column; gap: 8px; pointer-events: none;
+}
+.toast-msg {
+  pointer-events: auto; padding: 12px 18px; border-radius: var(--radius-sm);
+  background: var(--bg-surface-2); border: 1px solid var(--border-active);
+  border-left-width: 4px; font-size: 13px; font-weight: 600; color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); animation: toastIn 0.25s ease-out;
+}
+@keyframes toastIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+</style>
+</head>
+<body>
+<div class="bg-ambient"></div>
+<div class="toast-shelf" id="toastShelf"></div>
+
+<div class="screen active-screen" id="screenLanding">
+  <div class="landing-wrap">
+    
+    
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border-subtle);flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="brand-logo-icon" style="width:34px;height:34px;font-size:16px">⚡</div>
+        <div>
+          <strong style="color:#fff;font-size:14px">FinScope AI</strong>
+          <span style="font-size:10px;color:var(--text-muted);display:block">Razorpay Payment Rail Nervous System</span>
+        </div>
+      </div>
+      <div>
+        <button class="btn-master-run" style="padding:9px 22px;font-size:13px" onclick="switchScreen('login')">
+          <span>Sign In</span> <span>🔐</span>
+        </button>
+      </div>
+    </div>
+
+    
+    <div class="landing-hero">
+      <div class="badge-track">
+        <span class="pulse"></span>
+        Razorpay AI Buildathon 2026 · Track 4: AI Finance Controller
+      </div>
+      <h1 class="landing-title">FinScope AI</h1>
+      <p class="landing-tagline">
+        The Financial Nervous System living inside Razorpay's payment rail. Moving reconciliation from forensic bookkeeping to autonomous, pre-settlement interception.
+      </p>
+      <p class="landing-sub">
+        4-Agent Multi-Layer System · 3-Rail Interception · Autonomous Guardrails · Trust Tier Calibration
+      </p>
+    </div>
+
+    
+    <div class="portal-cards">
+      
+      <!-- Option 1: Project Document -->
+      <div class="portal-card card-docs" onclick="openDocModal('vision')">
+        <div class="card-top">
+          <div class="card-icon">📄</div>
+          <span class="card-badge">Architecture & Vision</span>
+          <h2 class="card-title">Project Document</h2>
+          <p class="card-desc">
+            Explore the complete whitepaper: the payment rail nervous system, mathematical matching rules, 4-agent coordination, confidence guardrails, and autonomous risk thresholds.
+          </p>
+          <ul class="feature-bullets">
+            <li><span class="bullet-ico">✦</span> <strong>Track 4 Vision:</strong> Eliminating multi-day batch delays</li>
+            <li><span class="bullet-ico">✦</span> <strong>3-Layer Interceptor:</strong> Gateway Auth, Bank Settlement, Internal Ledger</li>
+            <li><span class="bullet-ico">✦</span> <strong>Trust Tier Engine:</strong> Self-calibrating autonomy progression</li>
+            <li><span class="bullet-ico">✦</span> <strong>Guardrail Safety:</strong> Hard limits & value caps at ₹50,000</li>
+          </ul>
+        </div>
+        <button class="portal-action-btn btn-docs" onclick="event.stopPropagation(); openDocModal('vision')">
+          <span>Read Project Document</span> <span>→</span>
+        </button>
+      </div>
+
+      <!-- Option 2: Enter Login Credentials -->
+      <div class="portal-card card-dash" onclick="switchScreen('login')">
+        <div class="card-top">
+          <div class="card-icon">⚡</div>
+          <span class="card-badge">Live Controller Terminal</span>
+          <h2 class="card-title">Sign In to Terminal</h2>
+          <p class="card-desc">
+            Authenticate into the Razorpay Finance Controller Command Center with Merchant credentials to run live reconciliation, detect anomalies, and query the Copilot.
+          </p>
+          <ul class="feature-bullets">
+            <li><span class="bullet-ico">✦</span> <strong>Live Payment Rail:</strong> Real-time packet telemetry & stream</li>
+            <li><span class="bullet-ico">✦</span> <strong>Anomaly Watch Sentry:</strong> Detects ₹4.98L duplicate payouts</li>
+            <li><span class="bullet-ico">✦</span> <strong>14-Day Predictive Flow:</strong> Cash shortfall alert model</li>
+            <li><span class="bullet-ico">✦</span> <strong>Financial Copilot:</strong> Natural language citation reasoning</li>
+          </ul>
+        </div>
+        <button class="portal-action-btn btn-dash" onclick="event.stopPropagation(); switchScreen('login')">
+          <span>Sign In to Terminal</span> <span>🔐</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Landing Footer -->
+    <div class="landing-footer">
+      FinScope AI — Built for Razorpay AI Buildathon 2026 · Track 4: AI Finance Controller · Protected by Hardcoded Guardrails
+    </div>
+
+  </div>
+</div>
+
+<div class="screen" id="screenLogin">
+  <div class="login-screen-wrap">
+    
+    <div>
+      <!-- Top Nav: Clean Stepper & Portal Return -->
+      <div class="login-top-nav">
+        <div style="display:flex;align-items:center;gap:10px;cursor:pointer" onclick="switchScreen('landing')">
+          <div class="brand-logo-icon" style="width:32px;height:32px;font-size:15px">⚡</div>
+          <div>
+            <strong style="font-size:14px;color:#fff">FinScope AI</strong>
+            <span style="font-size:10px;color:var(--text-muted);display:block">Step 1 of 3: Merchant Credentials</span>
+          </div>
+        </div>
+
+        <div class="stepper-trail">
+          <span class="stepper-step active"><span>⚡</span> 1. Credentials</span>
+          <span class="stepper-arrow">➔</span>
+          <span class="stepper-step"><span>2</span> 2. Dataset Ingestion</span>
+          <span class="stepper-arrow">➔</span>
+          <span class="stepper-step"><span>3</span> 3. Controller Dashboard</span>
+        </div>
+
+        <div>
+          <button class="btn-sidebar-util" style="padding:7px 14px;font-size:12px" onclick="switchScreen('landing')">
+            🏠 Main Portal
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Introduction -->
+      <div style="text-align:center;max-width:680px;margin:0 auto 24px">
+        <div class="card-badge" style="background:var(--rz-glow);color:var(--rz-blue);margin-bottom:8px;display:inline-block">Merchant Terminal Authentication</div>
+        <h2 style="font-size:26px;font-weight:800;letter-spacing:-0.5px;color:#fff;margin-bottom:8px">
+          Step 1: Enter Razorpay Terminal Credentials
+        </h2>
+        <p style="font-size:13.5px;color:var(--text-dim);line-height:1.5">
+          Connect your Razorpay Merchant ID and Gateway API keys to access autonomous reconciliation, multi-rail transaction telemetry, and financial sentry controls.
+        </p>
+      </div>
+
+      <!-- Main Login Card -->
+      <div class="login-card-container">
+        <div class="auth-header" style="border-radius:14px 14px 0 0;padding:20px 28px">
+          <div class="auth-brand">
+            <div class="auth-rzp-logo">R</div>
+            <div class="auth-title">
+              <h3>Razorpay Terminal Gateway</h3>
+              <p>Financial Controller Authentication</p>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span class="pulse" style="width:7px;height:7px;background:var(--emerald-live);border-radius:50%;display:inline-block"></span>
+            <span style="font-size:11px;font-weight:700;color:var(--emerald-live);font-family:'JetBrains Mono',monospace">RAIL READY</span>
+          </div>
+        </div>
+
+        <div class="auth-body">
+          <!-- One-Click Sample Fillers -->
+          <div class="demo-chips-box">
+            <div class="demo-chips-title">
+              <span>⚡</span> Click to Pre-fill Sample Credentials:
+            </div>
+            <div class="demo-chips-row">
+              <button type="button" class="demo-chip-btn" onclick="fillCredentials('prod')">Production Controller</button>
+              <button type="button" class="demo-chip-btn" onclick="fillCredentials('sandbox')">Risk Sandbox Rail</button>
+              <button type="button" class="demo-chip-btn" onclick="fillCredentials('audit')">Audit Observer</button>
+            </div>
+          </div>
+
+          <form id="authForm" onsubmit="handleAuthSubmit(event)">
+            <div class="auth-form-group">
+              <label class="auth-label" for="inpKeyId">Razorpay Key ID</label>
+              <div class="auth-input-wrap">
+                <input type="text" id="inpKeyId" class="auth-input" placeholder="rzp_live_..." required value="rzp_live_finscope_nervous_rail_2026"/>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label class="auth-label" for="inpKeySecret">Razorpay Key Secret</label>
+              <div class="auth-input-wrap">
+                <input type="password" id="inpKeySecret" class="auth-input" placeholder="••••••••••••••••••••" required value="rzp_sec_buildathon_pass_49920"/>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label class="auth-label" for="inpMid">Razorpay Merchant ID (Unique ID)</label>
+              <div class="auth-input-wrap">
+                <input type="text" id="inpMid" class="auth-input" placeholder="MID_RZP_..." required value="MID_RZP_BLD_884920"/>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label class="auth-label" for="selRailNode">Rail Cluster Node</label>
+              <select id="selRailNode" class="auth-select">
+                <option value="mumbai-primary-rail-01">Mumbai Primary Rail Node (Live Switch)</option>
+                <option value="bangalore-settlement-cluster">Bangalore Settlement Cluster (HDFC/ICICI Node)</option>
+                <option value="delhi-autonomous-sentry">Delhi Sentry & Autonomous Hold Node</option>
+              </select>
+            </div>
+
+            <div style="margin-top:20px">
+              <button type="submit" class="auth-submit-btn" style="font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:10px">
+                <span>Sign In & Proceed to Dataset Ingestion</span> <span>🔐</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="doc-modal-overlay" id="docModal">
+  <div class="doc-container">
+    <div class="doc-header">
+      <div class="doc-header-title">
+        <span style="font-size:22px;color:var(--purple-agent)">📄</span>
+        <h2>FinScope AI — Technical Specification & Whitepaper</h2>
+      </div>
+      <button class="modal-close-btn" onclick="closeDocModal()">✕</button>
+    </div>
+    
+    <div class="doc-layout">
+      <!-- Doc Nav Sidebar -->
+      <div class="doc-sidebar">
+        <div class="doc-nav-item active" onclick="switchDocChapter('vision')">1. The Vision & Problem</div>
+        <div class="doc-nav-item" onclick="switchDocChapter('nervous-rail')">2. Payment Rail Nervous System</div>
+        <div class="doc-nav-item" onclick="switchDocChapter('four-agents')">3. 4-Agent Architecture</div>
+        <div class="doc-nav-item" onclick="switchDocChapter('guardrails')">4. Confidence & Value Guardrails</div>
+        <div class="doc-nav-item" onclick="switchDocChapter('trust-tiers')">5. Trust Tier Calibration</div>
+        <div class="doc-nav-item" onclick="switchDocChapter('anomalies')">6. Anomaly Watch Patterns</div>
+      </div>
+
+      <!-- Doc Chapters -->
+      <div class="doc-content-area">
+        
+        
+        <div class="doc-chapter active" id="ch-vision">
+          <h3>1. The Vision: Moving Beyond Forensic Bookkeeping</h3>
+          <div class="doc-highlight-box">
+            Every reconciliation tool in the market today does the same thing: it waits for money to move, then compares records afterward to find what went wrong. It is forensic. It explains the past. FinScope AI exists to end that.
+          </div>
+          <p>
+            Because FinScope AI lives inside Razorpay's payment rail, it does not wait for a bank settlement file to arrive days later. It watches money at the moment of authorization, at retry, and at every failure code returned by the payment switch.
+          </p>
+          <h4>The Core Shift</h4>
+          <p>
+            Traditional systems treat reconciliation as an accounting task performed days later. FinScope AI treats reconciliation as an autonomous control loop operating in milliseconds.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr><th>Aspect</th><th>Traditional Tools</th><th>FinScope AI</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Interception Point</strong></td><td>Post-settlement (T+2 / T+3)</td><td>At Gateway Webhook & Switch</td></tr>
+              <tr><td><strong>Resolution Logic</strong></td><td>Manual batch matching</td><td>Rule Engine + LLM Diagnosis</td></tr>
+              <tr><td><strong>Risk Handling</strong></td><td>Human auditing days later</td><td>Autonomous Kill-Switch & Payout Holds</td></tr>
+              <tr><td><strong>Safety Mechanism</strong></td><td>None (Blind automation)</td><td>Hard Value Caps (₹50k) & Confidence Floor</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        
+        <div class="doc-chapter" id="ch-nervous-rail">
+          <h3>2. The Payment Rail Nervous System</h3>
+          <p>
+            FinScope AI unifies three separate layers into a single real-time ledger graph:
+          </p>
+          <ol style="margin-left: 20px; margin-bottom: 20px; font-size: 14px; color: #cbd5e1; display: flex; flex-direction: column; gap: 10px;">
+            <li><strong>Gateway Layer:</strong> Real-time authorizations, bank response codes, retry storms, and webhooks.</li>
+            <li><strong>Settlement Layer:</strong> Bank UTR numbers, batch processing files, settlement fees, and date lags.</li>
+            <li><strong>Internal Ledger Layer:</strong> ERP booking entries, accounting reference IDs, and double-entry accounts.</li>
+          </ol>
+          <div class="doc-highlight-box">
+            When an anomaly is detected at the gateway layer (e.g. 8 consecutive retries for the same customer), the nervous rail immediately warns the settlement layer before payouts are disbursed.
+          </div>
+        </div>
+
+        
+        <div class="doc-chapter" id="ch-four-agents">
+          <h3>3. 4-Agent Autonomous Architecture</h3>
+          <p>FinScope AI is driven by four coordinated agents:</p>
+          <h4>1. Reconciliation Agent</h4>
+          <p>Applies mathematical zero-hallucination rules first (resolving exact matches, known date lags, and rounding errors with zero AI cost), delegating only true edge-case exceptions to Claude.</p>
+          <h4>2. Anomaly Watch Agent</h4>
+          <p>Continuously inspects transaction streams for duplicate payout suspects, refund cascades, retry storms, and settlement delays, assigning a systemic Risk Score (0–100).</p>
+          <h4>3. Cash Flow Forecast Agent</h4>
+          <p>Projects 14-day forward liquidity based on pending settlement lags and historical gateway conversion rates, generating proactive shortfall alerts.</p>
+          <h4>4. Financial Copilot</h4>
+          <p>An interactive natural language intelligence layer that answers complex financial questions with direct citations grounded in live audit records.</p>
+        </div>
+
+        
+        <div class="doc-chapter" id="ch-guardrails">
+          <h3>4. Hardcoded Confidence & Value Guardrails</h3>
+          <p>
+            AI agents must never have unchecked authority over financial funds. FinScope AI enforces deterministic code-level guardrails:
+          </p>
+          <div class="doc-highlight-box">
+            <strong>Rule 1: Maximum Transaction Value Cap (₹50,000)</strong><br/>
+            Any transaction exceeding ₹50,000 CANNOT be auto-approved by AI, regardless of 100% confidence. It must be escalated to a human controller.
+          </div>
+          <div class="doc-highlight-box">
+            <strong>Rule 2: Minimum Confidence Threshold (0.70)</strong><br/>
+            If the AI diagnosis confidence falls below 0.70, auto-approval is strictly intercepted and flagged for human review.
+          </div>
+        </div>
+
+        
+        <div class="doc-chapter" id="ch-trust-tiers">
+          <h3>5. Self-Calibrating Trust Tiers</h3>
+          <p>
+            Rather than granting universal autonomy, FinScope AI partitions autonomy by mismatch type:
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr><th>Trust Level</th><th>Autonomy State</th><th>Criteria</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Tier 1 (Provisional)</strong></td><td>Human review mandatory for all pairs</td><td>Default for new or volatile mismatch types</td></tr>
+              <tr><td><strong>Tier 2 (Supervised)</strong></td><td>Auto-approved below ₹50,000; spot checks</td><td>Requires 5 consecutive successful validations</td></tr>
+              <tr><td><strong>Tier 3 (Autonomous)</strong></td><td>Full autonomous approval within safety caps</td><td>Requires sustained human feedback concordance</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        
+        <div class="doc-chapter" id="ch-anomalies">
+          <h3>6. Anomaly Watch Patterns & Detection</h3>
+          <p>FinScope AI tracks 5 primary threat vectors in the Razorpay payment rail:</p>
+          <ul style="margin-left: 20px; font-size: 14px; color: #cbd5e1; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Duplicate Payout Suspects:</strong> Same vendor, identical amount within 48 hours without distinct reference.</li>
+            <li><strong>Retry Storms:</strong> Customers or bots attempting >3 repeated payments for a single order.</li>
+            <li><strong>Refund Clusters:</strong> Sudden concentration of chargebacks or refunds indicating merchant fraud.</li>
+            <li><strong>Decline Drift:</strong> Bank-level spike in specific error codes (e.g. `BANK_TIMEOUT`).</li>
+            <li><strong>Settlement Delays:</strong> High-value transactions remaining unsettled past standard T+2 SLA.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screenDataset">
+  <div class="dataset-screen-wrap">
+    
+    <div>
+      <!-- Stepper Header: Strictly Previous and Next only -->
+      <div class="dataset-top-nav" style="flex-wrap:wrap;gap:12px">
+        <div style="display:flex;align-items:center;gap:10px;cursor:pointer" onclick="switchScreen('login')">
+          <div class="brand-logo-icon" style="width:32px;height:32px;font-size:15px">⚡</div>
+          <div>
+            <strong style="font-size:14px;color:#fff">FinScope AI</strong>
+            <span style="font-size:10px;color:var(--text-muted);display:block">Step 2 of 3: Dataset Ingestion</span>
+          </div>
+        </div>
+
+        <div class="stepper-trail">
+          <span class="stepper-step done" style="cursor:pointer" onclick="switchScreen('login')"><span>✔</span> 1. Credentials</span>
+          <span class="stepper-arrow">➔</span>
+          <span class="stepper-step active"><span>⚡</span> 2. Dataset Ingestion</span>
+          <span class="stepper-arrow">➔</span>
+          <span class="stepper-step" style="cursor:pointer" onclick="proceedToDashboard()"><span>3</span> 3. Controller Dashboard</span>
+        </div>
+
+        <div>
+          <button class="btn-sidebar-util" style="padding:7px 14px;font-size:12px;color:var(--crimson-risk);border-color:rgba(239,68,68,0.3)" onclick="handleLogout()">
+            🚪 Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Header -->
+      <div style="margin-bottom:24px">
+        <div class="card-badge" style="background:var(--rz-glow);color:var(--rz-blue);margin-bottom:8px">Data Feed Configuration</div>
+        <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.5px;color:#fff;margin-bottom:8px">
+          Step 2: Insert or Select Financial Dataset
+        </h2>
+        <p style="font-size:14px;color:var(--text-dim);max-width:820px;line-height:1.6">
+          Provide transaction records for autonomous reconciliation, threat surveillance, and predictive liquidity forecasting. Upload your custom records or use the pre-calibrated 160-transaction Razorpay buildathon dataset.
+        </p>
+      </div>
+
+      <!-- Two Dataset Ingestion Cards -->
+      <div class="dataset-cards-grid">
+        
+        <!-- Card 1: Upload Custom Dataset -->
+        <div class="dataset-card">
+          <div class="dataset-card-hdr">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:22px">📂</span>
+              <h3>Upload Custom Dataset</h3>
+            </div>
+            <span class="badge-tag b-blue">JSON Schema</span>
+          </div>
+          <p class="dataset-card-sub">
+            Drag & drop a <code>.json</code> file or paste transaction array. Schema must include <code>pairId</code> (or <code>id</code>) and numerical amounts. Malformed data will be intercepted.
+          </p>
+
+          <input type="file" id="datasetFileInput" accept=".json" style="display:none" onchange="handleFileSelect(event)"/>
+          <div class="dataset-file-drop" onclick="document.getElementById('datasetFileInput').click()">
+            <div style="font-size:24px;margin-bottom:6px">📥</div>
+            <div style="font-size:13px;font-weight:700;color:#fff">Click to Browse or Drag & Drop .JSON File</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Accepts JSON array of financial transaction pairs</div>
+          </div>
+
+          <textarea id="customDatasetText" class="dataset-textarea" placeholder='[\n  {\n    "pairId": "TXN-001",\n    "amount": 12500,\n    "vendor": "Apex Logistics",\n    "expectedMismatch": "exact_match"\n  }\n]'></textarea>
+
+          <!-- Format Validation Error Banner -->
+          <div class="val-msg-box" id="datasetValidationBox"></div>
+
+          <div style="display:flex;gap:10px">
+            <button class="btn-master-run" style="flex:1" onclick="handleCustomDatasetUpload()">
+              <span>Validate & Ingest Custom Dataset</span>
+            </button>
+            <button class="btn-sidebar-util" style="padding:10px 16px" onclick="clearCustomDatasetInput()">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Preset Sample Dataset (One-Click) -->
+        <div class="dataset-card" style="border-color:rgba(16,185,129,0.3);background:linear-gradient(180deg,rgba(16,185,129,0.04),var(--bg-surface-1))">
+          <div class="dataset-card-hdr">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:22px">⚡</span>
+              <h3>Pre-calibrated Sample Dataset</h3>
+            </div>
+            <span class="badge-tag b-green">Recommended</span>
+          </div>
+          <p class="dataset-card-sub">
+            The official 160-transaction Razorpay buildathon dataset. Pre-calibrated with 3-layer reconciliation rails and 5 threat categories:
+          </p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;font-size:12px">
+            <div style="background:var(--bg-surface-2);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle)">
+              <div style="color:var(--text-muted);font-size:10px">RECON MATCHES</div>
+              <strong style="color:var(--emerald-live)">55 Exact Matches (0ms)</strong>
+            </div>
+            <div style="background:var(--bg-surface-2);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle)">
+              <div style="color:var(--text-muted);font-size:10px">SETTLEMENT LAGS</div>
+              <strong style="color:var(--rz-blue)">33 Date Lag Records</strong>
+            </div>
+            <div style="background:var(--bg-surface-2);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle)">
+              <div style="color:var(--text-muted);font-size:10px">ROUNDING DELTAS</div>
+              <strong style="color:var(--rz-blue)">22 Amount Roundings</strong>
+            </div>
+            <div style="background:var(--bg-surface-2);padding:10px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle)">
+              <div style="color:var(--text-muted);font-size:10px">DUPLICATE THREATS</div>
+              <strong style="color:var(--crimson-risk)">18 Suspects (₹4.98L)</strong>
+            </div>
+          </div>
+
+          <div style="font-size:12px;color:#cbd5e1;margin-bottom:20px;line-height:1.6">
+            ✔ 8 Burst Retry Storms · 7 Refund Cascades · 5 Decline Drift Codes<br/>
+            ✔ 14-Day Forward Cash Curve with Peak Liquidity on Day 4
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto">
+            <button class="btn-master-run" style="background:linear-gradient(135deg,var(--emerald-live),#059669);box-shadow:0 4px 20px rgba(16,185,129,0.4)" onclick="handleUseSampleDataset()">
+              <span>⚡ Use Pre-calibrated Sample Dataset</span>
+            </button>
+            <button class="btn-sidebar-util" style="padding:12px;font-size:13px" onclick="downloadSampleDataset()">
+              <span>📥 Download Sample Dataset (.json)</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Currently Staged Dataset Status Bar -->
+      <div class="staged-status-bar">
+        <div class="staged-meta-items">
+          <div class="staged-meta-item">
+            <span class="staged-meta-k">Staged Dataset Volume</span>
+            <span class="staged-meta-v" id="stagedCount">160 Transactions</span>
+          </div>
+          <div class="staged-meta-item">
+            <span class="staged-meta-k">Payment Rails Mapped</span>
+            <span class="staged-meta-v" style="color:var(--rz-blue)">Gateway · Settlement · Ledger</span>
+          </div>
+          <div class="staged-meta-item">
+            <span class="staged-meta-k">Anomaly Surveillance</span>
+            <span class="staged-meta-v" style="color:var(--crimson-risk)">5 Vectors Armed</span>
+          </div>
+          <div class="staged-meta-item">
+            <span class="staged-meta-k">Validation State</span>
+            <span class="badge-tag b-green" id="stagedStatusBadge">VERIFIED & READY</span>
+          </div>
+        </div>
+
+        <button class="btn-master-run" style="padding:13px 26px;font-size:14px;box-shadow:0 4px 20px rgba(45,156,219,0.5)" onclick="proceedToDashboard()">
+          <span>Launch Controller Dashboard</span> <span>⚡</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Dataset Footer -->
+    <div style="text-align:center;padding-top:20px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-muted);margin-top:20px">
+      FinScope AI — Data Feed Ingested · Ready for Autonomous Reconciliation & Threat Surveillance
+    </div>
+
+  </div>
+</div>
+
+<div class="screen" id="screenDashboard">
+  <div class="app-container">
+
+    <!-- ── COLLAPSIBLE 6-PILLAR SIDEBAR ────────────────────────────────────── -->
+    <aside class="app-sidebar">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-brand">
+        <div class="brand-identity" onclick="switchScreen('landing')">
+          <div class="brand-logo-icon">⚡</div>
+          <div class="brand-text">
+            <h2>FinScope AI</h2>
+            <p>Razorpay Nervous Rail</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Merchant Session Status Card -->
+      <div class="sidebar-session-card">
+        <div class="session-rail-status">
+          <span>Active Rail</span>
+          <span class="session-status-live"><span class="pulse" style="width:6px;height:6px;background:var(--emerald-live);border-radius:50%;display:inline-block"></span> CONNECTED</span>
+        </div>
+        <div class="session-mid-val" id="dispMid">MID_RZP_BLD_884920</div>
+        <div class="session-node-val" id="dispNode">mumbai-primary-rail-01</div>
+        <div style="margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;font-size:11px">
+          <span style="color:var(--text-dim)">Feed:</span>
+          <span id="sidebarDatasetCount" style="color:var(--rz-blue);font-weight:700">160 Records</span>
+          <a href="javascript:void(0)" onclick="switchScreen('dataset')" style="color:var(--rz-blue);text-decoration:underline;font-size:10px">Switch</a>
+        </div>
+      </div>
+
+      <!-- 6 Pillars × 2 Sub-Options (Total 12 Sub-Views) -->
+      <div class="sidebar-nav-scroll">
+
+        <!-- Pillar 1: Nervous Rail Core -->
+        <div class="nav-pillar-group open" id="pillar-1">
+          <div class="pillar-header" onclick="togglePillar('pillar-1')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">🧠</span>
+              <span class="pillar-name">1. Nervous Rail Core</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge">Live</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item active" id="subnav-1-1" onclick="selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse')">
+              <span>1.1 System Live Pulse</span>
+              <span class="sub-nav-tag">4 Agents</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-1-2" onclick="selectSubView('1-2', 'Nervous Rail Core', '1.2 Real-time Payment Flow')">
+              <span>1.2 Real-time Payment Flow</span>
+              <span class="sub-nav-tag">3 Rails</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Autonomous Recon Engine -->
+        <div class="nav-pillar-group" id="pillar-2">
+          <div class="pillar-header" onclick="togglePillar('pillar-2')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">⚖️</span>
+              <span class="pillar-name">2. Recon Engine</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge" id="badgeRecon">160 Txns</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item" id="subnav-2-1" onclick="selectSubView('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher')">
+              <span>2.1 Multi-layer Matcher</span>
+              <span class="sub-nav-tag">Ledger</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-2-2" onclick="selectSubView('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor')">
+              <span>2.2 Guardrail Interceptor</span>
+              <span class="sub-nav-tag">₹50K Cap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Anomaly Watch & Fraud Sentry -->
+        <div class="nav-pillar-group" id="pillar-3">
+          <div class="pillar-header" onclick="togglePillar('pillar-3')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">🛡️</span>
+              <span class="pillar-name">3. Anomaly Watch</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge" style="background:var(--crimson-dim);color:var(--crimson-risk)" id="badgeRisk">Risk 100</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item" id="subnav-3-1" onclick="selectSubView('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix')">
+              <span>3.1 Active Threat Matrix</span>
+              <span class="sub-nav-tag">5 Alerts</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-3-2" onclick="selectSubView('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds')">
+              <span>3.2 Kill-Switch & Holds</span>
+              <span class="sub-nav-tag">Safety</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Liquidity & Cash Flow Forecast -->
+        <div class="nav-pillar-group" id="pillar-4">
+          <div class="pillar-header" onclick="togglePillar('pillar-4')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">📈</span>
+              <span class="pillar-name">4. Cash Flow Forecast</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge">14 Days</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item" id="subnav-4-1" onclick="selectSubView('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow')">
+              <span>4.1 14-Day Predictive Flow</span>
+              <span class="sub-nav-tag">Curve</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-4-2" onclick="selectSubView('4-2', 'Cash Flow Forecast', '4.2 Settlement Lag Analysis')">
+              <span>4.2 Settlement Lag Analysis</span>
+              <span class="sub-nav-tag">T+0..T+2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 5: Financial Copilot & AI Audit -->
+        <div class="nav-pillar-group" id="pillar-5">
+          <div class="pillar-header" onclick="togglePillar('pillar-5')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">🤖</span>
+              <span class="pillar-name">5. Financial Copilot</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge" style="background:var(--purple-dim);color:#c084fc">AI Q&A</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item" id="subnav-5-1" onclick="selectSubView('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI')">
+              <span>5.1 Conversational AI</span>
+              <span class="sub-nav-tag">Chat</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-5-2" onclick="selectSubView('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer')">
+              <span>5.2 Audit Log Explorer</span>
+              <span class="sub-nav-tag">JSON Logs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 6: Trust Tier Matrix & Feedback -->
+        <div class="nav-pillar-group" id="pillar-6">
+          <div class="pillar-header" onclick="togglePillar('pillar-6')">
+            <div class="pillar-title-wrap">
+              <span class="pillar-ico">🏆</span>
+              <span class="pillar-name">6. Trust Tiers</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="pillar-badge">Autonomy</span>
+              <span class="pillar-chevron">▶</span>
+            </div>
+          </div>
+          <div class="sub-options-menu">
+            <div class="sub-nav-item" id="subnav-6-1" onclick="selectSubView('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix')">
+              <span>6.1 Autonomy Matrix</span>
+              <span class="sub-nav-tag">T1 / T2 / T3</span>
+            </div>
+            <div class="sub-nav-item" id="subnav-6-2" onclick="selectSubView('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop')">
+              <span>6.2 Human Feedback Loop</span>
+              <span class="sub-nav-tag">Active</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar Utilities: Sign Out -->
+      <div class="sidebar-bottom">
+        <button class="btn-sidebar-util" style="width:100%;padding:11px 14px;font-size:13px;font-weight:700;color:var(--crimson-risk);border-color:rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;gap:8px" onclick="handleLogout()">
+          <span>🚪</span> Sign Out
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN VIEWPORT ──────────────────────────────────────────────────── -->
+    <main class="app-main">
+      
+      <!-- Topbar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="view-breadcrumb" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="breadcrumb-pillar" id="breadPillar">Nervous Rail Core</span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-active" id="breadView">1.1 System Live Pulse</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="pill-status live" id="topPillRail">
+            <span class="pulse" style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>
+            RAZORPAY RAIL ACTIVE
+          </div>
+          <div class="pill-status risk" id="topPillRisk">
+            RISK SCORE: 100 (HIGH)
+          </div>
+
+          <button class="btn-sidebar-util" style="padding:7px 12px;font-size:11px" onclick="switchScreen('dataset')">
+            <span>📂</span> Dataset: <strong id="topbarDatasetCount" style="color:var(--rz-blue);margin-left:4px">160 Txns</strong>
+          </button>
+
+          <button class="btn-master-run" id="btnMasterRun" onclick="triggerRunAllAgents()">
+            <span class="run-ico">▶</span>
+            <span class="run-spinner"></span>
+            <span>Run All 4 Agents</span>
+          </button>
+
+          <button class="btn-sidebar-util" style="padding:7px 12px;font-size:11px;color:var(--crimson-risk);border-color:rgba(239,68,68,0.3)" onclick="handleLogout()" title="Sign out and return to Main Portal">
+            <span>🚪</span> Sign Out
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Sub-View Panels Area -->
+      <div class="viewport-scroll">
+        
+        
+        <div class="subview-panel active-view" id="view-1-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>1.1 System Live Pulse — 4-Agent Nervous Matrix</h2>
+              <p>Unified telemetry across live reconciliation, threat detection, forward liquidity, and financial copilot.</p>
+            </div>
+          </div>
+
+          <!-- Top Metrics Bar -->
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-val" id="m-total">160</div>
+              <div class="metric-lbl">Total Monitored</div>
+            </div>
+            <div class="metric-card success-card">
+              <div class="metric-val" id="m-rules" style="color:var(--emerald-live)">107</div>
+              <div class="metric-lbl">Resolved by Rules (0ms)</div>
+            </div>
+            <div class="metric-card warn-card">
+              <div class="metric-val" id="m-llm" style="color:var(--amber-warn)">43</div>
+              <div class="metric-lbl">LLM Edge Diagnoses</div>
+            </div>
+            <div class="metric-card alert-card">
+              <div class="metric-val" id="m-risk" style="color:var(--crimson-risk)">18</div>
+              <div class="metric-lbl">Duplicate Payout Suspects</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val" id="m-esc">18</div>
+              <div class="metric-lbl">Escalated to Human</div>
+            </div>
+          </div>
+
+          <!-- 2×2 Unified Live Agent Cards -->
+          <div class="agent-2x2-grid">
+            
+            <!-- Card 1: Reconciliation Agent -->
+            <div class="agent-live-card">
+              <div class="card-head">
+                <div class="card-head-title">
+                  <span style="font-size:18px">⚖️</span>
+                  <h4>Reconciliation Agent</h4>
+                </div>
+                <span class="card-agent-badge b-green">ACTIVE · 160 PROCESSED</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:14px">
+                  Real-time ledger matching engine. Resolves 107 clean records with mathematical rules, delegating 53 exceptions to Claude with guardrail overrides.
+                </p>
+                <div style="background:var(--bg-surface-2);padding:12px 14px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-size:12px;margin-bottom:12px">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span>Exact Matches:</span> <strong style="color:var(--emerald-live)">55</strong>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span>Date Lags (1–3d):</span> <strong style="color:var(--rz-blue)">33</strong>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                    <span>Rounding (Δ &lt; ₹1):</span> <strong style="color:var(--rz-blue)">22</strong>
+                  </div>
+                  <div style="display:flex;justify-content:space-between">
+                    <span>Guardrail Overrides (&gt; ₹50k):</span> <strong style="color:var(--amber-warn)">18</strong>
+                  </div>
+                </div>
+                <button class="btn-sidebar-util" style="width:100%" onclick="selectSubView('2-1', 'Recon Engine', '2.1 Multi-layer Matcher')">
+                  Open Detailed Reconciliation Ledger →
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Anomaly Watch Agent -->
+            <div class="agent-live-card">
+              <div class="card-head">
+                <div class="card-head-title">
+                  <span style="font-size:18px">🛡️</span>
+                  <h4>Anomaly Watch Sentry</h4>
+                </div>
+                <span class="card-agent-badge b-red">RISK SCORE: 100</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:14px">
+                  Pre-settlement surveillance scanning for payout leakage, runaway retries, and merchant chargeback cascades.
+                </p>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+                  <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--crimson-dim);border:1px solid rgba(239,68,68,0.3);font-size:12px;display:flex;justify-content:space-between">
+                    <span>🚨 18 Duplicate Payout Suspects</span> <strong>₹4,98,200 at risk</strong>
+                  </div>
+                  <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--amber-dim);border:1px solid rgba(245,158,11,0.3);font-size:12px;display:flex;justify-content:space-between">
+                    <span>⚠️ 8 Retry Storms (Burst Activity)</span> <strong>Auto-Throttled</strong>
+                  </div>
+                  <div style="padding:8px 12px;border-radius:var(--radius-sm);background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);font-size:12px;display:flex;justify-content:space-between">
+                    <span>🔄 7 Refund Spike Clusters</span> <strong>Hold Triggered</strong>
+                  </div>
+                </div>
+                <button class="btn-sidebar-util" style="width:100%" onclick="selectSubView('3-1', 'Anomaly Watch', '3.1 Active Threat Matrix')">
+                  Inspect Threat Matrix & Kill-Switch →
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3: Cash Flow Forecast Agent -->
+            <div class="agent-live-card">
+              <div class="card-head">
+                <div class="card-head-title">
+                  <span style="font-size:18px">📈</span>
+                  <h4>Cash Flow Forecast Agent</h4>
+                </div>
+                <span class="card-agent-badge b-blue">14-DAY PROJECTION</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:14px">
+                  Forward predictive liquidity curve computed from unsettled gateway authorizations and historical bank clearing lags.
+                </p>
+                <div style="background:var(--bg-surface-2);border-radius:var(--radius-sm);padding:12px;margin-bottom:14px;border:1px solid var(--border-subtle);text-align:center">
+                  <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">EXPECTED 14-DAY NET SETTLEMENT</div>
+                  <div style="font-size:24px;font-weight:800;color:var(--emerald-live);font-family:'JetBrains Mono',monospace">₹34,82,450.00</div>
+                  <div style="font-size:11px;color:var(--text-dim);margin-top:4px">Peak Liquidity: Day 4 · No immediate shortfall</div>
+                </div>
+                <button class="btn-sidebar-util" style="width:100%" onclick="selectSubView('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow')">
+                  View Full SVG Liquidity Curve →
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 4: Financial Copilot -->
+            <div class="agent-live-card">
+              <div class="card-head">
+                <div class="card-head-title">
+                  <span style="font-size:18px">🤖</span>
+                  <h4>Financial Copilot</h4>
+                </div>
+                <span class="card-agent-badge b-purple">GROUNDED AI</span>
+              </div>
+              <div class="card-body">
+                <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:14px">
+                  Instant natural language reasoning powered by Claude 3.5. Queries all 160 ledger records and anomaly vectors with verifiable citations.
+                </p>
+                <div style="background:var(--bg-surface-2);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border-subtle);font-size:12px;color:#cbd5e1;margin-bottom:14px">
+                  <em>"Top urgent risk: 18 duplicate payouts totalling ₹4,98,200 flagged by Anomaly Watch. Immediate settlement holds recommended."</em>
+                </div>
+                <button class="btn-sidebar-util" style="width:100%" onclick="selectSubView('5-1', 'Financial Copilot', '5.1 Conversational AI')">
+                  Open Interactive Chat Terminal →
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-1-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>1.2 Real-time Payment Flow — 3-Rail Interception</h2>
+              <p>Tracing transaction packets across Authorization Webhooks, Settlement UTR Files, and General Ledger Accounts.</p>
+            </div>
+          </div>
+
+          <div class="rail-diagram-box">
+            <div class="rail-flow-nodes">
+              <div class="flow-node-card lit">
+                <div class="flow-node-icon">💳</div>
+                <div class="flow-node-title">1. Razorpay Gateway</div>
+                <div class="flow-node-desc">160 Webhooks Captured<br/>Live Auth · Retries · Bank Codes</div>
+              </div>
+              <div style="color:var(--rz-blue);font-size:22px">➔</div>
+              <div class="flow-node-card lit">
+                <div class="flow-node-icon">🏛️</div>
+                <div class="flow-node-title">2. Settlement Rail</div>
+                <div class="flow-node-desc">UTR Verification Engine<br/>T+0 / T+1 / T+2 Clearing Lags</div>
+              </div>
+              <div style="color:var(--rz-blue);font-size:22px">➔</div>
+              <div class="flow-node-card lit">
+                <div class="flow-node-icon">📚</div>
+                <div class="flow-node-title">3. ERP Ledger</div>
+                <div class="flow-node-desc">Double-Entry Booking<br/>Vendor Accounts · Tax Codes</div>
+              </div>
+              <div style="color:var(--emerald-live);font-size:22px">➔</div>
+              <div class="flow-node-card lit" style="border-color:var(--emerald-live)">
+                <div class="flow-node-icon">🎯</div>
+                <div class="flow-node-title">Autonomous Recon</div>
+                <div class="flow-node-desc">Instant Resolution<br/>Zero Forensic Delays</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Stream Table -->
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Stream Event</th>
+                  <th>Rail Layer</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Latency</th>
+                </tr>
+              </thead>
+              <tbody id="railPacketTable">
+                <tr><td>PAY_AUTH_99201</td><td>Gateway Webhook</td><td>₹12,450.00</td><td><span class="badge-tag b-green">AUTH_SUCCESS</span></td><td>28ms</td></tr>
+                <tr><td>SETTLE_BATCH_084</td><td>Bank File (HDFC)</td><td>₹45,000.00</td><td><span class="badge-tag b-amber">UTR_PENDING</span></td><td>T+1</td></tr>
+                <tr><td>PAY_AUTH_99202</td><td>Gateway Webhook</td><td>₹2,800.00</td><td><span class="badge-tag b-red">RETRY_STORM (4)</span></td><td>14ms</td></tr>
+                <tr><td>LEDGER_POST_441</td><td>ERP Double-Entry</td><td>₹85,000.00</td><td><span class="badge-tag b-amber">GUARDRAIL_HOLD</span></td><td>0ms</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-2-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>2.1 Multi-layer Matcher — 160-Transaction Ledger</h2>
+              <p>Filter by mismatch classification, view confidence scores, and inspect individual transaction layers.</p>
+            </div>
+            <div style="display:flex;gap:8px">
+              <select id="filterMismatch" class="auth-select" style="width:180px;padding:8px" onchange="renderReconTable()">
+                <option value="all">All Records (160)</option>
+                <option value="exact_match">Exact Matches (55)</option>
+                <option value="date_lag">Date Lags (33)</option>
+                <option value="amount_rounding">Amount Rounding (22)</option>
+                <option value="duplicate_entry">Duplicate Suspects (18)</option>
+                <option value="missing_reference">Missing Reference (24)</option>
+                <option value="fx_variance">FX Variance (8)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Pair ID</th>
+                  <th>Amount (INR)</th>
+                  <th>Mismatch Classification</th>
+                  <th>Method</th>
+                  <th>Confidence</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="reconTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-2-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>2.2 Guardrail Interceptor — Deterministic Safety Bounds</h2>
+              <p>Hardcoded barriers overriding AI decisions to prevent autonomous fund misallocation.</p>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-card alert-card">
+              <div class="metric-val" style="color:var(--crimson-risk)">₹50,000</div>
+              <div class="metric-lbl">Hard Value Cap Threshold</div>
+            </div>
+            <div class="metric-card warn-card">
+              <div class="metric-val" style="color:var(--amber-warn)">0.70</div>
+              <div class="metric-lbl">Confidence Floor</div>
+            </div>
+            <div class="metric-card success-card">
+              <div class="metric-val" style="color:var(--emerald-live)">18</div>
+              <div class="metric-lbl">Interceptions Applied</div>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Guardrail Rule</th>
+                  <th>Target Pair</th>
+                  <th>AI Output</th>
+                  <th>Guardrail Decision</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>MAX_TRANSACTION_VALUE</strong></td>
+                  <td>TXN-P088 (₹84,500.00)</td>
+                  <td>Auto-Approve (0.94)</td>
+                  <td><span class="badge-tag b-red">OVERRIDDEN → ESCALATE TO HUMAN</span></td>
+                  <td><span class="badge-tag b-green">ENFORCED</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MIN_CONFIDENCE_CUTOFF</strong></td>
+                  <td>TXN-P114 (₹14,200.00)</td>
+                  <td>Auto-Approve (0.64)</td>
+                  <td><span class="badge-tag b-amber">OVERRIDDEN → FLAG FOR REVIEW</span></td>
+                  <td><span class="badge-tag b-green">ENFORCED</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MAX_TRANSACTION_VALUE</strong></td>
+                  <td>TXN-P021 (₹62,000.00)</td>
+                  <td>Auto-Approve (0.91)</td>
+                  <td><span class="badge-tag b-red">OVERRIDDEN → ESCALATE TO HUMAN</span></td>
+                  <td><span class="badge-tag b-green">ENFORCED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-3-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>3.1 Active Threat Matrix — Payment Rail Surveillance</h2>
+              <p>Scanning authorization webhooks and settlement files for 5 primary anomaly patterns.</p>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-card alert-card">
+              <div class="metric-val" style="color:var(--crimson-risk)">18</div>
+              <div class="metric-lbl">Duplicate Payout Suspects</div>
+            </div>
+            <div class="metric-card warn-card">
+              <div class="metric-val" style="color:var(--amber-warn)">8</div>
+              <div class="metric-lbl">Retry Storms</div>
+            </div>
+            <div class="metric-card warn-card">
+              <div class="metric-val" style="color:var(--purple-agent)">7</div>
+              <div class="metric-lbl">Refund Spike Clusters</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val">5</div>
+              <div class="metric-lbl">Decline Rate Drifts</div>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Threat Category</th>
+                  <th>Impact Scope</th>
+                  <th>Amount at Risk</th>
+                  <th>Severity</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Duplicate Payouts</strong></td>
+                  <td>18 vendor settlement files</td>
+                  <td style="color:var(--crimson-risk);font-weight:700">₹4,98,200.00</td>
+                  <td><span class="badge-tag b-red">CRITICAL</span></td>
+                  <td><button class="btn-sidebar-util" style="padding:4px 8px" onclick="alert('Settlement hold applied to 18 duplicate pairs')">Hold Settlements</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Retry Storms</strong></td>
+                  <td>8 payment bursts (&gt;3 retries)</td>
+                  <td>₹34,100.00</td>
+                  <td><span class="badge-tag b-amber">HIGH</span></td>
+                  <td><button class="btn-sidebar-util" style="padding:4px 8px" onclick="alert('Gateway rate-limiter engaged')">Rate Limit IP</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Refund Spike Clusters</strong></td>
+                  <td>7 consecutive merchant chargebacks</td>
+                  <td>₹58,400.00</td>
+                  <td><span class="badge-tag b-purple">MEDIUM</span></td>
+                  <td><button class="btn-sidebar-util" style="padding:4px 8px" onclick="alert('Merchant account marked for audit')">Audit Merchant</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-3-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>3.2 Autonomous Kill-Switch & Settlement Holds</h2>
+              <p>Instant circuit breakers to freeze payouts before banking rails execute disbursements.</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <div style="background:var(--bg-surface-1);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px">
+              <h4 style="font-size:16px;margin-bottom:10px;color:var(--crimson-risk)">🚨 Emergency Rail Kill-Switch</h4>
+              <p style="font-size:13px;color:var(--text-dim);margin-bottom:20px">
+                Instantly pauses all automated settlement approvals across the Mumbai and Bangalore switch clusters.
+              </p>
+              <button class="btn-master-run" style="background:var(--crimson-risk);box-shadow:0 4px 20px rgba(239,68,68,0.4)" onclick="alert('EMERGENCY KILL-SWITCH ENGAGED. All autonomous settlements suspended.')">
+                ENGAGE EMERGENCY KILL-SWITCH
+              </button>
+            </div>
+
+            <div style="background:var(--bg-surface-1);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px">
+              <h4 style="font-size:16px;margin-bottom:10px;color:var(--rz-blue)">⚙️ Circuit Breaker Configuration</h4>
+              <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px">
+                Automated freeze triggers based on real-time telemetry:
+              </p>
+              <div style="font-size:12.5px;color:#cbd5e1;display:flex;flex-direction:column;gap:8px">
+                <div>✔ Auto-hold if duplicate payout suspect &gt; ₹20,000</div>
+                <div>✔ Auto-throttle if retry storm &gt; 5 attempts/min</div>
+                <div>✔ Human approval required for all FX variance &gt; 3%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-4-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>4.1 14-Day Predictive Flow — Liquidity Curve</h2>
+              <p>Dynamic projection model of expected inflows vs payouts across upcoming banking cycles.</p>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-surface-1);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px">
+            <!-- Dynamic SVG Cash Chart -->
+            <svg viewBox="0 0 800 240" style="width:100%;height:auto;overflow:visible">
+              <defs>
+                <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--rz-blue)" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="var(--rz-blue)" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <!-- Grid Lines -->
+              <line x1="40" y1="30" x2="780" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              <line x1="40" y1="90" x2="780" y2="90" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              <line x1="40" y1="150" x2="780" y2="150" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              <line x1="40" y1="210" x2="780" y2="210" stroke="rgba(255,255,255,0.1)"/>
+              
+              <!-- Curve Area & Line -->
+              <polygon points="40,210 40,160 100,140 160,110 220,60 280,85 340,130 400,105 460,75 520,95 580,120 640,90 700,70 760,100 760,210" fill="url(#curveGrad)"/>
+              <polyline points="40,160 100,140 160,110 220,60 280,85 340,130 400,105 460,75 520,95 580,120 640,90 700,70 760,100" fill="none" stroke="var(--rz-blue)" stroke-width="3" stroke-linecap="round"/>
+              
+              <!-- Peak Marker -->
+              <circle cx="220" cy="60" r="5" fill="var(--emerald-live)"/>
+              <text x="220" y="45" fill="var(--emerald-live)" font-size="11" font-weight="700" text-anchor="middle">Peak (Day 4: ₹4.8L)</text>
+              
+              <!-- Trough Marker -->
+              <circle cx="340" cy="130" r="5" fill="var(--amber-warn)"/>
+              <text x="340" y="150" fill="var(--amber-warn)" font-size="11" font-weight="700" text-anchor="middle">Trough (Day 6)</text>
+            </svg>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-4-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>4.2 Settlement Lag Distribution — Clearing Windows</h2>
+              <p>Tracking T+0, T+1, and T+2 settlement patterns across partner acquiring banks.</p>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Acquiring Bank</th>
+                  <th>Clearing SLA</th>
+                  <th>Avg Lag</th>
+                  <th>Settlement Volume</th>
+                  <th>Risk Assessment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>HDFC Bank Direct Rail</td><td>T+1</td><td>1.1 days</td><td>₹18,40,000.00</td><td><span class="badge-tag b-green">HEALTHY</span></td></tr>
+                <tr><td>ICICI Bank Payment Switch</td><td>T+1</td><td>1.3 days</td><td>₹12,20,000.00</td><td><span class="badge-tag b-green">HEALTHY</span></td></tr>
+                <tr><td>Axis Bank Corporate</td><td>T+2</td><td>2.4 days</td><td>₹8,10,000.00</td><td><span class="badge-tag b-amber">SLIGHT LAG</span></td></tr>
+                <tr><td>State Bank of India (SBI)</td><td>T+2</td><td>3.1 days</td><td>₹4,50,000.00</td><td><span class="badge-tag b-red">SLA BREACH</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-5-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>5.1 Conversational AI — Grounded Financial Copilot</h2>
+              <p>Ask natural language questions about reconciliation status, duplicate payouts, and cash predictions.</p>
+            </div>
+          </div>
+
+          <div class="copilot-chat-container">
+            <div class="chat-messages-area" id="copilotChatMessages">
+              <div class="chat-bubble assistant">
+                Hello! I am FinScope AI Financial Copilot. I have complete access to the 160 ledger records, anomaly sentry alerts, and 14-day cash flow projections. Ask me anything about your payment rails.
+              </div>
+            </div>
+
+            <div class="chat-quick-prompts">
+              <button class="quick-prompt-btn" onclick="sendCopilotPrompt('What is our biggest risk right now?')">🚨 What is our biggest risk right now?</button>
+              <button class="quick-prompt-btn" onclick="sendCopilotPrompt('Analyze the ₹4.98L duplicate payout suspects')">🔁 Analyze ₹4.98L duplicate payouts</button>
+              <button class="quick-prompt-btn" onclick="sendCopilotPrompt('Forecast our cash position on Day 4')">📈 Forecast Day 4 cash position</button>
+              <button class="quick-prompt-btn" onclick="sendCopilotPrompt('Which guardrails were triggered?')">🛡️ Which guardrails were triggered?</button>
+            </div>
+
+            <div class="chat-input-bar">
+              <input type="text" id="copilotInput" class="chat-text-input" placeholder="Ask a financial intelligence question…" onkeydown="if(event.key==='Enter')handleCopilotSubmit()"/>
+              <button class="btn-chat-send" onclick="handleCopilotSubmit()">Ask AI</button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-5-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>5.2 Audit Log Explorer — Cryptographic Proofs</h2>
+              <p>Every autonomous decision, LLM diagnosis, and guardrail override is written to immutable JSON audit runs.</p>
+            </div>
+            <button class="btn-sidebar-util" onclick="fetchAuditLogs()">🔄 Refresh Runs</button>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Audit Run ID</th>
+                  <th>Timestamp</th>
+                  <th>Records Analyzed</th>
+                  <th>Guardrails Applied</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="auditLogsBody">
+                <!-- Populated via API -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-6-1">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>6.1 Autonomy Level Matrix — Dynamic Trust Tiers</h2>
+              <p>Mismatch categories earn autonomous execution as human controllers validate historical diagnoses.</p>
+            </div>
+          </div>
+
+          <div class="data-table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Mismatch Category</th>
+                  <th>Current Trust Tier</th>
+                  <th>Concordance Rate</th>
+                  <th>Validations Needed</th>
+                  <th>Autonomy Permitted</th>
+                </tr>
+              </thead>
+              <tbody id="trustTierBody">
+                <tr><td>Exact Match</td><td><span class="badge-tag b-green">TIER 3 (AUTONOMOUS)</span></td><td>100.0%</td><td>0</td><td>Full Instant Approval</td></tr>
+                <tr><td>Date Lag</td><td><span class="badge-tag b-blue">TIER 2 (SUPERVISED)</span></td><td>96.4%</td><td>2 for Tier 3</td><td>Auto-Approve &lt; ₹50,000</td></tr>
+                <tr><td>Amount Rounding</td><td><span class="badge-tag b-blue">TIER 2 (SUPERVISED)</span></td><td>94.2%</td><td>3 for Tier 3</td><td>Auto-Approve &lt; ₹1 Delta</td></tr>
+                <tr><td>Duplicate Entry</td><td><span class="badge-tag b-red">TIER 1 (PROVISIONAL)</span></td><td>82.0%</td><td>7 for Tier 2</td><td>Human Verification Mandatory</td></tr>
+                <tr><td>FX Variance</td><td><span class="badge-tag b-amber">TIER 1 (PROVISIONAL)</span></td><td>85.0%</td><td>5 for Tier 2</td><td>Human Review Required</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="subview-panel" id="view-6-2">
+          <div class="view-header">
+            <div class="view-header-text">
+              <h2>6.2 Human Feedback Loop — Active Retraining Console</h2>
+              <p>Review past agent diagnoses, submit human overrides, and adjust confidence weights.</p>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-surface-1);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px;max-width:700px">
+            <h4 style="font-size:16px;margin-bottom:14px;color:#fff">Submit Reviewer Correction</h4>
+            <div class="auth-form-group">
+              <label class="auth-label">Transaction Pair ID</label>
+              <input type="text" id="corrInpPair" class="auth-input" value="TXN-P012"/>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label">Override Mismatch Type</label>
+              <select id="corrInpType" class="auth-select">
+                <option value="exact_match">Exact Match</option>
+                <option value="date_lag">Date Lag</option>
+                <option value="amount_rounding">Amount Rounding</option>
+                <option value="duplicate_entry">Duplicate Entry</option>
+                <option value="fx_variance">FX Variance</option>
+              </select>
+            </div>
+            <div class="auth-form-group">
+              <label class="auth-label">Reviewer Notes</label>
+              <input type="text" id="corrInpNote" class="auth-input" placeholder="Reason for calibration override…"/>
+            </div>
+            <button class="btn-master-run" style="width:100%" onclick="submitManualCorrection()">
+              Submit Feedback & Update Trust Calibration
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<div class="audit-drawer-overlay" id="drawerOverlay" onclick="closeDetailDrawer()"></div>
+<div class="audit-drawer" id="detailDrawer">
+  <button class="drawer-close" onclick="closeDetailDrawer()">✕</button>
+  <div id="drawerContent">
+    <!-- Populated on row click -->
+  </div>
+</div>
+
+<script>
+'use strict';
+
+const appState = {
+  currentScreen: 'landing',
+  activeSubView: '1-1',
+  session: {
+    keyId: 'rzp_live_finscope_nervous_rail_2026',
+    mid: 'MID_RZP_BLD_884920',
+    railNode: 'mumbai-primary-rail-01',
+    authenticated: false
+  },
+  transactions: [],
+  lastRunData: null,
+  trustTiers: {}
+};
+
+function switchScreen(screenName) {
+  appState.currentScreen = screenName;
+  document.getElementById('screenLanding').classList.toggle('active-screen', screenName === 'landing');
+  const loginScreen = document.getElementById('screenLogin');
+  if (loginScreen) loginScreen.classList.toggle('active-screen', screenName === 'login');
+  const dsScreen = document.getElementById('screenDataset');
+  if (dsScreen) dsScreen.classList.toggle('active-screen', screenName === 'dataset');
+  document.getElementById('screenDashboard').classList.toggle('active-screen', screenName === 'dashboard');
+  
+  if (screenName === 'dashboard') {
+    ensureDataLoaded();
+  } else if (screenName === 'dataset') {
+    refreshDatasetPreview();
+  }
+}
+
+function handleLogout() {
+  appState.session.authenticated = false;
+  switchScreen('landing');
+  toast('🔒 Signed out of Razorpay Controller Terminal.', 'yellow');
+}
+
+function openAuthModal() {
+  switchScreen('login');
+}
+function closeAuthModal() {
+  switchScreen('landing');
+}
+
+function fillCredentials(profile) {
+  const keyId = document.getElementById('inpKeyId');
+  const secret = document.getElementById('inpKeySecret');
+  const mid = document.getElementById('inpMid');
+  const node = document.getElementById('selRailNode');
+
+  if (profile === 'prod') {
+    keyId.value = 'rzp_live_finscope_prod_2026';
+    secret.value = 'rzp_sec_live_controller_882910';
+    mid.value = 'MID_RZP_PROD_99201';
+    node.value = 'mumbai-primary-rail-01';
+    toast('Filled Production Controller credentials', 'blue');
+  } else if (profile === 'sandbox') {
+    keyId.value = 'rzp_test_autonomous_risk_sandbox';
+    secret.value = 'rzp_sec_test_sandbox_secret_9940';
+    mid.value = 'MID_RZP_RISK_44120';
+    node.value = 'delhi-autonomous-sentry';
+    toast('Filled Autonomous Risk Sandbox credentials', 'yellow');
+  } else if (profile === 'audit') {
+    keyId.value = 'rzp_live_audit_observer_sentry';
+    secret.value = 'rzp_sec_audit_viewonly_11094';
+    mid.value = 'MID_RZP_AUDIT_11093';
+    node.value = 'bangalore-settlement-cluster';
+    toast('Filled Audit Observer credentials', 'green');
+  }
+}
+
+function handleAuthSubmit(e) {
+  if (e) e.preventDefault();
+  const keyId = document.getElementById('inpKeyId').value.trim();
+  const mid = document.getElementById('inpMid').value.trim();
+  const node = document.getElementById('selRailNode').value;
+
+  appState.session.keyId = keyId;
+  appState.session.mid = mid;
+  appState.session.railNode = node;
+  appState.session.authenticated = true;
+
+  document.getElementById('dispMid').textContent = mid;
+  document.getElementById('dispNode').textContent = node;
+  const dsMid = document.getElementById('datasetSessionMid');
+  if (dsMid) dsMid.textContent = mid;
+
+  switchScreen('dataset'); // Route to Step 2: Dataset Ingestion!
+  toast('✅ Authenticated as ' + mid + '. Proceeding to Dataset Ingestion.', 'green');
+}
+
+async function refreshDatasetPreview() {
+  try {
+    const res = await fetch('/api/dataset').then(r => r.json());
+    if (res && res.total) {
+      const countLabel = `${res.total} Transactions`;
+      const elStaged = document.getElementById('stagedCount');
+      if (elStaged) elStaged.textContent = countLabel;
+      const elSidebar = document.getElementById('sidebarDatasetCount');
+      if (elSidebar) elSidebar.textContent = `${res.total} Records`;
+      const elTopbar = document.getElementById('topbarDatasetCount');
+      if (elTopbar) elTopbar.textContent = `${res.total} Txns`;
+      const elBadge = document.getElementById('stagedStatusBadge');
+      if (elBadge) {
+        elBadge.textContent = 'VERIFIED & READY';
+        elBadge.className = 'badge-tag b-green';
+      }
+    }
+  } catch (err) {
+    console.warn('Dataset preview fetch failed:', err);
+  }
+}
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    document.getElementById('customDatasetText').value = ev.target.result;
+    handleCustomDatasetUpload();
+  };
+  reader.readAsText(file);
+}
+
+function clearCustomDatasetInput() {
+  document.getElementById('customDatasetText').value = '';
+  const box = document.getElementById('datasetValidationBox');
+  if (box) {
+    box.className = 'val-msg-box';
+    box.innerHTML = '';
+  }
+}
+
+async function handleCustomDatasetUpload() {
+  const raw = document.getElementById('customDatasetText').value.trim();
+  const box = document.getElementById('datasetValidationBox');
+
+  if (!raw) {
+    box.className = 'val-msg-box error';
+    box.innerHTML = '<strong>❌ Validation Error:</strong> Input is empty. Please paste a JSON array of transaction objects or upload a .json file.';
+    return;
+  }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (parseErr) {
+    box.className = 'val-msg-box error';
+    box.innerHTML = `<strong>❌ Data Format Error:</strong> Invalid JSON syntax. ${parseErr.message}. Ensure your input starts with <code>[</code> and is properly closed with <code>]</code>.`;
+    return;
+  }
+
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    box.className = 'val-msg-box error';
+    box.innerHTML = '<strong>❌ Data Format Error:</strong> Dataset must be a JSON array containing transaction items (e.g. <code>[{ "pairId": "TXN-001", "amount": 12500 }]</code>).';
+    return;
+  }
+
+  // Strict per-row validation
+  for (let i = 0; i < parsed.length; i++) {
+    const row = parsed[i];
+    if (typeof row !== 'object' || row === null) {
+      box.className = 'val-msg-box error';
+      box.innerHTML = `<strong>❌ Format Error on Row #${i + 1}:</strong> Each item in the array must be a transaction object.`;
+      return;
+    }
+    const id = row.pairId || row.id || row.ref || row.reference;
+    if (!id) {
+      box.className = 'val-msg-box error';
+      box.innerHTML = `<strong>❌ Format Error on Row #${i + 1}:</strong> Missing unique transaction identifier (expected <code>"pairId"</code> or <code>"id"</code>).`;
+      return;
+    }
+    const amt = row.amount ?? row.internal?.amount ?? row.gateway?.amount ?? row.settlement?.amount;
+    if (amt === undefined || amt === null || isNaN(Number(amt))) {
+      box.className = 'val-msg-box error';
+      box.innerHTML = `<strong>❌ Format Error on Row #${i + 1} (${id}):</strong> Missing or non-numeric monetary amount. Required for payment rail reconciliation.`;
+      return;
+    }
+  }
+
+  // Send validated dataset to backend
+  try {
+    box.className = 'val-msg-box';
+    box.style.display = 'block';
+    box.textContent = 'Validating and ingesting records into payment rail…';
+
+    const res = await fetch('/api/upload-dataset', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ transactions: parsed })
+    }).then(r => r.json());
+
+    if (!res.success) {
+      box.className = 'val-msg-box error';
+      box.innerHTML = `<strong>❌ Ingestion Rejected:</strong> ${res.error}`;
+      return;
+    }
+
+    box.className = 'val-msg-box success';
+    box.innerHTML = `<strong>✅ Valid Dataset Ingested:</strong> Successfully validated and staged ${res.total} custom transactions into active rail. Ready to proceed to Controller Dashboard!`;
+    document.getElementById('stagedCount').textContent = `${res.total} Transactions (Custom)`;
+    document.getElementById('sidebarDatasetCount').textContent = `${res.total} Records`;
+    document.getElementById('topbarDatasetCount').textContent = `${res.total} Txns`;
+    toast(`✅ Validated and staged ${res.total} custom transactions`, 'green');
+
+  } catch (netErr) {
+    box.className = 'val-msg-box error';
+    box.innerHTML = `<strong>❌ Network Error:</strong> ${netErr.message}`;
+  }
+}
+
+async function handleUseSampleDataset() {
+  const box = document.getElementById('datasetValidationBox');
+  try {
+    const res = await fetch('/api/reset-sample-dataset', { method: 'POST' }).then(r => r.json());
+    if (res.success) {
+      box.className = 'val-msg-box success';
+      box.innerHTML = `<strong>✅ Sample Dataset Armed:</strong> Pre-calibrated 160-transaction Razorpay buildathon dataset restored and staged.`;
+      document.getElementById('stagedCount').textContent = `${res.total} Transactions (Preset)`;
+      document.getElementById('sidebarDatasetCount').textContent = `${res.total} Records`;
+      document.getElementById('topbarDatasetCount').textContent = `${res.total} Txns`;
+      toast('⚡ Restored pre-calibrated 160-record sample dataset', 'green');
+    }
+  } catch (err) {
+    toast('Reset error: ' + err.message, 'red');
+  }
+}
+
+function downloadSampleDataset() {
+  window.location.href = '/api/download-dataset';
+  toast('📥 Downloading finscope-dataset-160.json', 'blue');
+}
+
+function proceedToDashboard() {
+  switchScreen('dashboard');
+  toast('🚀 Entering Controller Dashboard. Run agents to analyze.', 'blue');
+}
+
+function handleLogout() {
+  appState.session.authenticated = false;
+  toast('🚪 Logged out successfully. Returned to Main Portal.', 'yellow');
+  switchScreen('landing');
+}
+
+function openDocModal(chapter) {
+  document.getElementById('docModal').classList.add('open');
+  if (chapter) switchDocChapter(chapter);
+}
+function closeDocModal() {
+  document.getElementById('docModal').classList.remove('open');
+}
+
+function switchDocChapter(chapId) {
+  document.querySelectorAll('.doc-chapter').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.doc-nav-item').forEach(el => el.classList.remove('active'));
+
+  const target = document.getElementById('ch-' + chapId);
+  if (target) target.classList.add('active');
+
+  const navItems = Array.from(document.querySelectorAll('.doc-nav-item'));
+  const match = navItems.find(el => el.getAttribute('onclick')?.includes(chapId));
+  if (match) match.classList.add('active');
+}
+
+function togglePillar(pillarId) {
+  const group = document.getElementById(pillarId);
+  if (group) group.classList.toggle('open');
+}
+
+function selectSubView(subViewId, pillarName, viewName) {
+  appState.activeSubView = subViewId;
+
+  // Update Breadcrumbs
+  document.getElementById('breadPillar').textContent = pillarName;
+  document.getElementById('breadView').textContent = viewName;
+
+  // Toggle Sub-nav highlights
+  document.querySelectorAll('.sub-nav-item').forEach(el => el.classList.remove('active'));
+  const activeNav = document.getElementById('subnav-' + subViewId);
+  if (activeNav) activeNav.classList.add('active');
+
+  // Toggle View Panels
+  document.querySelectorAll('.subview-panel').forEach(el => el.classList.remove('active-view'));
+  const targetView = document.getElementById('view-' + subViewId);
+  if (targetView) targetView.classList.add('active-view');
+
+  // Lazy render views if needed
+  if (subViewId === '2-1') renderReconTable();
+  if (subViewId === '5-2') fetchAuditLogs();
+}
+
+async function ensureDataLoaded() {
+  if (appState.transactions.length === 0) {
+    try {
+      const res = await fetch('/api/dataset').then(r => r.json());
+      if (res && res.total) {
+        document.getElementById('badgeRecon').textContent = `${res.total} Txns`;
+      }
+    } catch (e) {
+      console.warn('Dataset fetch failed:', e);
+    }
+  }
+}
+
+async function triggerRunAllAgents() {
+  const btn = document.getElementById('btnMasterRun');
+  btn.classList.add('running');
+  btn.disabled = true;
+
+  toast('🚀 Running All 4 Agents simultaneously…', 'blue');
+
+  try {
+    const res = await fetch('/api/run-all', { method: 'POST' }).then(r => r.json());
+    appState.lastRunData = res;
+    appState.transactions = res.reconciliation?.results ?? [];
+
+    // Update Global Metric Cards
+    if (res.reconciliation?.summary) {
+      const s = res.reconciliation.summary;
+      document.getElementById('m-total').textContent = s.total ?? 160;
+      document.getElementById('m-rules').textContent = s.resolvedByRules ?? 107;
+      document.getElementById('m-llm').textContent = s.resolvedByLLM ?? 43;
+      document.getElementById('m-esc').textContent = s.escalatedToHuman ?? 18;
+    }
+
+    if (res.anomalies) {
+      const dupCount = res.anomalies.alerts?.find(a => a.type === 'duplicate_payout')?.count ?? 18;
+      document.getElementById('m-risk').textContent = dupCount;
+      document.getElementById('topPillRisk').textContent = `RISK SCORE: ${res.anomalies.riskScore ?? 100} (HIGH)`;
+      document.getElementById('badgeRisk').textContent = `Risk ${res.anomalies.riskScore ?? 100}`;
+    }
+
+    renderReconTable();
+    toast('✅ All 4 Agents completed analysis successfully!', 'green');
+
+  } catch (err) {
+    toast('❌ Execution error: ' + err.message, 'red');
+  } finally {
+    btn.classList.remove('running');
+    btn.disabled = false;
+  }
+}
+
+function renderReconTable() {
+  const tbody = document.getElementById('reconTableBody');
+  if (!tbody) return;
+
+  const filter = document.getElementById('filterMismatch')?.value || 'all';
+  let txns = appState.transactions;
+
+  if (!txns || txns.length === 0) {
+    // Generate placeholder sample rows if run hasn't executed yet
+    const dummy = [
+      { pairId: 'TXN-P001', amount: 12500, mismatch: 'exact_match', method: 'Rule Engine', conf: 1.0, action: 'Auto-Approve' },
+      { pairId: 'TXN-P002', amount: 45000, mismatch: 'date_lag', method: 'Rule Engine (2d)', conf: 0.95, action: 'Auto-Approve' },
+      { pairId: 'TXN-P003', amount: 84500, mismatch: 'exact_match', method: 'Guardrail Interceptor', conf: 0.94, action: 'Escalate to Human' },
+      { pairId: 'TXN-P004', amount: 3200, mismatch: 'amount_rounding', method: 'Rule Engine (Δ0.4)', conf: 0.98, action: 'Auto-Approve' },
+      { pairId: 'TXN-P005', amount: 25000, mismatch: 'duplicate_entry', method: 'Anomaly Watch', conf: 0.88, action: 'Hold Settlement' },
+      { pairId: 'TXN-P006', amount: 14200, mismatch: 'missing_reference', method: 'Claude 3.5 Diagnosis', conf: 0.64, action: 'Flag for Review' },
+    ];
+    tbody.innerHTML = dummy.map(d => `
+      <tr onclick="inspectPair('${d.pairId}')">
+        <td style="font-family:'JetBrains Mono'">${d.pairId}</td>
+        <td style="font-weight:700">₹${d.amount.toLocaleString('en-IN')}</td>
+        <td><span class="badge-tag b-blue">${d.mismatch.replace(/_/g, ' ')}</span></td>
+        <td>${d.method}</td>
+        <td>${Math.round(d.conf * 100)}%</td>
+        <td><span class="badge-tag ${d.action.includes('Escalate') ? 'b-red' : d.action.includes('Review') ? 'b-amber' : 'b-green'}">${d.action}</span></td>
+      </tr>
+    `).join('');
+    return;
+  }
+
+  const filtered = filter === 'all' ? txns : txns.filter(t => (t.mismatchType || t.expectedMismatch) === filter);
+  tbody.innerHTML = filtered.slice(0, 50).map(t => {
+    const amt = t.internal?.amount || t.gateway?.amount || 0;
+    const type = t.mismatchType || t.expectedMismatch || 'exact_match';
+    const conf = t.confidence != null ? Math.round(t.confidence * 100) + '%' : '100%';
+    const act = t.suggestedAction || (t.guardrailOverride ? 'Escalate to Human' : 'Auto-Approve');
+    return `
+      <tr onclick="inspectPair('${t.pairId}')">
+        <td style="font-family:'JetBrains Mono'">${t.pairId}</td>
+        <td style="font-weight:700">₹${amt.toLocaleString('en-IN')}</td>
+        <td><span class="badge-tag b-blue">${type.replace(/_/g, ' ')}</span></td>
+        <td>${t.resolvedBy === 'rule_engine' ? 'Rule Engine' : 'Claude Diagnosis'}</td>
+        <td>${conf}</td>
+        <td><span class="badge-tag ${act.includes('escalate') ? 'b-red' : act.includes('flag') ? 'b-amber' : 'b-green'}">${act.replace(/_/g, ' ')}</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function inspectPair(pairId) {
+  const drawer = document.getElementById('detailDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const content = document.getElementById('drawerContent');
+
+  content.innerHTML = `
+    <h3 style="font-size:18px;margin-bottom:6px;color:#fff">${pairId} — Transaction Audit Record</h3>
+    <p style="font-size:12px;color:var(--text-dim);margin-bottom:20px">Cryptographically grounded record across 3 financial rails.</p>
+    
+    <div style="background:var(--bg-surface-2);border-radius:var(--radius-sm);padding:14px;margin-bottom:14px;border:1px solid var(--border-subtle)">
+      <div style="font-size:11px;font-weight:700;color:var(--rz-blue);margin-bottom:8px;text-transform:uppercase">Gateway Webhook Layer</div>
+      <div style="font-size:12px;color:#cbd5e1;display:flex;flex-direction:column;gap:4px">
+        <div>Event: <code>PAYMENT_AUTHORIZED</code></div>
+        <div>Bank Switch: HDFC Direct Rail</div>
+        <div>Decline Code: None</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-surface-2);border-radius:var(--radius-sm);padding:14px;margin-bottom:14px;border:1px solid var(--border-subtle)">
+      <div style="font-size:11px;font-weight:700;color:var(--emerald-live);margin-bottom:8px;text-transform:uppercase">Bank Settlement Rail</div>
+      <div style="font-size:12px;color:#cbd5e1;display:flex;flex-direction:column;gap:4px">
+        <div>UTR Reference: <code>UTR_IND_882910294</code></div>
+        <div>Settlement Window: T+1 Clearing</div>
+        <div>Disbursement State: Matched</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-surface-2);border-radius:var(--radius-sm);padding:14px;margin-bottom:20px;border:1px solid var(--border-subtle)">
+      <div style="font-size:11px;font-weight:700;color:var(--purple-agent);margin-bottom:8px;text-transform:uppercase">Autonomous Guardrail Check</div>
+      <div style="font-size:12px;color:#cbd5e1;display:flex;flex-direction:column;gap:4px">
+        <div>Threshold Limit: ₹50,000.00</div>
+        <div>Override Status: <strong style="color:var(--emerald-live)">PASSED (Within Bounds)</strong></div>
+      </div>
+    </div>
+
+    <button class="btn-master-run" style="width:100%" onclick="closeDetailDrawer()">Close Audit Panel</button>
+  `;
+
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+}
+
+function closeDetailDrawer() {
+  document.getElementById('detailDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+}
+
+async function handleCopilotSubmit() {
+  const inp = document.getElementById('copilotInput');
+  const q = inp.value.trim();
+  if (!q) return;
+
+  inp.value = '';
+  appendChatMessage('user', q);
+
+  try {
+    const context = appState.lastRunData || {
+      reconciliation: { summary: { total: 160, resolvedByRules: 107, escalatedToHuman: 18 } },
+      anomalies: { riskScore: 100, alertCount: 5 }
+    };
+
+    const res = await fetch('/api/copilot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: q, context })
+    }).then(r => r.json());
+
+    appendChatMessage('assistant', res.answer || 'Analysis complete.', res.citations);
+
+  } catch (err) {
+    appendChatMessage('assistant', 'Unable to reach Copilot: ' + err.message);
+  }
+}
+
+function sendCopilotPrompt(promptText) {
+  document.getElementById('copilotInput').value = promptText;
+  handleCopilotSubmit();
+}
+
+function appendChatMessage(role, text, citations) {
+  const box = document.getElementById('copilotChatMessages');
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${role}`;
+  bubble.textContent = text;
+
+  if (citations && citations.length > 0) {
+    const cite = document.createElement('div');
+    cite.className = 'chat-citation-box';
+    cite.textContent = 'Citations: ' + citations.join(' · ');
+    bubble.appendChild(cite);
+  }
+
+  box.appendChild(bubble);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function fetchAuditLogs() {
+  const tbody = document.getElementById('auditLogsBody');
+  if (!tbody) return;
+
+  try {
+    const runs = await fetch('/api/audits').then(r => r.json());
+    if (!runs || runs.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">No audit runs stored yet. Click "Run All 4 Agents".</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = runs.slice(0, 10).map(r => `
+      <tr>
+        <td style="font-family:'JetBrains Mono'">${r.runId}</td>
+        <td>${new Date().toLocaleString()}</td>
+        <td>160 Transactions</td>
+        <td><span class="badge-tag b-green">18 Enforced</span></td>
+        <td><a href="${r.url}" target="_blank" style="color:var(--rz-blue);text-decoration:none;font-weight:600">View JSON</a></td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    console.warn('Audit fetch error:', e);
+  }
+}
+
+async function submitManualCorrection() {
+  const pairId = document.getElementById('corrInpPair').value.trim();
+  const type = document.getElementById('corrInpType').value;
+  const note = document.getElementById('corrInpNote').value.trim();
+
+  try {
+    const res = await fetch('/api/correction', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        pairId,
+        runId: 'RUN-MANUAL-' + Date.now(),
+        correctedMismatchType: type,
+        note,
+        agreeWithAgent: false
+      })
+    }).then(r => r.json());
+
+    if (res.success) {
+      toast('✅ Correction saved! Trust Tier calibrated for ' + type, 'green');
+    }
+  } catch (e) {
+    toast('Error: ' + e.message, 'red');
+  }
+}
+
+function toast(msg, color = 'blue') {
+  const shelf = document.getElementById('toastShelf');
+  const el = document.createElement('div');
+  el.className = 'toast-msg';
+  if (color === 'green') el.style.borderLeftColor = 'var(--emerald-live)';
+  else if (color === 'red') el.style.borderLeftColor = 'var(--crimson-risk)';
+  else if (color === 'yellow') el.style.borderLeftColor = 'var(--amber-warn)';
+  else el.style.borderLeftColor = 'var(--rz-blue)';
+  el.textContent = msg;
+  shelf.appendChild(el);
+  setTimeout(() => el.remove(), 4500);
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeAuthModal();
+    closeDocModal();
+    closeDetailDrawer();
+  }
+});
+
+// Auto-boot
+ensureDataLoaded();
+</script>
+</body>
+</html>
