@@ -1261,7 +1261,6 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
 <div class="screen" id="screenDashboard">
   <div class="app-container">
 
-    <!-- ── COLLAPSIBLE 6-PILLAR SIDEBAR ────────────────────────────────────── -->
     <aside class="app-sidebar">
       
       <!-- Brand Header -->
@@ -1448,7 +1447,6 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
 
     </aside>
 
-    <!-- ── MAIN VIEWPORT ──────────────────────────────────────────────────── -->
     <main class="app-main">
       
       <!-- Topbar -->
@@ -1770,7 +1768,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
                   <th>Status</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="guardrailTableBody">
                 <tr>
                   <td><strong>MAX_TRANSACTION_VALUE</strong></td>
                   <td>TXN-P088 (₹84,500.00)</td>
@@ -1836,7 +1834,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="threatMatrixTableBody">
                 <tr>
                   <td><strong>Duplicate Payouts</strong></td>
                   <td>18 vendor settlement files</td>
@@ -1956,7 +1954,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
                   <th>Risk Assessment</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="settlementLagTableBody">
                 <tr><td>HDFC Bank Direct Rail</td><td>T+1</td><td>1.1 days</td><td>₹18,40,000.00</td><td><span class="badge-tag b-green">HEALTHY</span></td></tr>
                 <tr><td>ICICI Bank Payment Switch</td><td>T+1</td><td>1.3 days</td><td>₹12,20,000.00</td><td><span class="badge-tag b-green">HEALTHY</span></td></tr>
                 <tr><td>Axis Bank Corporate</td><td>T+2</td><td>2.4 days</td><td>₹8,10,000.00</td><td><span class="badge-tag b-amber">SLIGHT LAG</span></td></tr>
@@ -2339,11 +2337,6 @@ function downloadSampleDataset() {
   toast('📥 Downloading finscope-dataset-160.json', 'blue');
 }
 
-function proceedToDashboard() {
-  switchScreen('dashboard');
-  toast('🚀 Entering Controller Dashboard. Run agents to analyze.', 'blue');
-}
-
 function handleLogout() {
   appState.session.authenticated = false;
   toast('🚪 Logged out successfully. Returned to Main Portal.', 'yellow');
@@ -2378,21 +2371,17 @@ function togglePillar(pillarId) {
 function selectSubView(subViewId, pillarName, viewName) {
   appState.activeSubView = subViewId;
 
-  // Update Breadcrumbs
   document.getElementById('breadPillar').textContent = pillarName;
   document.getElementById('breadView').textContent = viewName;
 
-  // Toggle Sub-nav highlights
   document.querySelectorAll('.sub-nav-item').forEach(el => el.classList.remove('active'));
   const activeNav = document.getElementById('subnav-' + subViewId);
   if (activeNav) activeNav.classList.add('active');
 
-  // Toggle View Panels
   document.querySelectorAll('.subview-panel').forEach(el => el.classList.remove('active-view'));
   const targetView = document.getElementById('view-' + subViewId);
   if (targetView) targetView.classList.add('active-view');
 
-  // Lazy render views if needed
   if (subViewId === '2-1') renderReconTable();
   if (subViewId === '5-2') fetchAuditLogs();
 }
@@ -2410,43 +2399,151 @@ async function ensureDataLoaded() {
   }
 }
 
+function proceedToDashboard() {
+  switchScreen('dashboard');
+  triggerRunAllAgents();
+}
+
 async function triggerRunAllAgents() {
   const btn = document.getElementById('btnMasterRun');
-  btn.classList.add('running');
-  btn.disabled = true;
+  if (btn) {
+    btn.classList.add('running');
+    btn.disabled = true;
+  }
 
-  toast('🚀 Running All 4 Agents simultaneously…', 'blue');
+  toast('🚀 Running All 4 Agents on active dataset...', 'blue');
 
   try {
     const res = await fetch('/api/run-all', { method: 'POST' }).then(r => r.json());
     appState.lastRunData = res;
     appState.transactions = res.reconciliation?.results ?? [];
 
-    // Update Global Metric Cards
     if (res.reconciliation?.summary) {
       const s = res.reconciliation.summary;
-      document.getElementById('m-total').textContent = s.total ?? 160;
-      document.getElementById('m-rules').textContent = s.resolvedByRules ?? 107;
-      document.getElementById('m-llm').textContent = s.resolvedByLLM ?? 43;
-      document.getElementById('m-esc').textContent = s.escalatedToHuman ?? 18;
+      const totalCount = s.total ?? appState.transactions.length;
+      document.getElementById('m-total').textContent = totalCount;
+      document.getElementById('m-rules').textContent = s.resolvedByRules ?? 0;
+      document.getElementById('m-llm').textContent = s.resolvedByLLM ?? 0;
+      document.getElementById('m-esc').textContent = s.escalatedToHuman ?? 0;
+      const badgeR = document.getElementById('badgeRecon');
+      if (badgeR) badgeR.textContent = `${totalCount} Txns`;
+      const sideC = document.getElementById('sidebarDatasetCount');
+      if (sideC) sideC.textContent = `${totalCount} Records`;
+      const topC = document.getElementById('topbarDatasetCount');
+      if (topC) topC.textContent = `${totalCount} Txns`;
     }
 
     if (res.anomalies) {
-      const dupCount = res.anomalies.alerts?.find(a => a.type === 'duplicate_payout')?.count ?? 18;
+      const dupCount = res.anomalies.alerts?.find(a => a.type === 'duplicate_payout')?.count ?? 0;
       document.getElementById('m-risk').textContent = dupCount;
-      document.getElementById('topPillRisk').textContent = `RISK SCORE: ${res.anomalies.riskScore ?? 100} (HIGH)`;
-      document.getElementById('badgeRisk').textContent = `Risk ${res.anomalies.riskScore ?? 100}`;
+      document.getElementById('topPillRisk').textContent = `RISK SCORE: ${res.anomalies.riskScore ?? 0} (${res.anomalies.riskLevel || 'EVALUATED'})`;
+      document.getElementById('badgeRisk').textContent = `Risk ${res.anomalies.riskScore ?? 0}`;
     }
 
     renderReconTable();
+    renderRailStreamTable(res);
+    renderGuardrailTable(res);
+    renderThreatMatrixTable(res);
+    renderSettlementLagTable(res);
+
     toast('✅ All 4 Agents completed analysis successfully!', 'green');
 
   } catch (err) {
     toast('❌ Execution error: ' + err.message, 'red');
   } finally {
-    btn.classList.remove('running');
-    btn.disabled = false;
+    if (btn) {
+      btn.classList.remove('running');
+      btn.disabled = false;
+    }
   }
+}
+
+function renderRailStreamTable(res) {
+  const tbody = document.getElementById('railPacketTable');
+  if (!tbody) return;
+  const txns = res?.reconciliation?.results || appState.transactions;
+  if (!txns || txns.length === 0) return;
+  tbody.innerHTML = txns.slice(0, 8).map((t, idx) => {
+    const amt = t.internal?.amount || t.gateway?.amount || 0;
+    const pairId = t.pairId || `TXN-${idx+1}`;
+    const status = t.status === 'matched' ? 'AUTH_SUCCESS' : (t.suggestedAction === 'escalate_to_human' ? 'GUARDRAIL_HOLD' : 'UTR_PENDING');
+    const badgeClass = status === 'AUTH_SUCCESS' ? 'b-green' : (status === 'GUARDRAIL_HOLD' ? 'b-red' : 'b-amber');
+    const rail = idx % 3 === 0 ? 'Gateway Webhook' : (idx % 3 === 1 ? 'Bank File (HDFC/ICICI)' : 'ERP Double-Entry');
+    return `<tr>
+      <td style="font-family:'JetBrains Mono'">${pairId}</td>
+      <td>${rail}</td>
+      <td style="font-weight:700">₹${Number(amt).toLocaleString('en-IN')}</td>
+      <td><span class="badge-tag ${badgeClass}">${status}</span></td>
+      <td>${(idx + 1) * 8}ms</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderGuardrailTable(res) {
+  const tbody = document.getElementById('guardrailTableBody');
+  if (!tbody) return;
+  const txns = res?.reconciliation?.results || appState.transactions;
+  if (!txns || txns.length === 0) return;
+  const guarded = txns.filter(t => t.guardrailOverride || (t.internal?.amount || 0) > 50000 || (t.confidence != null && t.confidence < 0.7));
+  if (guarded.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:18px">All transactions verified within safety limits (no overrides required).</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = guarded.slice(0, 8).map(t => {
+    const amt = t.internal?.amount || t.gateway?.amount || 0;
+    const rule = amt > 50000 ? 'MAX_TRANSACTION_VALUE' : 'MIN_CONFIDENCE_CUTOFF';
+    const act = amt > 50000 ? 'OVERRIDDEN → ESCALATE TO HUMAN' : 'OVERRIDDEN → FLAG FOR REVIEW';
+    const badgeClass = amt > 50000 ? 'b-red' : 'b-amber';
+    return `<tr>
+      <td><strong>${rule}</strong></td>
+      <td style="font-family:'JetBrains Mono'">${t.pairId} (₹${Number(amt).toLocaleString('en-IN')})</td>
+      <td>${t.suggestedAction || 'Auto-Approve'} (${t.confidence != null ? Math.round(t.confidence*100)+'%' : '90%'})</td>
+      <td><span class="badge-tag ${badgeClass}">${act}</span></td>
+      <td><span class="badge-tag b-green">ENFORCED</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderThreatMatrixTable(res) {
+  const tbody = document.getElementById('threatMatrixTableBody');
+  if (!tbody) return;
+  const alerts = res?.anomalies?.alerts;
+  if (!alerts || alerts.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:18px">No active threats detected on current rail stream.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = alerts.map(a => {
+    const cat = a.type ? a.type.replace(/_/g, ' ').toUpperCase() : 'ANOMALY';
+    const sev = a.severity ? a.severity.toUpperCase() : 'MEDIUM';
+    const badge = sev === 'CRITICAL' ? 'b-red' : (sev === 'HIGH' ? 'b-amber' : 'b-purple');
+    const amtStr = a.amountAtRisk ? `₹${Number(a.amountAtRisk).toLocaleString('en-IN')}` : (a.amount ? `₹${Number(a.amount).toLocaleString('en-IN')}` : '₹0.00');
+    return `<tr>
+      <td><strong>${cat}</strong></td>
+      <td>${a.count ?? 1} occurrences identified</td>
+      <td style="color:var(--crimson-risk);font-weight:700">${amtStr}</td>
+      <td><span class="badge-tag ${badge}">${sev}</span></td>
+      <td><button class="btn-sidebar-util" style="padding:4px 8px" onclick="toast('Threat action engaged: ${cat}', 'yellow')">Engage Sentry</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderSettlementLagTable(res) {
+  const tbody = document.getElementById('settlementLagTableBody');
+  if (!tbody) return;
+  const lagData = res?.forecast?.byLagDays;
+  const rows = [
+    { bank: 'HDFC Bank Direct Rail', sla: 'T+1', lag: '1.1 days', vol: lagData && lagData['1'] ? `₹${Number(lagData['1']).toLocaleString('en-IN')}` : '₹18,40,000.00', status: 'HEALTHY', badge: 'b-green' },
+    { bank: 'ICICI Bank Payment Switch', sla: 'T+1', lag: '1.3 days', vol: lagData && lagData['2'] ? `₹${Number(lagData['2']).toLocaleString('en-IN')}` : '₹12,20,000.00', status: 'HEALTHY', badge: 'b-green' },
+    { bank: 'Axis Bank Corporate Rail', sla: 'T+2', lag: '2.4 days', vol: lagData && lagData['3'] ? `₹${Number(lagData['3']).toLocaleString('en-IN')}` : '₹8,10,000.00', status: 'SLIGHT LAG', badge: 'b-amber' },
+    { bank: 'State Bank of India (SBI)', sla: 'T+2', lag: '3.1 days', vol: lagData && lagData['0'] ? `₹${Number(lagData['0']).toLocaleString('en-IN')}` : '₹4,50,000.00', status: 'SLA BREACH', badge: 'b-red' },
+  ];
+  tbody.innerHTML = rows.map(r => `<tr>
+    <td>${r.bank}</td>
+    <td>${r.sla}</td>
+    <td>${r.lag}</td>
+    <td>${r.vol}</td>
+    <td><span class="badge-tag ${r.badge}">${r.status}</span></td>
+  </tr>`).join('');
 }
 
 function renderReconTable() {
