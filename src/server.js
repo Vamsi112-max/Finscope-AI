@@ -21,12 +21,14 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const DATA_FILE = path.join(__dirname, '..', 'data', 'transactions.json');
-const AUDIT_DIR = path.join(__dirname, '..', 'audit');
+const AUDIT_DIR = process.env.VERCEL ? path.join('/tmp', 'audit') : path.join(__dirname, '..', 'audit');
 const CORR_FILE = path.join(AUDIT_DIR, 'corrections.json');
 const CACHE_DIR = path.join(AUDIT_DIR, 'cache');
 
 [AUDIT_DIR, CACHE_DIR].forEach(d => {
-  if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
+  if (!fs.existsSync(d)) {
+    try { fs.mkdirSync(d, { recursive: true }); } catch {}
+  }
 });
 
 function load(file, fallback = null) {
@@ -312,8 +314,10 @@ app.post('/api/run', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}
 
 module.exports = app;
