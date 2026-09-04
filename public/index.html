@@ -754,6 +754,166 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); animation: toastIn 0.25s ease-out;
 }
 @keyframes toastIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.btn-mobile-menu {
+  display: none;
+  align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--bg-surface-2); border: 1px solid var(--border-subtle);
+  color: #fff; font-size: 18px; cursor: pointer; transition: all 0.2s;
+  flex-shrink: 0;
+}
+.btn-mobile-menu:hover { background: var(--bg-surface-3); border-color: var(--rz-blue); }
+
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(4, 7, 14, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}
+
+@media (max-width: 900px) {
+  .btn-mobile-menu { display: flex; }
+  
+  .app-sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0;
+    width: 290px; max-width: 86vw;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.85);
+  }
+  .app-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop.open {
+    display: block;
+  }
+  
+  .app-topbar {
+    padding: 10px 14px;
+    height: auto; min-height: 56px;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .topbar-left {
+    width: 100%; justify-content: space-between;
+  }
+  .topbar-right {
+    width: 100%; justify-content: flex-start;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px; gap: 8px;
+  }
+  .topbar-right > * { flex-shrink: 0; }
+  
+  .viewport-scroll {
+    padding: 16px 12px;
+  }
+  
+  .view-header {
+    flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 16px;
+  }
+  .view-header-text h2 { font-size: 18px; line-height: 1.3; }
+  .view-header-text p { font-size: 12px; }
+  
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-bottom: 18px;
+  }
+  .metric-card { padding: 12px 14px; }
+  .metric-val { font-size: 20px; }
+  .metric-lbl { font-size: 9.5px; }
+  
+  .agent-2x2-grid {
+    grid-template-columns: 1fr; gap: 16px;
+  }
+  .agent-live-card { min-height: auto; }
+  .card-head { padding: 12px 14px; }
+  .card-body { padding: 14px; }
+  
+  .data-table-wrap {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .fin-table {
+    min-width: 540px;
+  }
+  .fin-table th, .fin-table td {
+    padding: 9px 12px; font-size: 11.5px;
+  }
+  
+  .rail-diagram-box { padding: 16px; }
+  .rail-flow-nodes { flex-direction: column; gap: 10px; }
+  .rail-flow-nodes > div[style*="font-size:22px"] {
+    transform: rotate(90deg); margin: -4px 0;
+  }
+  .flow-node-card { width: 100%; min-width: unset; padding: 14px; }
+  
+  .copilot-chat-container { height: 460px; }
+  .chat-messages-area { padding: 14px; gap: 12px; }
+  .chat-bubble { max-width: 92%; font-size: 12.5px; padding: 10px 12px; }
+  .chat-quick-prompts { padding: 10px 14px; }
+  .chat-input-bar { padding: 10px 14px; gap: 8px; }
+  .chat-text-input { padding: 10px 12px; font-size: 12.5px; }
+  
+  .audit-drawer {
+    width: 100%; max-width: 100vw;
+    right: -100%; padding: 20px 16px;
+  }
+  
+  .landing-wrap { padding: 20px 14px 16px; }
+  .landing-hero { margin: 16px auto 20px; }
+  .badge-track { font-size: 10.5px; padding: 4px 10px; margin-bottom: 12px; }
+  .landing-title { font-size: 30px; letter-spacing: -0.5px; margin-bottom: 12px; }
+  .landing-tagline { font-size: 13.5px; line-height: 1.5; }
+  .portal-cards { grid-template-columns: 1fr; gap: 16px; margin: 14px auto 20px; }
+  .portal-card { padding: 22px 18px; border-radius: 16px; }
+  .card-icon { width: 46px; height: 46px; font-size: 20px; margin-bottom: 14px; }
+  .card-title { font-size: 20px; }
+  .card-desc { font-size: 13px; margin-bottom: 18px; }
+  .feature-bullets { gap: 8px; margin-bottom: 20px; }
+  .feature-bullets li { font-size: 12px; }
+  .portal-action-btn { padding: 12px 18px; font-size: 14px; }
+  
+  .login-screen-wrap { padding: 18px 14px; }
+  .login-top-nav { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .stepper-trail { flex-wrap: wrap; gap: 6px; font-size: 11px; }
+  .login-card-container { border-radius: 16px; margin-bottom: 16px; }
+  .auth-header { padding: 16px 18px; }
+  .auth-body { padding: 18px 16px; }
+  .demo-chips-row { flex-direction: column; gap: 6px; }
+  .demo-chip-btn { width: 100%; text-align: center; }
+  
+  .dataset-screen-wrap { padding: 18px 14px; }
+  .dataset-top-nav { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .dataset-card { padding: 20px 16px; border-radius: 16px; }
+  .staged-status-bar { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px; }
+  .staged-meta-items { flex-direction: column; align-items: flex-start; gap: 8px; }
+  
+  .doc-modal-overlay { padding: 10px; }
+  .doc-container { height: 95vh; max-height: 95vh; border-radius: 14px; }
+  .doc-header { padding: 12px 16px; }
+  .doc-header-title h2 { font-size: 15px; }
+  .doc-layout { flex-direction: column; }
+  .doc-sidebar {
+    width: 100%; max-height: 90px;
+    flex-direction: row; overflow-x: auto;
+    border-right: none; border-bottom: 1px solid var(--border-subtle);
+    padding: 8px 10px; gap: 6px;
+  }
+  .doc-nav-item { white-space: nowrap; padding: 6px 10px; font-size: 11px; }
+  .doc-content-area { padding: 18px 16px; }
+  .doc-chapter h3 { font-size: 20px; }
+  .doc-chapter h4 { font-size: 15px; }
+  .doc-chapter p { font-size: 13px; }
+  .doc-highlight-box { padding: 12px 14px; font-size: 12px; margin: 14px 0; }
+  .doc-table { font-size: 11px; }
+  .doc-table th, .doc-table td { padding: 8px 10px; }
+}
+
+@media (max-width: 480px) {
+  .metric-grid { grid-template-columns: 1fr; }
+  .landing-title { font-size: 26px; }
+  .btn-master-run { width: 100%; justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -1261,7 +1421,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
 <div class="screen" id="screenDashboard">
   <div class="app-container">
 
-    <aside class="app-sidebar">
+    <aside class="app-sidebar" id="appSidebar">
       
       <!-- Brand Header -->
       <div class="sidebar-brand">
@@ -1272,6 +1432,9 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
             <p>Razorpay Nervous Rail</p>
           </div>
         </div>
+        <button class="btn-mobile-menu" onclick="closeMobileSidebar()" aria-label="Close sidebar" style="width:30px;height:30px;font-size:14px">
+          ✕
+        </button>
       </div>
 
       <!-- Merchant Session Status Card -->
@@ -1447,11 +1610,16 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
 
     </aside>
 
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeMobileSidebar()"></div>
+
     <main class="app-main">
       
       <!-- Topbar -->
       <header class="app-topbar">
         <div class="topbar-left">
+          <button class="btn-mobile-menu" id="btnMobileMenu" onclick="toggleMobileSidebar()" aria-label="Toggle navigation menu">
+            <span>☰</span>
+          </button>
           <div class="view-breadcrumb" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
             <span class="breadcrumb-pillar" id="breadPillar">Nervous Rail Core</span>
             <span class="breadcrumb-sep">/</span>
@@ -2368,6 +2536,22 @@ function togglePillar(pillarId) {
   if (group) group.classList.toggle('open');
 }
 
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('appSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar && backdrop) {
+    const isOpen = sidebar.classList.toggle('mobile-open');
+    backdrop.classList.toggle('open', isOpen);
+  }
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.getElementById('appSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  if (backdrop) backdrop.classList.remove('open');
+}
+
 function selectSubView(subViewId, pillarName, viewName) {
   appState.activeSubView = subViewId;
 
@@ -2381,6 +2565,10 @@ function selectSubView(subViewId, pillarName, viewName) {
   document.querySelectorAll('.subview-panel').forEach(el => el.classList.remove('active-view'));
   const targetView = document.getElementById('view-' + subViewId);
   if (targetView) targetView.classList.add('active-view');
+
+  if (window.innerWidth <= 900) {
+    closeMobileSidebar();
+  }
 
   if (subViewId === '2-1') renderReconTable();
   if (subViewId === '5-2') fetchAuditLogs();
