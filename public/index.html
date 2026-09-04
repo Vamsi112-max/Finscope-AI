@@ -1003,6 +1003,68 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
   100% { width: 90px; height: 90px; opacity: 0; transform: translate(-50%, -50%); }
 }
 
+/* Pulsing Radial Tap Beacon */
+.cursor-tap-beacon {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 2px solid #06b6d4;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.45) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(6, 182, 212, 0) 75%);
+  animation: beaconExpand 0.85s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 999998;
+}
+@keyframes beaconExpand {
+  0% { width: 8px; height: 8px; opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { width: 140px; height: 140px; opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
+}
+
+/* Floating Action Bubble Attached to Virtual Cursor */
+.cursor-action-bubble {
+  position: absolute;
+  top: -34px;
+  left: 24px;
+  background: rgba(11, 17, 30, 0.96);
+  border: 1.5px solid #06b6d4;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #38bdf8;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 16px rgba(6, 182, 212, 0.6);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px) scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cursor-action-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.cursor-action-bubble::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #06b6d4;
+  box-shadow: 0 0 8px #06b6d4;
+  animation: pulseDot 1s infinite;
+}
+
+/* Physical Tap Feedback on Sidebar Buttons */
+.sub-nav-item.being-tapped {
+  background: rgba(6, 182, 212, 0.35) !important;
+  border-left: 3px solid #06b6d4 !important;
+  color: #fff !important;
+  transform: scale(0.96);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.7) !important;
+  transition: transform 0.15s ease, background 0.15s ease !important;
+}
+
 /* Spotlight element highlight */
 .ai-tour-spotlight {
   outline: 2px solid #06b6d4 !important;
@@ -1155,6 +1217,7 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
   <svg class="cursor-pointer-svg" viewBox="0 0 24 24">
     <path d="M4 2 L20 10 L12 13 L8 21 Z"/>
   </svg>
+  <div class="cursor-action-bubble" id="cursorActionBubble"></div>
 </div>
 
 <!-- Floating Tour HUD -->
@@ -3386,15 +3449,18 @@ const aiTour = {
       subview: "1-1",
       speechText: "One click — Run All 4 Agents — and the full nervous system fires in parallel. Look at the telemetry: 160 transactions monitored, 107 resolved instantly by deterministic rules at zero AI cost, 43 genuine edge cases sent to Claude for diagnosis, and 18 flagged for human sign-off. The system is already reporting a Risk Score of 100 — high — because of active duplicate payout exposure.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 300);
+        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 1200);
         const runBtn = document.getElementById('btnMasterRun');
         if (runBtn) {
+          aiTour.showCursorBubble("CLICK: Run All 4 Agents");
           await aiTour.moveCursorTo(runBtn, 600);
           aiTour.spotlight(runBtn);
           aiTour.triggerCursorClick(runBtn);
           triggerRunAllAgents();
+          await aiTour.sleep(300);
+          aiTour.hideCursorBubble();
         }
-        await aiTour.sleep(2200);
+        await aiTour.sleep(2000);
         const grid = document.querySelector('.metric-grid');
         if (grid) {
           await aiTour.moveCursorTo(grid, 700);
@@ -3410,7 +3476,7 @@ const aiTour = {
       subview: "2-1",
       speechText: "Agent 1, the Reconciliation Agent, resolves clean records with a cascading rule engine and escalates only the true exceptions to Claude. Here in the Multi-Layer Matcher, every one of the 160 pairs is classified — exact matches, date lags, rounding, duplicates, missing references, FX variance — each with a confidence score and an action.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher', 600);
+        await aiTour.clickSidebarOption('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher', 1500);
         const table = document.querySelector('#view-2-1 .fin-table') || document.getElementById('reconTableBody');
         if (table) {
           await aiTour.moveCursorTo(table, 700);
@@ -3426,7 +3492,7 @@ const aiTour = {
       subview: "3-1",
       speechText: "Agent 2, the Anomaly Watch Sentry, is running pre-settlement surveillance. It's caught 18 duplicate payout suspects worth ₹4.98 lakh, auto-throttled 8 retry storms, and triggered a hold on 7 refund spike clusters — all before a single payout clears.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix', 600);
+        await aiTour.clickSidebarOption('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix', 1500);
         const matrix = document.querySelector('#view-3-1 .metric-grid') || document.querySelector('#view-3-1 table');
         if (matrix) {
           await aiTour.moveCursorTo(matrix, 700);
@@ -3442,8 +3508,9 @@ const aiTour = {
       subview: "4-1",
       speechText: "Agent 3, the Cash Flow Forecast Agent, projects a 14-day rolling liquidity curve — ₹34.8 lakh in expected net settlement, peaking on Day 4, with no shortfall in sight.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow', 600);
-        const forecastArea = document.querySelector('#view-4-1 .metric-grid') || document.querySelector('#view-4-1');
+        await aiTour.clickSidebarOption('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow', 1400);
+        await aiTour.clickSidebarOption('4-2', 'Cash Flow Forecast', '4.2 Settlement Lag Analysis', 1400);
+        const forecastArea = document.querySelector('#view-4-2 .metric-grid') || document.querySelector('#view-4-2');
         if (forecastArea) {
           await aiTour.moveCursorTo(forecastArea, 700);
           aiTour.spotlight(forecastArea);
@@ -3458,7 +3525,7 @@ const aiTour = {
       subview: "2-2",
       speechText: "This is what separates FinScope from blind automation: hardcoded guardrails that override the AI itself. Any transaction above ₹50,000 cannot be auto-approved, no matter how confident the model is. Here, Claude scored a ₹84,500 transaction at 94% confidence — and the guardrail forced it to human escalation anyway. The AI never has unchecked authority over funds.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor', 600);
+        await aiTour.clickSidebarOption('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor', 1500);
         const row = document.querySelector('#guardrailTableBody tr:first-child');
         if (row) {
           await aiTour.moveCursorTo(row, 700);
@@ -3474,7 +3541,7 @@ const aiTour = {
       subview: "3-2",
       speechText: "And if things escalate further, a single Emergency Kill-Switch can freeze all automated settlement approvals across the Mumbai and Bangalore clusters instantly.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds', 600);
+        await aiTour.clickSidebarOption('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds', 1500);
         const killBtn = document.querySelector('#view-3-2 button') || document.querySelector('#view-3-2');
         if (killBtn) {
           await aiTour.moveCursorTo(killBtn, 700);
@@ -3490,9 +3557,10 @@ const aiTour = {
       subview: "5-1",
       speechText: "Now, Agent 4 — the Financial Copilot. I ask: 'What is our biggest risk right now?' It synthesizes across all three other agents and answers in plain language, grounded directly in the ledger — no hallucination, just cited facts pulled from the live audit data.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI', 600);
+        await aiTour.clickSidebarOption('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI', 1500);
         const promptBtn = document.querySelector('.chat-quick-prompts button') || document.getElementById('copilotInput');
         if (promptBtn) {
+          aiTour.showCursorBubble("CLICK: Risk Query");
           await aiTour.moveCursorTo(promptBtn, 600);
           aiTour.spotlight(promptBtn);
           aiTour.triggerCursorClick(promptBtn);
@@ -3502,6 +3570,8 @@ const aiTour = {
             const send = document.getElementById('btnSendCopilot');
             if (send) send.click();
           }
+          await aiTour.sleep(300);
+          aiTour.hideCursorBubble();
         }
         await aiTour.sleep(1200);
         const chatBox = document.querySelector('.copilot-chat-container');
@@ -3516,7 +3586,7 @@ const aiTour = {
       subview: "6-1",
       speechText: "Trust isn't granted uniformly — it's earned per mismatch category. Exact matches have already proven themselves and sit at Tier 3, fully autonomous. Date lags are Tier 2, supervised, needing just two more validations to graduate. But duplicate entries and FX variance stay at Tier 1 — provisional, human-verification mandatory — until the model proves consistent concordance with reviewers.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix', 600);
+        await aiTour.clickSidebarOption('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix', 1500);
         const table = document.getElementById('trustTierBody') || document.querySelector('#view-6-1 table');
         if (table) {
           await aiTour.moveCursorTo(table, 700);
@@ -3532,7 +3602,7 @@ const aiTour = {
       subview: "6-2",
       speechText: "Human reviewers can submit corrections directly here, and that feedback recalibrates the trust tiers over time — the system literally learns which categories it can be trusted with.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop', 600);
+        await aiTour.clickSidebarOption('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop', 1500);
         const formBox = document.querySelector('#view-6-2 > div:nth-child(2)') || document.querySelector('#view-6-2');
         if (formBox) {
           await aiTour.moveCursorTo(formBox, 700);
@@ -3548,12 +3618,15 @@ const aiTour = {
       subview: "5-2",
       speechText: "Every decision — rule match, LLM diagnosis, guardrail override, human correction — is written to an immutable JSON audit log, ready for SOX or RBI-grade compliance review.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer', 600);
+        await aiTour.clickSidebarOption('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer', 1500);
         const refreshBtn = document.querySelector('#view-5-2 button');
         if (refreshBtn) {
+          aiTour.showCursorBubble("CLICK: Refresh Logs");
           await aiTour.moveCursorTo(refreshBtn, 600);
           aiTour.spotlight(refreshBtn);
           aiTour.triggerCursorClick(refreshBtn);
+          await aiTour.sleep(300);
+          aiTour.hideCursorBubble();
         }
       }
     },
@@ -3565,7 +3638,8 @@ const aiTour = {
       subview: "1-1",
       speechText: "FinScope AI moves reconciliation from a days-long forensic exercise to a sub-second autonomous control loop — 107 of 160 transactions resolved instantly by rules, 43 diagnosed by Claude, and every single dollar-value decision bound by hardcoded guardrails and self-calibrating trust tiers.",
       cursorAction: async () => {
-        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 500);
+        await aiTour.clickSidebarOption('1-2', 'Nervous Rail Core', '1.2 Real-time Payment Flow', 1400);
+        await aiTour.clickSidebarOption('1-1', 'Nervous Rail Core', '1.1 System Live Pulse', 1400);
         const topKPI = document.querySelector('.metric-grid');
         if (topKPI) {
           await aiTour.moveCursorTo(topKPI, 700);
@@ -3581,12 +3655,16 @@ const aiTour = {
       subview: "1-1",
       speechText: "This is FinScope AI — the financial nervous system living inside Razorpay's payment rail. Live now at finscope-ai-iota.vercel.app. Thank you.",
       cursorAction: async () => {
-        const brand = document.querySelector('.sidebar-brand') || document.querySelector('.app-topbar');
+        const brand = document.querySelector('.sidebar-brand') || document.querySelector('.brand-identity');
         if (brand) {
+          aiTour.showCursorBubble("FinScope AI Live Node");
           await aiTour.moveCursorTo(brand, 700);
           aiTour.spotlight(brand);
+          aiTour.triggerCursorClick(brand);
+          await aiTour.sleep(1500);
+          aiTour.hideCursorBubble();
         }
-        await aiTour.sleep(3000);
+        await aiTour.sleep(2500);
         aiTour.clearSpotlight();
       }
     }
@@ -3596,7 +3674,52 @@ const aiTour = {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
 
-  async clickSidebarOption(subViewId, pillarName, viewName, delayAfter = 600) {
+  async moveCursorToCoords(x, y, duration = 650) {
+    const cursor = document.getElementById('aiVirtualCursor');
+    if (!cursor) return;
+    cursor.style.display = 'block';
+
+    const safeX = Math.max(10, Math.min(window.innerWidth - 30, x));
+    const safeY = Math.max(10, Math.min(window.innerHeight - 30, y));
+
+    cursor.style.transform = `translate(${safeX}px, ${safeY}px)`;
+    await this.sleep(duration);
+  },
+
+  showCursorBubble(text) {
+    const bubble = document.getElementById('cursorActionBubble');
+    if (bubble) {
+      bubble.textContent = text;
+      bubble.classList.add('visible');
+    }
+  },
+
+  hideCursorBubble() {
+    const bubble = document.getElementById('cursorActionBubble');
+    if (bubble) {
+      bubble.classList.remove('visible');
+    }
+  },
+
+  triggerCursorBeacon(x, y) {
+    const beacon = document.createElement('div');
+    beacon.className = 'cursor-tap-beacon';
+    beacon.style.left = `${x}px`;
+    beacon.style.top = `${y}px`;
+    document.body.appendChild(beacon);
+    setTimeout(() => beacon.remove(), 850);
+  },
+
+  triggerCursorClickCoords(x, y) {
+    const ripple = document.createElement('div');
+    ripple.className = 'cursor-click-ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 650);
+  },
+
+  async clickSidebarOption(subViewId, pillarName, viewName, holdMs = 1400) {
     if (appState.currentScreen !== 'dashboard') {
       switchScreen('dashboard');
       await this.sleep(300);
@@ -3619,21 +3742,38 @@ const aiTour = {
     const parentPillar = subnav.closest('.nav-pillar-group');
     if (parentPillar && !parentPillar.classList.contains('open')) {
       parentPillar.classList.add('open');
-      await this.sleep(120);
+      await this.sleep(150);
     }
 
-    try {
-      subnav.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-    } catch (e) {}
-    await this.sleep(200);
-
-    await this.moveCursorTo(subnav, 700);
-    this.spotlight(subnav);
-    this.triggerCursorClick(subnav);
+    const navScroll = document.querySelector('.sidebar-nav-scroll');
+    if (navScroll) {
+      const navRect = navScroll.getBoundingClientRect();
+      const subRect = subnav.getBoundingClientRect();
+      const currentScrollTop = navScroll.scrollTop;
+      const targetScrollTop = currentScrollTop + (subRect.top - navRect.top) - (navRect.height / 2) + (subRect.height / 2);
+      navScroll.scrollTo({ top: Math.max(0, targetScrollTop), behavior: 'smooth' });
+    }
     await this.sleep(220);
 
+    const rect = subnav.getBoundingClientRect();
+    const cursorX = Math.round(rect.left + 24);
+    const cursorY = Math.round(rect.top + rect.height / 2);
+
+    await this.moveCursorToCoords(cursorX, cursorY, 650);
+
+    this.showCursorBubble(`CLICK: ${viewName}`);
+    this.spotlight(subnav);
+
+    subnav.classList.add('being-tapped');
+    this.triggerCursorBeacon(cursorX, cursorY);
+    this.triggerCursorClickCoords(cursorX, cursorY);
+    await this.sleep(250);
+
     selectSubView(subViewId, pillarName, viewName);
-    await this.sleep(delayAfter);
+    subnav.classList.remove('being-tapped');
+
+    await this.sleep(holdMs);
+    this.hideCursorBubble();
   },
 
   spotlight(elementOrSelector) {
@@ -3661,49 +3801,31 @@ const aiTour = {
     if (!cursor) return;
     cursor.style.display = 'block';
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-
     const el = typeof elementOrSelector === 'string' ? document.querySelector(elementOrSelector) : elementOrSelector;
-    if (el) {
-      try {
-        const pillar = el.closest ? el.closest('.nav-pillar-group') : null;
-        if (pillar && !pillar.classList.contains('open')) pillar.classList.add('open');
-        el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
-      } catch (e) {}
+    if (!el) return;
 
-      await this.sleep(140);
+    try {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    } catch (e) {}
 
-      const rect = el.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) {
-        x = Math.max(10, Math.min(window.innerWidth - 30, rect.left + rect.width / 2));
-        y = Math.max(10, Math.min(window.innerHeight - 30, rect.top + rect.height / 2));
-      } else {
-        const parent = el.offsetParent || el.parentElement;
-        if (parent) {
-          const prect = parent.getBoundingClientRect();
-          if (prect.width > 0 && prect.height > 0) {
-            x = Math.max(10, Math.min(window.innerWidth - 30, prect.left + prect.width / 2));
-            y = Math.max(10, Math.min(window.innerHeight - 30, prect.top + prect.height / 2));
-          }
-        }
-      }
+    await this.sleep(120);
+
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) {
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      await this.moveCursorToCoords(x, y, duration);
     }
-
-    cursor.style.transform = `translate(${x}px, ${y}px)`;
-    await this.sleep(duration);
   },
 
   triggerCursorClick(elementOrSelector) {
     const cursor = document.getElementById('aiVirtualCursor');
     if (!cursor) return;
     const rect = cursor.getBoundingClientRect();
-    const ripple = document.createElement('div');
-    ripple.className = 'cursor-click-ripple';
-    ripple.style.left = `${rect.left + 4}px`;
-    ripple.style.top = `${rect.top + 4}px`;
-    document.body.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 650);
+    const x = rect.left + 4;
+    const y = rect.top + 4;
+    this.triggerCursorBeacon(x, y);
+    this.triggerCursorClickCoords(x, y);
   },
 
   speakText(text, onComplete) {
@@ -3788,10 +3910,6 @@ async function runAiTourStep(index) {
 
   if (step.screen && appState.currentScreen !== step.screen) {
     switchScreen(step.screen);
-    await aiTour.sleep(350);
-  }
-  if (step.subview && appState.activeSubView !== step.subview) {
-    selectSubView(step.subview, 'Tour', step.title);
     await aiTour.sleep(350);
   }
 
