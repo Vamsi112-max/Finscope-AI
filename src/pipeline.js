@@ -7,8 +7,13 @@ const { runMatcher } = require('./matcher');
 const { diagnosePair } = require('./llmDiagnose');
 const { applyGuardrails } = require('./guardrails');
 
-const AUDIT_DIR = path.join(__dirname, '..', 'audit');
-if (!fs.existsSync(AUDIT_DIR)) fs.mkdirSync(AUDIT_DIR, { recursive: true });
+const AUDIT_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'audit')
+  : path.join(__dirname, '..', 'audit');
+
+try {
+  if (!fs.existsSync(AUDIT_DIR)) fs.mkdirSync(AUDIT_DIR, { recursive: true });
+} catch {}
 
 function statusBadge(result) {
   if (result.resolvedBy === 'rule_engine') return result.status;
@@ -17,7 +22,9 @@ function statusBadge(result) {
 
 function writeAuditLog(runId, data) {
   const filePath = path.join(AUDIT_DIR, `run-${runId}.json`);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  } catch {}
   return filePath;
 }
 

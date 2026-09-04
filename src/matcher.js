@@ -29,6 +29,7 @@ function normaliseRef(ref) {
 }
 
 function checkExactMatch(int, ext) {
+  if (!int || !ext) return null;
   if (
     int.ref === ext.ref &&
     int.date === ext.date &&
@@ -41,6 +42,7 @@ function checkExactMatch(int, ext) {
 }
 
 function checkAmountRounding(int, ext) {
+  if (!int || !ext) return null;
   const intUSD = toUSD(int.amount, int.currency);
   const extUSD = toUSD(ext.amount, ext.currency);
   if (
@@ -60,6 +62,7 @@ function checkAmountRounding(int, ext) {
 }
 
 function checkDateLag(int, ext) {
+  if (!int || !ext) return null;
   const intUSD = toUSD(int.amount, int.currency);
   const extUSD = toUSD(ext.amount, ext.currency);
   const diff = daysDiff(int.date, ext.date);
@@ -81,6 +84,7 @@ function checkDateLag(int, ext) {
 }
 
 function checkFXVariance(int, ext) {
+  if (!int || !ext) return null;
   if (int.currency === ext.currency) return null;
   const intUSD = toUSD(int.amount, int.currency);
   const extUSD = toUSD(ext.amount, ext.currency);
@@ -104,6 +108,7 @@ function checkFXVariance(int, ext) {
 }
 
 function checkDuplicate(int, ext) {
+  if (!int || !ext) return null;
   const intUSD = toUSD(int.amount, int.currency);
   const extUSD = toUSD(ext.amount, ext.currency);
   if (
@@ -124,6 +129,7 @@ function checkDuplicate(int, ext) {
 }
 
 function checkMissingReference(int, ext) {
+  if (!ext) return null;
   const extRef = normaliseRef(ext.ref);
   if (extRef === null) {
     return {
@@ -134,6 +140,32 @@ function checkMissingReference(int, ext) {
     };
   }
   return null;
+}
+
+function normalizeInputPair(pair) {
+  if (pair.internal && pair.external) return pair;
+  const internal = pair.internal || {
+    id: pair.ledger?.id,
+    ref: pair.externalRef ?? pair.ledger?.reference ?? pair.pairId,
+    date: pair.ledger?.bookingDate ?? pair.gateway?.timestamp?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+    amount: Number(pair.ledger?.amount ?? pair.gateway?.amount ?? 0),
+    currency: pair.ledger?.currency ?? 'INR',
+    vendor: pair.ledger?.vendor ?? pair.gateway?.vendor ?? 'Unknown',
+    account: pair.ledger?.accountCode,
+  };
+  const external = pair.external || {
+    id: pair.settlement?.id,
+    ref: pair.expectedMismatch === 'missing_reference' ? null : (pair.externalRef ?? pair.settlement?.utr ?? pair.pairId),
+    date: pair.settlement?.settlementDate ?? pair.gateway?.timestamp?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+    amount: Number(pair.settlement?.amount ?? pair.gateway?.amount ?? 0),
+    currency: pair.settlement?.currency ?? 'INR',
+    vendor: pair.gateway?.vendor ?? 'Unknown',
+  };
+  return {
+    ...pair,
+    internal,
+    external,
+  };
 }
 
 function runMatcher(pairs) {
@@ -149,7 +181,8 @@ function runMatcher(pairs) {
     checkMissingReference,
   ];
 
-  for (const pair of pairs) {
+  for (const rawPair of pairs) {
+    const pair = normalizeInputPair(rawPair);
     const { pairId, internal, external, expectedMismatch } = pair;
     let matched = null;
 

@@ -3,7 +3,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const STATE_FILE = path.join(__dirname, '..', 'audit', 'trust-state.json');
+const STATE_FILE = process.env.VERCEL
+  ? path.join('/tmp', 'audit', 'trust-state.json')
+  : path.join(__dirname, '..', 'audit', 'trust-state.json');
+
+let inMemoryState = null;
 
 const MISMATCH_TYPES = [
   'exact_match', 'date_lag', 'amount_rounding',
@@ -18,18 +22,23 @@ const TIER_THRESHOLDS = [
 ];
 
 function loadState() {
+  if (inMemoryState) return inMemoryState;
   if (!fs.existsSync(STATE_FILE)) return _defaultState();
   try {
-    return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'));
+    inMemoryState = JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'));
+    return inMemoryState;
   } catch {
     return _defaultState();
   }
 }
 
 function saveState(state) {
-  const dir = path.dirname(STATE_FILE);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2));
+  inMemoryState = state;
+  try {
+    const dir = path.dirname(STATE_FILE);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2));
+  } catch {}
 }
 
 function _defaultState() {

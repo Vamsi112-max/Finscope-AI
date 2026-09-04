@@ -20,20 +20,33 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+let defaultTransactions = [];
+try {
+  defaultTransactions = require('../data/transactions.json');
+} catch {
+  defaultTransactions = [];
+}
+
+let inMemoryTransactions = null;
+let inMemoryLastRun = null;
+let inMemoryCorrections = [];
+
 const DATA_FILE = path.join(__dirname, '..', 'data', 'transactions.json');
 const AUDIT_DIR = process.env.VERCEL ? path.join('/tmp', 'audit') : path.join(__dirname, '..', 'audit');
 const CORR_FILE = path.join(AUDIT_DIR, 'corrections.json');
 const CACHE_DIR = path.join(AUDIT_DIR, 'cache');
 
 [AUDIT_DIR, CACHE_DIR].forEach(d => {
-  if (!fs.existsSync(d)) {
-    try { fs.mkdirSync(d, { recursive: true }); } catch {}
-  }
+  try {
+    if (!fs.existsSync(d)) {
+      fs.mkdirSync(d, { recursive: true });
+    }
+  } catch {}
 });
 
 function load(file, fallback = null) {
-  if (!fs.existsSync(file)) return fallback;
   try {
+    if (!fs.existsSync(file)) return fallback;
     return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch {
     return fallback;
@@ -41,19 +54,39 @@ function load(file, fallback = null) {
 }
 
 function save(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+  try {
+    const dir = path.dirname(file);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(data, null, 2));
+  } catch {}
 }
 
 function loadTransactions() {
-  return load(DATA_FILE);
+  if (inMemoryTransactions && inMemoryTransactions.length > 0) {
+    return inMemoryTransactions;
+  }
+  const fromDisk = load(DATA_FILE);
+  if (fromDisk && fromDisk.length > 0) {
+    inMemoryTransactions = fromDisk;
+    return inMemoryTransactions;
+  }
+  return defaultTransactions && defaultTransactions.length > 0 ? defaultTransactions : [];
 }
 
 function loadCorrections() {
-  return load(CORR_FILE, []);
+  const fromDisk = load(CORR_FILE, null);
+  if (fromDisk && Array.isArray(fromDisk)) return fromDisk;
+  return inMemoryCorrections;
 }
 
 function loadLastRun() {
-  return load(path.join(CACHE_DIR, 'last-run.json'));
+  if (inMemoryLastRun) return inMemoryLastRun;
+  const fromDisk = load(path.join(CACHE_DIR, 'last-run.json'));
+  if (fromDisk) {
+    inMemoryLastRun = fromDisk;
+    return inMemoryLastRun;
+  }
+  return null;
 }
 
 function isRealApiKey(key) {
@@ -88,10 +121,16 @@ app.get('/api/dataset', (req, res) => {
 });
 
 app.get('/api/download-dataset', (req, res) => {
-  if (!fs.existsSync(DATA_FILE)) return res.status(404).json({ error: 'Dataset not found' });
+  const txns = loadTransactions();
+  if (!txns || txns.length === 0) return res.status(404).json({ error: 'Dataset not found' });
   res.setHeader('Content-Disposition', 'attachment; filename="finscope-dataset.json"');
   res.setHeader('Content-Type', 'application/json');
-  fs.createReadStream(DATA_FILE).pipe(res);
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      return fs.createReadStream(DATA_FILE).pipe(res);
+    }
+  } catch {}
+  return res.send(JSON.stringify(txns, null, 2));
 });
 
 app.post('/api/upload-dataset', (req, res) => {
@@ -179,9 +218,11 @@ app.post('/api/upload-dataset', (req, res) => {
     };
   });
 
+  inMemoryTransactions = normalized;
+  inMemoryLastRun = null;
   save(DATA_FILE, normalized);
   const lastRunPath = path.join(CACHE_DIR, 'last-run.json');
-  if (fs.existsSync(lastRunPath)) fs.unlinkSync(lastRunPath);
+  try { if (fs.existsSync(lastRunPath)) fs.unlinkSync(lastRunPath); } catch {}
 
   res.json({
     success: true,
@@ -192,10 +233,16 @@ app.post('/api/upload-dataset', (req, res) => {
 
 app.post('/api/reset-sample-dataset', (req, res) => {
   try {
-    const { execSync } = require('child_process');
-    execSync('node data/generate-dataset.js', { cwd: path.join(__dirname, '..') });
+    inMemoryTransactions = null;
+    inMemoryLastRun = null;
+    if (!process.env.VERCEL) {
+      try {
+        const { execSync } = require('child_process');
+        execSync('node data/generate-dataset.js', { cwd: path.join(__dirname, '..') });
+      } catch {}
+    }
     const lastRunPath = path.join(CACHE_DIR, 'last-run.json');
-    if (fs.existsSync(lastRunPath)) fs.unlinkSync(lastRunPath);
+    try { if (fs.existsSync(lastRunPath)) fs.unlinkSync(lastRunPath); } catch {}
     const txns = loadTransactions();
     res.json({
       success: true,
@@ -209,10 +256,11 @@ app.post('/api/reset-sample-dataset', (req, res) => {
 
 app.post('/api/run-all', async (req, res) => {
   const txns = loadTransactions();
-  if (!txns) return res.status(404).json({ error: 'Dataset not found' });
+  if (!txns || txns.length === 0) return res.status(404).json({ error: 'Dataset not found' });
 
   try {
     const result = await runAll(txns);
+    inMemoryLastRun = result;
     save(path.join(CACHE_DIR, 'last-run.json'), result);
     res.json(result);
   } catch (err) {
@@ -257,22 +305,30 @@ app.get('/api/trust-state', (req, res) => {
 });
 
 app.get('/api/audits', (req, res) => {
-  if (!fs.existsSync(AUDIT_DIR)) return res.json([]);
-  const files = fs.readdirSync(AUDIT_DIR)
-    .filter(f => f.startsWith('run-') && f.endsWith('.json'))
-    .sort().reverse()
-    .map(f => ({
-      runId: f.replace(/^run-|\.json$/g, ''),
-      filename: f,
-      url: `/api/audit/${encodeURIComponent(f.replace(/^run-|\.json$/g, ''))}`
-    }));
-  res.json(files);
+  try {
+    if (!fs.existsSync(AUDIT_DIR)) return res.json([]);
+    const files = fs.readdirSync(AUDIT_DIR)
+      .filter(f => f.startsWith('run-') && f.endsWith('.json'))
+      .sort().reverse()
+      .map(f => ({
+        runId: f.replace(/^run-|\.json$/g, ''),
+        filename: f,
+        url: `/api/audit/${encodeURIComponent(f.replace(/^run-|\.json$/g, ''))}`
+      }));
+    res.json(files);
+  } catch {
+    res.json([]);
+  }
 });
 
 app.get('/api/audit/:runId', (req, res) => {
-  const fp = path.join(AUDIT_DIR, `run-${req.params.runId}.json`);
-  if (!fs.existsSync(fp)) return res.status(404).json({ error: 'Not found' });
-  res.json(load(fp));
+  try {
+    const fp = path.join(AUDIT_DIR, `run-${req.params.runId}.json`);
+    if (!fs.existsSync(fp)) return res.status(404).json({ error: 'Not found' });
+    res.json(load(fp));
+  } catch {
+    res.status(404).json({ error: 'Not found' });
+  }
 });
 
 app.post('/api/correction', (req, res) => {
@@ -294,6 +350,7 @@ app.post('/api/correction', (req, res) => {
     submittedAt: new Date().toISOString()
   };
   corrections.push(corr);
+  inMemoryCorrections = corrections;
   save(CORR_FILE, corrections);
 
   recordValidation(correctedMismatchType, agreeWithAgent === true);
@@ -305,7 +362,7 @@ app.get('/api/corrections', (req, res) => res.json(loadCorrections()));
 
 app.post('/api/run', async (req, res) => {
   const txns = loadTransactions();
-  if (!txns) return res.status(404).json({ error: 'Dataset not found' });
+  if (!txns || txns.length === 0) return res.status(404).json({ error: 'Dataset not found' });
   try {
     const result = await runPipeline(txns);
     res.json(result);
@@ -314,7 +371,18 @@ app.post('/api/run', async (req, res) => {
   }
 });
 
-if (!process.env.VERCEL) {
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/')) return next();
+  const indexPath = path.join(__dirname, '..', 'public', 'index.html');
+  try {
+    if (fs.existsSync(indexPath)) {
+      return res.sendFile(indexPath);
+    }
+  } catch {}
+  next();
+});
+
+if (require.main === module && !process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
   });

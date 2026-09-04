@@ -7,12 +7,19 @@ const { runReconciliationAgent } = require('./agents/reconciliationAgent');
 const { runAnomalyWatch } = require('./agents/anomalyWatchAgent');
 const { runCashFlowForecast } = require('./agents/cashFlowForecastAgent');
 
-const AUDIT_DIR = path.join(__dirname, '..', 'audit');
-if (!fs.existsSync(AUDIT_DIR)) fs.mkdirSync(AUDIT_DIR, { recursive: true });
+const AUDIT_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'audit')
+  : path.join(__dirname, '..', 'audit');
+
+try {
+  if (!fs.existsSync(AUDIT_DIR)) fs.mkdirSync(AUDIT_DIR, { recursive: true });
+} catch {}
 
 function writeAudit(runId, payload) {
   const p = path.join(AUDIT_DIR, `run-${runId}.json`);
-  fs.writeFileSync(p, JSON.stringify(payload, null, 2));
+  try {
+    fs.writeFileSync(p, JSON.stringify(payload, null, 2));
+  } catch {}
   return p;
 }
 
