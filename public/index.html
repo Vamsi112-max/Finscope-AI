@@ -3243,54 +3243,129 @@ const aiTour = {
   steps: [
     {
       step: 1,
-      tag: "Step 1 of 6 · System Overview",
-      title: "Vision & Real-time Inception",
+      tag: "Passage 1/18 · 0:00–0:20",
+      title: "Payment Rail Friction & The Interception Point",
       screen: "landing",
-      targetSelector: ".landing-hero",
-      speechText: "Welcome to FinScope AI — an autonomous financial nervous system engineered for modern payment rails like Razorpay. Traditional reconciliation relies on forensic bookkeeping days after batch settlement. FinScope moves reconciliation from forensic post-mortems to autonomous, pre-settlement interception.",
+      speechText: "Every high-volume payment platform faces the same silent failure: reconciliation happens after the money has already moved. Batch files lag, retries storm, refunds cluster — and by the time a human notices, it's forensic bookkeeping, not control. FinScope AI changes the interception point entirely.",
       cursorAction: async () => {
-        await aiTour.moveCursorTo(".landing-hero", 600);
-        aiTour.spotlight(".landing-hero");
-        await aiTour.sleep(2200);
-        await aiTour.moveCursorTo(".portal-cards", 700);
-        aiTour.spotlight(".portal-cards");
-      },
-      nextAction: async () => {
-        const enterBtn = document.querySelector('.portal-card.card-terminal .portal-action-btn') || document.querySelector('#screenLanding .btn-master-run');
-        if (enterBtn) {
-          await aiTour.moveCursorTo(enterBtn, 600);
-          aiTour.triggerCursorClick(enterBtn);
-          await aiTour.sleep(500);
-        }
-        switchScreen('dataset');
+        switchScreen('landing');
+        await aiTour.moveCursorTo('.badge-track', 600);
+        aiTour.spotlight('.badge-track');
+        await aiTour.sleep(2500);
+        await aiTour.moveCursorTo('.landing-title', 600);
+        aiTour.spotlight('.landing-title');
       }
     },
     {
       step: 2,
-      tag: "Step 2 of 6 · Payment Rail Feed",
-      title: "Tri-Party Ingestion & Threat Surveillance",
+      tag: "Passage 2/18 · 0:20–0:35",
+      title: "Pre-Settlement Financial Nervous System",
+      screen: "landing",
+      speechText: "FinScope AI lives inside Razorpay's payment rail itself. It doesn't wait for a settlement file three days later — it watches money at authorization, at retry, and at every failure code the switch returns.",
+      cursorAction: async () => {
+        await aiTour.moveCursorTo('.landing-tagline', 600);
+        aiTour.spotlight('.landing-tagline');
+        await aiTour.sleep(2000);
+        await aiTour.moveCursorTo('.landing-sub', 600);
+        aiTour.spotlight('.landing-sub');
+      }
+    },
+    {
+      step: 3,
+      tag: "Passage 3/18 · 0:35–0:45",
+      title: "Project Document & Terminal Gate",
+      screen: "landing",
+      speechText: "Let's step into the live Controller Terminal and watch it work on real transaction data.",
+      cursorAction: async () => {
+        const docBtn = document.querySelector('.card-docs') || document.querySelector('.btn-docs');
+        if (docBtn) {
+          await aiTour.moveCursorTo(docBtn, 600);
+          aiTour.spotlight(docBtn);
+          aiTour.triggerCursorClick(docBtn);
+          openDocModal('vision');
+          await aiTour.sleep(1800);
+          closeDocModal();
+        }
+        const signInBtn = document.querySelector('#screenLanding .btn-master-run');
+        if (signInBtn) {
+          await aiTour.moveCursorTo(signInBtn, 500);
+          aiTour.spotlight(signInBtn);
+          aiTour.triggerCursorClick(signInBtn);
+          await aiTour.sleep(400);
+        }
+        switchScreen('login');
+      }
+    },
+    {
+      step: 4,
+      tag: "Passage 4/18 · 0:45–1:00",
+      title: "Step 1 of 3: Merchant Terminal Authentication",
+      screen: "login",
+      speechText: "We authenticate as a Production Controller on the Mumbai Primary Rail Node — this is Step 1 of the 3-step onboarding flow: Credentials, Dataset Ingestion, then the live Dashboard.",
+      cursorAction: async () => {
+        switchScreen('login');
+        await aiTour.sleep(400);
+        const prodBtn = document.getElementById('btnPrefillProd');
+        if (prodBtn) {
+          await aiTour.moveCursorTo(prodBtn, 600);
+          aiTour.spotlight(prodBtn);
+          aiTour.triggerCursorClick(prodBtn);
+          fillCredentials('prod');
+        }
+        await aiTour.sleep(1600);
+        const submitBtn = document.querySelector('#authForm button[type="submit"]') || document.querySelector('#screenLogin .btn-master-run');
+        if (submitBtn) {
+          await aiTour.moveCursorTo(submitBtn, 600);
+          aiTour.spotlight(submitBtn);
+          aiTour.triggerCursorClick(submitBtn);
+          await aiTour.sleep(500);
+          proceedToDataset();
+        } else {
+          switchScreen('dataset');
+        }
+      }
+    },
+    {
+      step: 5,
+      tag: "Passage 5/18 · 1:00–1:25",
+      title: "Step 2 of 3: Pre-calibrated 160-Txn Dataset",
       screen: "dataset",
-      targetSelector: "#screenDataset .staged-status-bar",
-      speechText: "We arrive at the Ingestion Gateway. Here, 160 tri-party transactions are ingested across Gateway Authorizations, Bank Clearing UTRs, and General Ledger double-entry records. Notice our pre-flight threat surveillance: 5 critical anomaly vectors are already armed, detecting duplicate payouts, gateway retry storms, and merchant refund spikes before matching begins.",
+      speechText: "FinScope ships with a pre-calibrated 160-transaction Razorpay buildathon dataset. It's deliberately adversarial: 55 clean exact matches, 33 settlement date lags, 22 rounding deltas, and 18 duplicate payout suspects worth nearly ₹5 lakh — plus 8 retry storms, 7 refund cascades, and 5 decline-code drifts baked in.",
       cursorAction: async () => {
         switchScreen('dataset');
         await aiTour.sleep(400);
-        const stagedBox = document.getElementById('stagedCount') || document.querySelector('#screenDataset .staged-status-bar');
-        if (stagedBox) {
-          await aiTour.moveCursorTo(stagedBox, 600);
-          aiTour.spotlight(stagedBox);
+        const card = document.querySelector('.dataset-card') || document.getElementById('stagedCount');
+        if (card) {
+          await aiTour.moveCursorTo(card, 600);
+          aiTour.spotlight(card);
         }
-        await aiTour.sleep(2400);
-        const armedItem = document.querySelector('.staged-meta-item:nth-child(3)') || document.getElementById('stagedStatusBadge');
-        if (armedItem) {
-          await aiTour.moveCursorTo(armedItem, 600);
-          aiTour.spotlight(armedItem);
+        await aiTour.sleep(3000);
+        const metaBox = document.querySelector('.staged-meta-items');
+        if (metaBox) {
+          await aiTour.moveCursorTo(metaBox, 600);
+          aiTour.spotlight(metaBox);
         }
-      },
-      nextAction: async () => {
+      }
+    },
+    {
+      step: 6,
+      tag: "Passage 6/18 · 1:25–1:40",
+      title: "Staging Rails & Launching Controller Dashboard",
+      screen: "dataset",
+      speechText: "We load the dataset — all three payment rails, Gateway, Settlement, and Ledger, are now mapped, and 5 anomaly vectors are armed. Let's launch the Controller Dashboard.",
+      cursorAction: async () => {
+        const useBtn = document.querySelector('[onclick="handleUseSampleDataset()"]');
+        if (useBtn) {
+          await aiTour.moveCursorTo(useBtn, 600);
+          aiTour.spotlight(useBtn);
+          aiTour.triggerCursorClick(useBtn);
+          handleUseSampleDataset();
+        }
+        await aiTour.sleep(1500);
         const launchBtn = document.querySelector('[onclick="proceedToDashboard()"]') || document.querySelector('#screenDataset .btn-master-run');
         if (launchBtn) {
           await aiTour.moveCursorTo(launchBtn, 600);
+          aiTour.spotlight(launchBtn);
           aiTour.triggerCursorClick(launchBtn);
           await aiTour.sleep(500);
           proceedToDashboard();
@@ -3300,128 +3375,281 @@ const aiTour = {
       }
     },
     {
-      step: 3,
-      tag: "Step 3 of 6 · Autonomous Execution",
-      title: "Triggering the 4-Agent Pipeline in Real Time",
+      step: 7,
+      tag: "Passage 7/18 · 1:40–2:00",
+      title: "Section 1.1: System Live Pulse & Autonomous Parallel Fire",
       screen: "dashboard",
       subview: "1-1",
-      targetSelector: "#btnMasterRun",
-      speechText: "Now we enter the Controller Dashboard. Let's trigger all 4 autonomous agents to reconcile the active payment rail in real time. Look at our top telemetry: 160 records are analyzed in seconds. Clicking any transaction opens our Slide-In Ledger Inspector, detailing the exact tri-party delta between Gateway, Bank Settlement, and Ledger.",
+      speechText: "One click — Run All 4 Agents — and the full nervous system fires in parallel. Look at the telemetry: 160 transactions monitored, 107 resolved instantly by deterministic rules at zero AI cost, 43 genuine edge cases sent to Claude for diagnosis, and 18 flagged for human sign-off. The system is already reporting a Risk Score of 100 — high — because of active duplicate payout exposure.",
       cursorAction: async () => {
         switchScreen('dashboard');
         selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
         await aiTour.sleep(400);
         const runBtn = document.getElementById('btnMasterRun');
         if (runBtn) {
-          await aiTour.moveCursorTo(runBtn, 700);
+          await aiTour.moveCursorTo(runBtn, 600);
           aiTour.spotlight(runBtn);
           aiTour.triggerCursorClick(runBtn);
           triggerRunAllAgents();
         }
-        await aiTour.sleep(2200);
-        const metrics = document.querySelector('.metric-grid');
-        if (metrics) {
-          await aiTour.moveCursorTo(metrics, 700);
-          aiTour.spotlight(metrics);
-        }
-        await aiTour.sleep(2400);
-        const firstRow = document.querySelector('#reconTableBody tr');
-        if (firstRow) {
-          await aiTour.moveCursorTo(firstRow, 600);
-          aiTour.triggerCursorClick(firstRow);
-          firstRow.click();
-          await aiTour.sleep(1500);
-          const drawer = document.getElementById('detailDrawer');
-          if (drawer) aiTour.spotlight(drawer);
-          await aiTour.sleep(2400);
-          const closeBtn = document.querySelector('.drawer-close');
-          if (closeBtn) {
-            await aiTour.moveCursorTo(closeBtn, 500);
-            aiTour.triggerCursorClick(closeBtn);
-            closeDetailDrawer();
-          }
+        await aiTour.sleep(2500);
+        const grid = document.querySelector('.metric-grid');
+        if (grid) {
+          await aiTour.moveCursorTo(grid, 700);
+          aiTour.spotlight(grid);
         }
       }
     },
     {
-      step: 4,
-      tag: "Step 4 of 6 · Threat Surveillance",
-      title: "Anomaly Watch Sentry & Threat Matrix",
+      step: 8,
+      tag: "Passage 8/18 · 2:00–2:20",
+      title: "Agent 1: Multi-Layer Reconciliation Matcher",
+      screen: "dashboard",
+      subview: "2-1",
+      speechText: "Agent 1, the Reconciliation Agent, resolves clean records with a cascading rule engine and escalates only the true exceptions to Claude. Here in the Multi-Layer Matcher, every one of the 160 pairs is classified — exact matches, date lags, rounding, duplicates, missing references, FX variance — each with a confidence score and an action.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-2-1');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('2-1', 'Autonomous Recon Engine', '2.1 Multi-layer Matcher');
+        await aiTour.sleep(600);
+        const table = document.querySelector('#view-2-1 .fin-table') || document.getElementById('reconTableBody');
+        if (table) {
+          await aiTour.moveCursorTo(table, 700);
+          aiTour.spotlight(table);
+        }
+      }
+    },
+    {
+      step: 9,
+      tag: "Passage 9/18 · 2:20–2:40",
+      title: "Agent 2: Anomaly Watch Sentry & Threat Surveillance",
       screen: "dashboard",
       subview: "3-1",
-      targetSelector: "#subnav-3-1",
-      speechText: "Agent 2 is our Anomaly Watch Sentry. It continuously monitors transaction frequency and failure velocity. It has caught 18 duplicate payout suspects, 8 retry storms, and 7 abnormal refund spikes, halting potential revenue leakage before ledger closing.",
+      speechText: "Agent 2, the Anomaly Watch Sentry, is running pre-settlement surveillance. It's caught 18 duplicate payout suspects worth ₹4.98 lakh, auto-throttled 8 retry storms, and triggered a hold on 7 refund spike clusters — all before a single payout clears.",
       cursorAction: async () => {
         const subnav = document.getElementById('subnav-3-1');
         if (subnav) {
-          await aiTour.moveCursorTo(subnav, 700);
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
           aiTour.triggerCursorClick(subnav);
         }
         selectSubView('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix');
         await aiTour.sleep(600);
-        const matrixGrid = document.querySelector('#view-3-1 .metric-grid');
-        if (matrixGrid) {
-          await aiTour.moveCursorTo(matrixGrid, 700);
-          aiTour.spotlight(matrixGrid);
+        const matrix = document.querySelector('#view-3-1 .metric-grid') || document.querySelector('#view-3-1 table');
+        if (matrix) {
+          await aiTour.moveCursorTo(matrix, 700);
+          aiTour.spotlight(matrix);
         }
       }
     },
     {
-      step: 5,
-      tag: "Step 5 of 6 · Intelligent Reasoning",
-      title: "Financial Copilot & RAG Chat Intelligence",
+      step: 10,
+      tag: "Passage 10/18 · 2:40–2:50",
+      title: "Agent 3: Liquidity & Cash Flow Forecast Sentry",
+      screen: "dashboard",
+      subview: "4-1",
+      speechText: "Agent 3, the Cash Flow Forecast Agent, projects a 14-day rolling liquidity curve — ₹34.8 lakh in expected net settlement, peaking on Day 4, with no shortfall in sight.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-4-1');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('4-1', 'Cash Flow Forecast', '4.1 14-Day Predictive Flow');
+        await aiTour.sleep(600);
+        const forecastArea = document.querySelector('#view-4-1 .metric-grid') || document.querySelector('#view-4-1');
+        if (forecastArea) {
+          await aiTour.moveCursorTo(forecastArea, 700);
+          aiTour.spotlight(forecastArea);
+        }
+      }
+    },
+    {
+      step: 11,
+      tag: "Passage 11/18 · 2:50–3:10",
+      title: "Section 2.2: Hardcoded Deterministic Guardrail Interceptor",
+      screen: "dashboard",
+      subview: "2-2",
+      speechText: "This is what separates FinScope from blind automation: hardcoded guardrails that override the AI itself. Any transaction above ₹50,000 cannot be auto-approved, no matter how confident the model is. Here, Claude scored a ₹84,500 transaction at 94% confidence — and the guardrail forced it to human escalation anyway. The AI never has unchecked authority over funds.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-2-2');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('2-2', 'Autonomous Recon Engine', '2.2 Guardrail Interceptor');
+        await aiTour.sleep(600);
+        const row = document.querySelector('#guardrailTableBody tr:first-child');
+        if (row) {
+          await aiTour.moveCursorTo(row, 700);
+          aiTour.spotlight(row);
+        }
+      }
+    },
+    {
+      step: 12,
+      tag: "Passage 12/18 · 3:10–3:20",
+      title: "Section 3.2: Autonomous Kill-Switch & Settlement Holds",
+      screen: "dashboard",
+      subview: "3-2",
+      speechText: "And if things escalate further, a single Emergency Kill-Switch can freeze all automated settlement approvals across the Mumbai and Bangalore clusters instantly.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-3-2');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('3-2', 'Anomaly Watch & Fraud Sentry', '3.2 Kill-Switch & Holds');
+        await aiTour.sleep(600);
+        const killBtn = document.querySelector('#view-3-2 button') || document.querySelector('#view-3-2');
+        if (killBtn) {
+          await aiTour.moveCursorTo(killBtn, 700);
+          aiTour.spotlight(killBtn);
+        }
+      }
+    },
+    {
+      step: 13,
+      tag: "Passage 13/18 · 3:20–3:40",
+      title: "Agent 4: Financial Copilot & Live RAG Grounding",
       screen: "dashboard",
       subview: "5-1",
-      targetSelector: "#subnav-5-1",
-      speechText: "Now let's consult Agent 4: our Financial Copilot. Controllers don't need to query SQL or correlate audit logs. We ask: What is our reconciliation status? The Copilot synthesizes insights across all three agents, quoting exact ledger references with zero hallucinations.",
+      speechText: "Now, Agent 4 — the Financial Copilot. I ask: 'What is our biggest risk right now?' It synthesizes across all three other agents and answers in plain language, grounded directly in the ledger — no hallucination, just cited facts pulled from the live audit data.",
       cursorAction: async () => {
         const subnav = document.getElementById('subnav-5-1');
         if (subnav) {
-          await aiTour.moveCursorTo(subnav, 700);
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
           aiTour.triggerCursorClick(subnav);
         }
-        selectSubView('5-1', 'Financial Copilot & Chat', '5.1 Copilot Reasoning Console');
+        selectSubView('5-1', 'Financial Copilot & AI Audit', '5.1 Conversational AI');
         await aiTour.sleep(600);
-        const quickPrompt = document.querySelector('.chat-quick-prompts button') || document.getElementById('copilotInput');
-        if (quickPrompt) {
-          await aiTour.moveCursorTo(quickPrompt, 600);
-          aiTour.spotlight(quickPrompt);
-          aiTour.triggerCursorClick(quickPrompt);
-          if (quickPrompt.onclick) quickPrompt.click();
+        const promptBtn = document.querySelector('.chat-quick-prompts button') || document.getElementById('copilotInput');
+        if (promptBtn) {
+          await aiTour.moveCursorTo(promptBtn, 600);
+          aiTour.spotlight(promptBtn);
+          aiTour.triggerCursorClick(promptBtn);
+          if (promptBtn.onclick) promptBtn.click();
           else if (document.getElementById('copilotInput')) {
-            document.getElementById('copilotInput').value = "What is our current reconciliation status and biggest risk?";
-            const sendBtn = document.getElementById('btnSendCopilot');
-            if (sendBtn) sendBtn.click();
+            document.getElementById('copilotInput').value = "What is our biggest risk right now?";
+            const send = document.getElementById('btnSendCopilot');
+            if (send) send.click();
           }
         }
         await aiTour.sleep(1200);
-        const chatContainer = document.querySelector('.copilot-chat-container');
-        if (chatContainer) aiTour.spotlight(chatContainer);
+        const chatBox = document.querySelector('.copilot-chat-container');
+        if (chatBox) aiTour.spotlight(chatBox);
       }
     },
     {
-      step: 6,
-      tag: "Step 6 of 6 · Autonomy & Compliance",
-      title: "3-Tier Adaptive Trust Engine & Conclusion",
+      step: 14,
+      tag: "Passage 14/18 · 3:40–4:05",
+      title: "Section 6.1: 3-Tier Adaptive Autonomy Level Matrix",
       screen: "dashboard",
       subview: "6-1",
-      targetSelector: "#subnav-6-1",
-      speechText: "Safety is guaranteed by our 3-Tier Adaptive Trust Engine. Tier 1 mandates human supervisor sign-off. As human reviewers validate repetitive patterns, the AI graduates to Tier 2 conditional approval, and finally Tier 3 autonomous Straight-Through Processing. FinScope AI cuts reconciliation time from days to seconds. You can now explore freely, or restart the tour anytime from the top bar!",
+      speechText: "Trust isn't granted uniformly — it's earned per mismatch category. Exact matches have already proven themselves and sit at Tier 3, fully autonomous. Date lags are Tier 2, supervised, needing just two more validations to graduate. But duplicate entries and FX variance stay at Tier 1 — provisional, human-verification mandatory — until the model proves consistent concordance with reviewers.",
       cursorAction: async () => {
         const subnav = document.getElementById('subnav-6-1');
         if (subnav) {
-          await aiTour.moveCursorTo(subnav, 700);
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
           aiTour.triggerCursorClick(subnav);
         }
-        selectSubView('6-1', 'Trust & Feedback Loops', '6.1 3-Tier Adaptive Trust Engine');
+        selectSubView('6-1', 'Trust Tier Matrix & Feedback', '6.1 Autonomy Matrix');
         await aiTour.sleep(600);
-        const trustTable = document.getElementById('trustTierBody') || document.querySelector('#view-6-1 table');
-        if (trustTable) {
-          await aiTour.moveCursorTo(trustTable, 700);
-          aiTour.spotlight(trustTable);
+        const table = document.getElementById('trustTierBody') || document.querySelector('#view-6-1 table');
+        if (table) {
+          await aiTour.moveCursorTo(table, 700);
+          aiTour.spotlight(table);
+        }
+      }
+    },
+    {
+      step: 15,
+      tag: "Passage 15/18 · 4:05–4:20",
+      title: "Section 6.2: Human Feedback Loop & Active Calibration",
+      screen: "dashboard",
+      subview: "6-2",
+      speechText: "Human reviewers can submit corrections directly here, and that feedback recalibrates the trust tiers over time — the system literally learns which categories it can be trusted with.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-6-2');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('6-2', 'Trust Tier Matrix & Feedback', '6.2 Human Feedback Loop');
+        await aiTour.sleep(600);
+        const formBox = document.querySelector('#view-6-2 > div:nth-child(2)') || document.querySelector('#view-6-2');
+        if (formBox) {
+          await aiTour.moveCursorTo(formBox, 700);
+          aiTour.spotlight(formBox);
+        }
+      }
+    },
+    {
+      step: 16,
+      tag: "Passage 16/18 · 4:20–4:30",
+      title: "Section 5.2: Audit Log Explorer & Immutable Cryptographic Trails",
+      screen: "dashboard",
+      subview: "5-2",
+      speechText: "Every decision — rule match, LLM diagnosis, guardrail override, human correction — is written to an immutable JSON audit log, ready for SOX or RBI-grade compliance review.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-5-2');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 600);
+          aiTour.spotlight(subnav);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('5-2', 'Financial Copilot & AI Audit', '5.2 Audit Log Explorer');
+        await aiTour.sleep(600);
+        const refreshBtn = document.querySelector('#view-5-2 button');
+        if (refreshBtn) {
+          await aiTour.moveCursorTo(refreshBtn, 600);
+          aiTour.spotlight(refreshBtn);
+          aiTour.triggerCursorClick(refreshBtn);
+        }
+      }
+    },
+    {
+      step: 17,
+      tag: "Passage 17/18 · 4:30–4:50",
+      title: "Return to Controller Dashboard: Sub-Second Control Loop",
+      screen: "dashboard",
+      subview: "1-1",
+      speechText: "FinScope AI moves reconciliation from a days-long forensic exercise to a sub-second autonomous control loop — 107 of 160 transactions resolved instantly by rules, 43 diagnosed by Claude, and every single dollar-value decision bound by hardcoded guardrails and self-calibrating trust tiers.",
+      cursorAction: async () => {
+        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
+        await aiTour.sleep(500);
+        const topKPI = document.querySelector('.metric-grid');
+        if (topKPI) {
+          await aiTour.moveCursorTo(topKPI, 700);
+          aiTour.spotlight(topKPI);
+        }
+      }
+    },
+    {
+      step: 18,
+      tag: "Passage 18/18 · 4:50–5:00",
+      title: "Conclusion: Autonomous Financial Nervous System Live",
+      screen: "dashboard",
+      subview: "1-1",
+      speechText: "This is FinScope AI — the financial nervous system living inside Razorpay's payment rail. Live now at finscope-ai-iota.vercel.app. Thank you.",
+      cursorAction: async () => {
+        const brand = document.querySelector('.sidebar-brand') || document.querySelector('.app-topbar');
+        if (brand) {
+          await aiTour.moveCursorTo(brand, 700);
+          aiTour.spotlight(brand);
         }
         await aiTour.sleep(3000);
-        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
+        aiTour.clearSpotlight();
       }
     }
   ],
@@ -3490,7 +3718,7 @@ const aiTour = {
     }
 
     if (!this.speechSynth || this.muted) {
-      const readingDuration = Math.max(3500, text.length * 60);
+      const readingDuration = Math.max(4000, text.length * 75);
       this.timerId = setTimeout(() => {
         if (onComplete) onComplete();
       }, readingDuration);
@@ -3500,7 +3728,7 @@ const aiTour = {
     const utter = new SpeechSynthesisUtterance(text);
     this.currentUtterance = utter;
     utter.lang = 'en-US';
-    utter.rate = 1.03;
+    utter.rate = 0.98;
     utter.pitch = 1.0;
 
     const voices = this.speechSynth.getVoices ? this.speechSynth.getVoices() : [];
@@ -3517,7 +3745,7 @@ const aiTour = {
     utter.onend = finish;
     utter.onerror = finish;
 
-    const safetyMs = Math.max(4500, text.length * 85);
+    const safetyMs = Math.max(5000, text.length * 105);
     this.timerId = setTimeout(finish, safetyMs);
 
     try {
