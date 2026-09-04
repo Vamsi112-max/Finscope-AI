@@ -914,11 +914,274 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
   .landing-title { font-size: 26px; }
   .btn-master-run { width: 100%; justify-content: center; }
 }
+
+/* AI Interactive Walkthrough & Virtual Cursor System */
+.btn-ai-tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(6, 182, 212, 0.25) 50%, rgba(45, 156, 219, 0.25) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.25), inset 0 0 12px rgba(139, 92, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+.btn-ai-tour:hover {
+  transform: translateY(-1px);
+  border-color: #06b6d4;
+  box-shadow: 0 0 24px rgba(6, 182, 212, 0.5), inset 0 0 16px rgba(139, 92, 246, 0.35);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(6, 182, 212, 0.4) 50%, rgba(45, 156, 219, 0.4) 100%);
+}
+.btn-ai-tour .tour-wave-icon {
+  font-size: 14px;
+  display: inline-block;
+  animation: floatMic 2s ease-in-out infinite;
+}
+@keyframes floatMic {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(-6deg); }
+}
+.tour-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDot 1.5s infinite;
+}
+
+/* Virtual AI Cursor */
+#aiVirtualCursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  pointer-events: none;
+  z-index: 999999;
+  display: none;
+  transform: translate(0, 0);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 4px 14px rgba(6, 182, 212, 0.7));
+}
+#aiVirtualCursor .cursor-pointer-svg {
+  width: 28px; height: 28px;
+  fill: #06b6d4;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+#aiVirtualCursor .cursor-radar-ring {
+  position: absolute;
+  top: -12px; left: -12px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 2px dashed rgba(6, 182, 212, 0.6);
+  animation: spinRadar 4s linear infinite;
+  pointer-events: none;
+}
+@keyframes spinRadar {
+  0% { transform: rotate(0deg) scale(0.9); opacity: 0.6; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+  100% { transform: rotate(360deg) scale(0.9); opacity: 0.6; }
+}
+.cursor-click-ripple {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 2px solid #06b6d4;
+  background: rgba(6, 182, 212, 0.25);
+  animation: rippleExpand 0.6s ease-out forwards;
+  z-index: 999998;
+}
+@keyframes rippleExpand {
+  0% { width: 0; height: 0; opacity: 1; transform: translate(-50%, -50%); }
+  100% { width: 90px; height: 90px; opacity: 0; transform: translate(-50%, -50%); }
+}
+
+/* Spotlight element highlight */
+.ai-tour-spotlight {
+  outline: 2px solid #06b6d4 !important;
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.65), 0 0 10px rgba(139, 92, 246, 0.5) !important;
+  transition: all 0.4s ease !important;
+  position: relative;
+  z-index: 99990 !important;
+  animation: spotlightGlow 2s infinite alternate ease-in-out;
+}
+@keyframes spotlightGlow {
+  0% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+  100% { box-shadow: 0 0 45px rgba(6, 182, 212, 0.85), 0 0 15px rgba(139, 92, 246, 0.6); }
+}
+
+/* Floating Tour HUD */
+#aiTourHUD {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(140%);
+  width: min(780px, 94vw);
+  background: rgba(11, 17, 30, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 18px;
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(6, 182, 212, 0.2);
+  z-index: 999995;
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+#aiTourHUD.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.tour-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tour-hud-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tour-voice-orb {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.6);
+  animation: orbPulse 1.8s infinite ease-in-out;
+}
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(6, 182, 212, 0.5); }
+  50% { transform: scale(1.12); box-shadow: 0 0 22px rgba(139, 92, 246, 0.8); }
+}
+.tour-hud-step-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 800;
+  color: #06b6d4;
+}
+.tour-hud-step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.tour-hud-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tour-ctrl-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tour-ctrl-btn:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: #06b6d4;
+  color: #fff;
+}
+.tour-ctrl-btn.exit-btn {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.tour-ctrl-btn.exit-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.tour-subtitles-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #e2e8f0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.tour-subtitles-box .live-text {
+  color: #ffffff;
+  font-weight: 500;
+}
+.tour-progress-bar-wrap {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.tour-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6, #10b981);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
 </style>
 </head>
 <body>
 <div class="bg-ambient"></div>
 <div class="toast-shelf" id="toastShelf"></div>
+
+<!-- Virtual AI Cursor Element -->
+<div id="aiVirtualCursor">
+  <div class="cursor-radar-ring"></div>
+  <svg class="cursor-pointer-svg" viewBox="0 0 24 24">
+    <path d="M4 2 L20 10 L12 13 L8 21 Z"/>
+  </svg>
+</div>
+
+<!-- Floating Tour HUD -->
+<div id="aiTourHUD">
+  <div class="tour-hud-header">
+    <div class="tour-hud-title-box">
+      <div class="tour-voice-orb">🎙️</div>
+      <div>
+        <div class="tour-hud-step-tag" id="tourHudStepTag">Step 1 of 6 · System Overview</div>
+        <div class="tour-hud-step-title" id="tourHudTitle">Vision & Real-time Inception</div>
+      </div>
+    </div>
+    <div class="tour-hud-controls">
+      <button class="tour-ctrl-btn" id="btnTourPrev" onclick="prevAiTourStep()" title="Previous Step">⏮ Prev</button>
+      <button class="tour-ctrl-btn" id="btnTourPlayPause" onclick="toggleAiTourPause()" title="Pause or Resume Tour">⏸ Pause</button>
+      <button class="tour-ctrl-btn" id="btnTourNext" onclick="nextAiTourStep()" title="Next Step">Next ⏭</button>
+      <button class="tour-ctrl-btn" id="btnTourMute" onclick="toggleAiTourMute()" title="Toggle Voice Mute">🔊 Voice</button>
+      <button class="tour-ctrl-btn exit-btn" onclick="stopAiInteractiveTour()" title="Exit Walkthrough">✕ Exit</button>
+    </div>
+  </div>
+  <div class="tour-subtitles-box">
+    <span class="live-text" id="tourSubtitlesText">Initializing FinScope AI Guided Tour…</span>
+  </div>
+  <div class="tour-progress-bar-wrap">
+    <div class="tour-progress-bar-fill" id="tourProgressBar"></div>
+  </div>
+</div>
 
 <div class="screen active-screen" id="screenLanding">
   <div class="landing-wrap">
@@ -932,7 +1195,12 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
           <span style="font-size:10px;color:var(--text-muted);display:block">Razorpay Payment Rail Nervous System</span>
         </div>
       </div>
-      <div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <button class="btn-ai-tour" id="btnAiTourLanding" onclick="startAiInteractiveTour()">
+          <span class="tour-wave-icon">🎙️</span>
+          <span>AI Explainer Walkthrough</span>
+          <span class="tour-live-dot"></span>
+        </button>
         <button class="btn-master-run" style="padding:9px 22px;font-size:13px" onclick="switchScreen('login')">
           <span>Sign In</span> <span>🔐</span>
         </button>
@@ -1638,6 +1906,12 @@ html, body { height: 100%; background: var(--bg-dark); color: var(--text-main); 
 
           <button class="btn-sidebar-util" style="padding:7px 12px;font-size:11px" onclick="switchScreen('dataset')">
             <span>📂</span> Dataset: <strong id="topbarDatasetCount" style="color:var(--rz-blue);margin-left:4px">160 Txns</strong>
+          </button>
+
+          <button class="btn-ai-tour" id="btnAiTourDashboard" onclick="startAiInteractiveTour()" title="Start automated AI guided walkthrough">
+            <span class="tour-wave-icon">🎙️</span>
+            <span>AI Guided Tour</span>
+            <span class="tour-live-dot"></span>
           </button>
 
           <button class="btn-master-run" id="btnMasterRun" onclick="triggerRunAllAgents()">
@@ -2948,8 +3222,439 @@ document.addEventListener('keydown', e => {
     closeAuthModal();
     closeDocModal();
     closeDetailDrawer();
+    stopAiInteractiveTour();
   }
 });
+
+// =========================================================================
+// FinScope AI — Interactive Guided Tour with Speech & Virtual Cursor
+// =========================================================================
+
+const aiTour = {
+  running: false,
+  paused: false,
+  muted: false,
+  currentStepIndex: 0,
+  speechSynth: window.speechSynthesis || null,
+  currentUtterance: null,
+  timerId: null,
+  activeSpotlightEl: null,
+
+  steps: [
+    {
+      step: 1,
+      tag: "Step 1 of 6 · System Overview",
+      title: "Vision & Real-time Inception",
+      screen: "landing",
+      targetSelector: ".landing-hero",
+      speechText: "Welcome to FinScope AI — an autonomous financial nervous system engineered for modern payment rails like Razorpay. Traditional reconciliation relies on forensic bookkeeping days after batch settlement. FinScope moves reconciliation from forensic post-mortems to autonomous, pre-settlement interception.",
+      cursorAction: async () => {
+        await aiTour.moveCursorTo(".landing-hero", 600);
+        aiTour.spotlight(".landing-hero");
+        await aiTour.sleep(2200);
+        await aiTour.moveCursorTo(".portal-cards", 700);
+        aiTour.spotlight(".portal-cards");
+      },
+      nextAction: async () => {
+        const enterBtn = document.querySelector('.portal-card.card-terminal .portal-action-btn') || document.querySelector('#screenLanding .btn-master-run');
+        if (enterBtn) {
+          await aiTour.moveCursorTo(enterBtn, 600);
+          aiTour.triggerCursorClick(enterBtn);
+          await aiTour.sleep(500);
+        }
+        switchScreen('dataset');
+      }
+    },
+    {
+      step: 2,
+      tag: "Step 2 of 6 · Payment Rail Feed",
+      title: "Tri-Party Ingestion & Threat Surveillance",
+      screen: "dataset",
+      targetSelector: "#screenDataset .staged-status-bar",
+      speechText: "We arrive at the Ingestion Gateway. Here, 160 tri-party transactions are ingested across Gateway Authorizations, Bank Clearing UTRs, and General Ledger double-entry records. Notice our pre-flight threat surveillance: 5 critical anomaly vectors are already armed, detecting duplicate payouts, gateway retry storms, and merchant refund spikes before matching begins.",
+      cursorAction: async () => {
+        switchScreen('dataset');
+        await aiTour.sleep(400);
+        const stagedBox = document.getElementById('stagedCount') || document.querySelector('#screenDataset .staged-status-bar');
+        if (stagedBox) {
+          await aiTour.moveCursorTo(stagedBox, 600);
+          aiTour.spotlight(stagedBox);
+        }
+        await aiTour.sleep(2400);
+        const armedItem = document.querySelector('.staged-meta-item:nth-child(3)') || document.getElementById('stagedStatusBadge');
+        if (armedItem) {
+          await aiTour.moveCursorTo(armedItem, 600);
+          aiTour.spotlight(armedItem);
+        }
+      },
+      nextAction: async () => {
+        const launchBtn = document.querySelector('[onclick="proceedToDashboard()"]') || document.querySelector('#screenDataset .btn-master-run');
+        if (launchBtn) {
+          await aiTour.moveCursorTo(launchBtn, 600);
+          aiTour.triggerCursorClick(launchBtn);
+          await aiTour.sleep(500);
+          proceedToDashboard();
+        } else {
+          switchScreen('dashboard');
+        }
+      }
+    },
+    {
+      step: 3,
+      tag: "Step 3 of 6 · Autonomous Execution",
+      title: "Triggering the 4-Agent Pipeline in Real Time",
+      screen: "dashboard",
+      subview: "1-1",
+      targetSelector: "#btnMasterRun",
+      speechText: "Now we enter the Controller Dashboard. Let's trigger all 4 autonomous agents to reconcile the active payment rail in real time. Look at our top telemetry: 160 records are analyzed in seconds. Clicking any transaction opens our Slide-In Ledger Inspector, detailing the exact tri-party delta between Gateway, Bank Settlement, and Ledger.",
+      cursorAction: async () => {
+        switchScreen('dashboard');
+        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
+        await aiTour.sleep(400);
+        const runBtn = document.getElementById('btnMasterRun');
+        if (runBtn) {
+          await aiTour.moveCursorTo(runBtn, 700);
+          aiTour.spotlight(runBtn);
+          aiTour.triggerCursorClick(runBtn);
+          triggerRunAllAgents();
+        }
+        await aiTour.sleep(2200);
+        const metrics = document.querySelector('.metric-grid');
+        if (metrics) {
+          await aiTour.moveCursorTo(metrics, 700);
+          aiTour.spotlight(metrics);
+        }
+        await aiTour.sleep(2400);
+        const firstRow = document.querySelector('#reconTableBody tr');
+        if (firstRow) {
+          await aiTour.moveCursorTo(firstRow, 600);
+          aiTour.triggerCursorClick(firstRow);
+          firstRow.click();
+          await aiTour.sleep(1500);
+          const drawer = document.getElementById('detailDrawer');
+          if (drawer) aiTour.spotlight(drawer);
+          await aiTour.sleep(2400);
+          const closeBtn = document.querySelector('.drawer-close');
+          if (closeBtn) {
+            await aiTour.moveCursorTo(closeBtn, 500);
+            aiTour.triggerCursorClick(closeBtn);
+            closeDetailDrawer();
+          }
+        }
+      }
+    },
+    {
+      step: 4,
+      tag: "Step 4 of 6 · Threat Surveillance",
+      title: "Anomaly Watch Sentry & Threat Matrix",
+      screen: "dashboard",
+      subview: "3-1",
+      targetSelector: "#subnav-3-1",
+      speechText: "Agent 2 is our Anomaly Watch Sentry. It continuously monitors transaction frequency and failure velocity. It has caught 18 duplicate payout suspects, 8 retry storms, and 7 abnormal refund spikes, halting potential revenue leakage before ledger closing.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-3-1');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 700);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('3-1', 'Anomaly Watch & Fraud Sentry', '3.1 Active Threat Matrix');
+        await aiTour.sleep(600);
+        const matrixGrid = document.querySelector('#view-3-1 .metric-grid');
+        if (matrixGrid) {
+          await aiTour.moveCursorTo(matrixGrid, 700);
+          aiTour.spotlight(matrixGrid);
+        }
+      }
+    },
+    {
+      step: 5,
+      tag: "Step 5 of 6 · Intelligent Reasoning",
+      title: "Financial Copilot & RAG Chat Intelligence",
+      screen: "dashboard",
+      subview: "5-1",
+      targetSelector: "#subnav-5-1",
+      speechText: "Now let's consult Agent 4: our Financial Copilot. Controllers don't need to query SQL or correlate audit logs. We ask: What is our reconciliation status? The Copilot synthesizes insights across all three agents, quoting exact ledger references with zero hallucinations.",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-5-1');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 700);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('5-1', 'Financial Copilot & Chat', '5.1 Copilot Reasoning Console');
+        await aiTour.sleep(600);
+        const quickPrompt = document.querySelector('.chat-quick-prompts button') || document.getElementById('copilotInput');
+        if (quickPrompt) {
+          await aiTour.moveCursorTo(quickPrompt, 600);
+          aiTour.spotlight(quickPrompt);
+          aiTour.triggerCursorClick(quickPrompt);
+          if (quickPrompt.onclick) quickPrompt.click();
+          else if (document.getElementById('copilotInput')) {
+            document.getElementById('copilotInput').value = "What is our current reconciliation status and biggest risk?";
+            const sendBtn = document.getElementById('btnSendCopilot');
+            if (sendBtn) sendBtn.click();
+          }
+        }
+        await aiTour.sleep(1200);
+        const chatContainer = document.querySelector('.copilot-chat-container');
+        if (chatContainer) aiTour.spotlight(chatContainer);
+      }
+    },
+    {
+      step: 6,
+      tag: "Step 6 of 6 · Autonomy & Compliance",
+      title: "3-Tier Adaptive Trust Engine & Conclusion",
+      screen: "dashboard",
+      subview: "6-1",
+      targetSelector: "#subnav-6-1",
+      speechText: "Safety is guaranteed by our 3-Tier Adaptive Trust Engine. Tier 1 mandates human supervisor sign-off. As human reviewers validate repetitive patterns, the AI graduates to Tier 2 conditional approval, and finally Tier 3 autonomous Straight-Through Processing. FinScope AI cuts reconciliation time from days to seconds. You can now explore freely, or restart the tour anytime from the top bar!",
+      cursorAction: async () => {
+        const subnav = document.getElementById('subnav-6-1');
+        if (subnav) {
+          await aiTour.moveCursorTo(subnav, 700);
+          aiTour.triggerCursorClick(subnav);
+        }
+        selectSubView('6-1', 'Trust & Feedback Loops', '6.1 3-Tier Adaptive Trust Engine');
+        await aiTour.sleep(600);
+        const trustTable = document.getElementById('trustTierBody') || document.querySelector('#view-6-1 table');
+        if (trustTable) {
+          await aiTour.moveCursorTo(trustTable, 700);
+          aiTour.spotlight(trustTable);
+        }
+        await aiTour.sleep(3000);
+        selectSubView('1-1', 'Nervous Rail Core', '1.1 System Live Pulse');
+      }
+    }
+  ],
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
+  spotlight(elementOrSelector) {
+    this.clearSpotlight();
+    const el = typeof elementOrSelector === 'string' ? document.querySelector(elementOrSelector) : elementOrSelector;
+    if (el) {
+      el.classList.add('ai-tour-spotlight');
+      this.activeSpotlightEl = el;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    }
+  },
+
+  clearSpotlight() {
+    if (this.activeSpotlightEl) {
+      this.activeSpotlightEl.classList.remove('ai-tour-spotlight');
+      this.activeSpotlightEl = null;
+    }
+    document.querySelectorAll('.ai-tour-spotlight').forEach(el => el.classList.remove('ai-tour-spotlight'));
+  },
+
+  async moveCursorTo(elementOrSelector, duration = 750) {
+    const cursor = document.getElementById('aiVirtualCursor');
+    if (!cursor) return;
+    cursor.style.display = 'block';
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+
+    const el = typeof elementOrSelector === 'string' ? document.querySelector(elementOrSelector) : elementOrSelector;
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      x = Math.max(10, Math.min(window.innerWidth - 30, rect.left + rect.width / 2));
+      y = Math.max(10, Math.min(window.innerHeight - 30, rect.top + rect.height / 2));
+    }
+
+    cursor.style.transform = `translate(${x}px, ${y}px)`;
+    await this.sleep(duration);
+  },
+
+  triggerCursorClick(elementOrSelector) {
+    const cursor = document.getElementById('aiVirtualCursor');
+    if (!cursor) return;
+    const rect = cursor.getBoundingClientRect();
+    const ripple = document.createElement('div');
+    ripple.className = 'cursor-click-ripple';
+    ripple.style.left = `${rect.left + 14}px`;
+    ripple.style.top = `${rect.top + 14}px`;
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 650);
+  },
+
+  speakText(text, onComplete) {
+    if (this.currentUtterance && this.speechSynth) {
+      try { this.speechSynth.cancel(); } catch {}
+    }
+
+    const subBox = document.getElementById('tourSubtitlesText');
+    if (subBox) {
+      subBox.textContent = text;
+    }
+
+    if (!this.speechSynth || this.muted) {
+      const readingDuration = Math.max(3500, text.length * 60);
+      this.timerId = setTimeout(() => {
+        if (onComplete) onComplete();
+      }, readingDuration);
+      return;
+    }
+
+    const utter = new SpeechSynthesisUtterance(text);
+    this.currentUtterance = utter;
+    utter.lang = 'en-US';
+    utter.rate = 1.03;
+    utter.pitch = 1.0;
+
+    const voices = this.speechSynth.getVoices ? this.speechSynth.getVoices() : [];
+    const preferredVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Guy'))) || voices.find(v => v.lang.startsWith('en'));
+    if (preferredVoice) utter.voice = preferredVoice;
+
+    let hasEnded = false;
+    const finish = () => {
+      if (hasEnded) return;
+      hasEnded = true;
+      if (onComplete) onComplete();
+    };
+
+    utter.onend = finish;
+    utter.onerror = finish;
+
+    const safetyMs = Math.max(4500, text.length * 85);
+    this.timerId = setTimeout(finish, safetyMs);
+
+    try {
+      this.speechSynth.speak(utter);
+    } catch (e) {
+      finish();
+    }
+  }
+};
+
+async function startAiInteractiveTour() {
+  aiTour.running = true;
+  aiTour.paused = false;
+  aiTour.currentStepIndex = 0;
+  
+  const hud = document.getElementById('aiTourHUD');
+  if (hud) hud.classList.add('active');
+  const cursor = document.getElementById('aiVirtualCursor');
+  if (cursor) cursor.style.display = 'block';
+
+  toast('🎙️ Starting FinScope AI Guided Walkthrough…', 'green');
+  runAiTourStep(0);
+}
+
+async function runAiTourStep(index) {
+  if (!aiTour.running) return;
+  if (index < 0) index = 0;
+  if (index >= aiTour.steps.length) {
+    stopAiInteractiveTour();
+    toast('🎉 AI Guided Walkthrough Completed!', 'green');
+    return;
+  }
+
+  aiTour.currentStepIndex = index;
+  const step = aiTour.steps[index];
+
+  document.getElementById('tourHudStepTag').textContent = step.tag;
+  document.getElementById('tourHudTitle').textContent = step.title;
+  const pct = Math.round(((index + 1) / aiTour.steps.length) * 100);
+  document.getElementById('tourProgressBar').style.width = `${pct}%`;
+
+  if (step.screen && appState.currentScreen !== step.screen) {
+    switchScreen(step.screen);
+    await aiTour.sleep(350);
+  }
+  if (step.subview && appState.activeSubView !== step.subview) {
+    selectSubView(step.subview, 'Tour', step.title);
+    await aiTour.sleep(350);
+  }
+
+  if (step.cursorAction) {
+    step.cursorAction();
+  }
+
+  aiTour.speakText(step.speechText, async () => {
+    if (!aiTour.running || aiTour.paused) return;
+    if (step.nextAction) {
+      await step.nextAction();
+    }
+    await aiTour.sleep(800);
+    if (aiTour.running && !aiTour.paused) {
+      runAiTourStep(index + 1);
+    }
+  });
+}
+
+function nextAiTourStep() {
+  if (!aiTour.running) return;
+  clearTimeout(aiTour.timerId);
+  if (aiTour.speechSynth) {
+    try { aiTour.speechSynth.cancel(); } catch {}
+  }
+  aiTour.clearSpotlight();
+  runAiTourStep(aiTour.currentStepIndex + 1);
+}
+
+function prevAiTourStep() {
+  if (!aiTour.running) return;
+  clearTimeout(aiTour.timerId);
+  if (aiTour.speechSynth) {
+    try { aiTour.speechSynth.cancel(); } catch {}
+  }
+  aiTour.clearSpotlight();
+  runAiTourStep(aiTour.currentStepIndex - 1);
+}
+
+function toggleAiTourPause() {
+  if (!aiTour.running) return;
+  aiTour.paused = !aiTour.paused;
+  const btn = document.getElementById('btnTourPlayPause');
+  if (aiTour.paused) {
+    if (aiTour.speechSynth) {
+      try { aiTour.speechSynth.pause(); } catch {}
+    }
+    if (btn) btn.innerHTML = '▶ Resume';
+    toast('Tour Paused', 'yellow');
+  } else {
+    if (aiTour.speechSynth) {
+      try { aiTour.speechSynth.resume(); } catch {}
+    }
+    if (btn) btn.innerHTML = '⏸ Pause';
+    toast('Tour Resumed', 'green');
+    runAiTourStep(aiTour.currentStepIndex);
+  }
+}
+
+function toggleAiTourMute() {
+  aiTour.muted = !aiTour.muted;
+  const btn = document.getElementById('btnTourMute');
+  if (aiTour.muted) {
+    if (aiTour.speechSynth) {
+      try { aiTour.speechSynth.cancel(); } catch {}
+    }
+    if (btn) btn.innerHTML = '🔇 Unmute';
+    toast('Voice muted (subtitles active)', 'yellow');
+  } else {
+    if (btn) btn.innerHTML = '🔊 Voice';
+    toast('Voice unmuted', 'green');
+  }
+}
+
+function stopAiInteractiveTour() {
+  aiTour.running = false;
+  aiTour.paused = false;
+  clearTimeout(aiTour.timerId);
+  if (aiTour.speechSynth) {
+    try { aiTour.speechSynth.cancel(); } catch {}
+  }
+  aiTour.clearSpotlight();
+
+  const hud = document.getElementById('aiTourHUD');
+  if (hud) hud.classList.remove('active');
+  const cursor = document.getElementById('aiVirtualCursor');
+  if (cursor) cursor.style.display = 'none';
+
+  toast('AI Walkthrough closed.', 'blue');
+}
 
 // Auto-boot
 ensureDataLoaded();
